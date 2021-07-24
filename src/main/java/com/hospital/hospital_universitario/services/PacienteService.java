@@ -19,7 +19,7 @@ public class PacienteService {
         this.pacienteRepository = pacienteRepository;
     }
 
-    public List<Paciente> getLaudos(){
+    public List<Paciente> getPacientes(){
         List<Paciente> pacientes = pacienteRepository.findAll();
         return pacientes;
     }
