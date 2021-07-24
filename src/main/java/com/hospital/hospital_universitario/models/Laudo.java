@@ -1,8 +1,25 @@
 package com.hospital.hospital_universitario.models;
 
+import javax.persistence.Entity;
+import javax.persistence.*;
+import javax.persistence.Table;
+
+@Entity
+@Table
 public class Laudo {
 	
-	private int Id;
+	@Id
+    @SequenceGenerator(
+        name = "laudo_sequence",
+        sequenceName = "laudo_sequence",
+        allocationSize = 1
+    )
+    @GeneratedValue(
+        strategy = GenerationType.AUTO,
+        generator = "laudo_sequence"
+    )
+
+	private int id;
 	private String descricao;
 	private String conclusao;
 	//Residente responsável pelo laudo
@@ -10,11 +27,15 @@ public class Laudo {
 	//Tem que criar um enum para a variável embaixo
 	private String status;
 	
+	public Laudo(){
+
+	}
+
 	public int getId() {
-		return Id;
+		return this.id;
 	}
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
 	public String getDescricao() {
 		return descricao;
