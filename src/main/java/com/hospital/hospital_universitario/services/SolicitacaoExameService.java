@@ -19,7 +19,7 @@ public class SolicitacaoExameService {
         this.solicitacaoExameRepository = solicitacaoExameRepository;
     }
 
-    public List<SolicitacaoExame> getPacientes(){
+    public List<SolicitacaoExame> getSolicitacaoExames(){
         List<SolicitacaoExame> solicitacoes = solicitacaoExameRepository.findAll();
         return solicitacoes;
     }
