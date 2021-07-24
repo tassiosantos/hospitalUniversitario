@@ -28,6 +28,10 @@ public class Medico {
 	//Tem que criar um enum para a variável embaixo
 	private String tipo;
 	
+	public Medico(){
+
+	}
+
 	public int getId() {
 		return Id;
 	}
