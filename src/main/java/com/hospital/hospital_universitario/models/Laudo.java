@@ -26,6 +26,8 @@ public class Laudo {
 	private String residenteConectado;
 	//Tem que criar um enum para a variável embaixo
 	private String status;
+
+	private String pacienteConectado;
 	
 	public Laudo(){
 
@@ -60,6 +62,13 @@ public class Laudo {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getPacienteConectado() {
+		return pacienteConectado;
+	}
+	public void setPacienteConectado(String pacienteConectado) {
+		this.pacienteConectado = pacienteConectado;
 	}
 
 }

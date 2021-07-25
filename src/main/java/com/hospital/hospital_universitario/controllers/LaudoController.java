@@ -28,23 +28,31 @@ public class LaudoController{
         this.laudoService = laudoService;
     }
 
-    @GetMapping(path = "/all")
+    @GetMapping(path = "")
     public List<Laudo> getLaudos(){
         return this.laudoService.getLaudos();
     }
 
+    @GetMapping(path = "/{laudoNumber}")
+    public Laudo getLaudoByNumber(@PathVariable("laudoNumber") String laudoNumber){
+        return this.laudoService.getLaudoByNumber(laudoNumber); 
+    }
 
-	@PutMapping(path = "/laudo/{laudoNumber}")
+    // @GetMapping(path = "/medico/listaMedicos")
+    // public List<Laudo> getLaudoByMedicoNumber(@PathVariable("medicoNumber") String medicoNumber){
+    //     return this.laudoService.getLaudoByMedicoNumber(laudoNumber);
+    // }
+
+	@PutMapping(path = "/{laudoNumber}")
 	public Laudo updateLaudo(@PathVariable("laudoNumber") String laudoNumber){
-		//Laudo laudo = this.laudoService.update(laudoNumber);
-		//return laudo;
-        return null;
+		Laudo laudo = this.laudoService.update(laudoNumber);
+		return laudo;
 	}
 
-	// @PostMapping(path = "/laudo")
-	// public void addAccount(@RequestBody Account newAccount){
-	// 	this.accountService.addAccount(newAccount);
-    //  }
+	@PostMapping(path = "/")
+	public void addLaudo(@RequestBody Laudo newLaudo){
+		this.laudoService.newLaudo(newLaudo);
+     }
 
     //  @DeleteMapping(path = "/laudo")
     //  public void addAccount(@RequestBody Account newAccount){

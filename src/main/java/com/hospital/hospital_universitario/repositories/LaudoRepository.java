@@ -9,6 +9,9 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LaudoRepository extends JpaRepository<Laudo, Long>{
-    List<Laudo> findById(int id);
+    Laudo findById(int id);
+    List<Laudo> findByResidenteConectado(String residenteConectado);
+    List<Laudo> findByStatus(String status);
+    List<Laudo> findByPacienteConectado(String pacienteConectado);
 
 }

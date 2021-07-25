@@ -1,0 +1,7 @@
+/var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/services/LaudoService.java
+/var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/controllers/indexController.java
+/var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/controllers/LaudoController.java
+/var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/models/Laudo.java
+/var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/HospitalUniversitarioApplication.java
+/var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/hospital_universitario/.mvn/wrapper/MavenWrapperDownloader.java
+/var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/repositories/LaudoRepository.java

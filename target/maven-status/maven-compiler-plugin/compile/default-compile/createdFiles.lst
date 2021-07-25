@@ -1,11 +1,8 @@
-com/hospital/hospital_universitario/models/Medico.class
 com/hospital/hospital_universitario/repositories/LaudoRepository.class
 com/hospital/hospital_universitario/controllers/LaudoController.class
-com/hospital/hospital_universitario/models/SolicitacaoExame.class
 com/hospital/hospital_universitario/services/LaudoService.class
 com/hospital/hospital_universitario/controllers/indexController.class
 com/hospital/hospital_universitario/models/Laudo.class
-com/hospital/hospital_universitario/models/Paciente.class
 com/hospital/hospital_universitario/HospitalUniversitarioApplication.class
 MavenWrapperDownloader$1.class
 MavenWrapperDownloader.class
