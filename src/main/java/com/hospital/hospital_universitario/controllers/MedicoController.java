@@ -28,7 +28,7 @@ public class MedicoController{
         this.medicoService = medicoService;
     }
 
-    @GetMapping(path = "/all")
+    @GetMapping(path = "")
     public List<Medico> getMedicos(){
         return this.medicoService.getMedicos();
     }

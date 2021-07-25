@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping(path = "/paciente" )
+@RequestMapping(path = "/exames" )
 @CrossOrigin
 public class SolicitacaoExameController{
 

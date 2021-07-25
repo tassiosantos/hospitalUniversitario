@@ -24,7 +24,7 @@ public class SolicitacaoExame {
         generator = "solicitacaoExame_sequence"
     )
 
-	private int Id;
+	private int id;
 	private String nomeMedico;
 	private String registroMedico;
 	//Um possível enum
@@ -40,10 +40,10 @@ public class SolicitacaoExame {
 	}
 	
 	public int getId() {
-		return Id;
+		return this.id;
 	}
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
 	public String getNomeMedico() {
 		return nomeMedico;

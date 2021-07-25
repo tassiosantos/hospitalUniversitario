@@ -19,11 +19,11 @@ public class Medico {
         generator = "medico_sequence"
     )
 	
-	private int Id;
+	private int id;
 	private String nome;
 	private String cpf;
 	//Por enquanto
-	private String CRM;
+	private String crm;
 	private String titulacao;
 	//Tem que criar um enum para a variável embaixo
 	private String tipo;
@@ -36,7 +36,7 @@ public class Medico {
 		return Id;
 	}
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
 	public String getNome() {
 		return nome;
@@ -50,11 +50,11 @@ public class Medico {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public void setCRM(String CRM) {
-		this.CRM = CRM;
+	public void setCRM(String crm) {
+		this.crm = crm;
 	}
 	public String getCRM() {
-		return CRM;
+		return crm;
 	}
 	public void setTitulacao(String titulacao) {
 		this.titulacao = titulacao;

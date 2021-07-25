@@ -18,7 +18,7 @@ public class Paciente {
         generator = "medico_sequence"
     )
 
-	private int Id;
+	private int id;
 	private String nome;
 	private String cpf;
 	private String dataNascimento;
@@ -29,10 +29,10 @@ public class Paciente {
 	}
 
 	public int getId() {
-		return Id;
+		return id;
 	}
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
 	public String getNome() {
 		return nome;
