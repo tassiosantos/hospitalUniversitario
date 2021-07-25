@@ -1,7 +1,11 @@
 package com.hospital.hospital_universitario.services;
 
 import java.util.List;
+<<<<<<< HEAD
 
+=======
+// import java.util.ArrayList;
+>>>>>>> 9cb7fd5e503f66237a1c61d4b2659e21d9fae7bc
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
