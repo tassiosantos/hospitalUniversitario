@@ -43,20 +43,11 @@ public class LaudoController{
     //     return this.laudoService.getLaudoByMedicoNumber(laudoNumber);
     // }
 
-<<<<<<< HEAD
 	@PutMapping(path = "/{laudoNumber}")
 	public Laudo updateLaudo(@PathVariable("laudoNumber") String laudoNumber){
 		Laudo laudo = this.laudoService.update(laudoNumber);
 		return laudo;
 	}
-=======
-	// @PutMapping(path = "/laudo/{laudoNumber}")
-	// public Laudo updateLaudo(@PathVariable("laudoNumber") String laudoNumber){
-	// 	//Laudo laudo = this.laudoService.update(laudoNumber);
-	// 	//return laudo;
-    //     return null;
-	// }
->>>>>>> 9cb7fd5e503f66237a1c61d4b2659e21d9fae7bc
 
 	@PostMapping(path = "/")
 	public void addLaudo(@RequestBody Laudo newLaudo){
