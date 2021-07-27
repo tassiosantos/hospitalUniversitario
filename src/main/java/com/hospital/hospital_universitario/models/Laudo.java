@@ -1,5 +1,6 @@
 package com.hospital.hospital_universitario.models;
 
+<<<<<<< HEAD
 import javax.persistence.Entity;
 import javax.persistence.*;
 import javax.persistence.Table;
@@ -20,12 +21,18 @@ public class Laudo {
     )
 
 	private int id;
+=======
+public class Laudo {
+	
+	private int Id;
+>>>>>>> b1594b08c1be1a7549c22f88d02f758c922485bb
 	private String descricao;
 	private String conclusao;
 	//Residente responsável pelo laudo
 	private String residenteConectado;
 	//Tem que criar um enum para a variável embaixo
 	private String status;
+<<<<<<< HEAD
 
 	private String pacienteConectado;
 	
@@ -38,6 +45,14 @@ public class Laudo {
 	}
 	public void setId(int id) {
 		this.id = id;
+=======
+	
+	public int getId() {
+		return Id;
+	}
+	public void setId(int id) {
+		Id = id;
+>>>>>>> b1594b08c1be1a7549c22f88d02f758c922485bb
 	}
 	public String getDescricao() {
 		return descricao;
@@ -64,6 +79,7 @@ public class Laudo {
 		this.status = status;
 	}
 
+<<<<<<< HEAD
 	public String getPacienteConectado() {
 		return pacienteConectado;
 	}
@@ -71,4 +87,6 @@ public class Laudo {
 		this.pacienteConectado = pacienteConectado;
 	}
 
+=======
+>>>>>>> b1594b08c1be1a7549c22f88d02f758c922485bb
 }

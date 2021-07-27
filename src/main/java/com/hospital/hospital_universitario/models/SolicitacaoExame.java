@@ -4,6 +4,7 @@ package com.hospital.hospital_universitario.models;
 import java.util.Date;
 import java.util.TimeZone;
 //Depois por favor, revisem os tipos das variáveis!
+<<<<<<< HEAD
 
 import javax.persistence.Entity;
 import javax.persistence.*;
@@ -25,6 +26,11 @@ public class SolicitacaoExame {
     )
 
 	private int id;
+=======
+public class SolicitacaoExame {
+	
+	private int Id;
+>>>>>>> b1594b08c1be1a7549c22f88d02f758c922485bb
 	private String nomeMedico;
 	private String registroMedico;
 	//Um possível enum
@@ -35,6 +41,7 @@ public class SolicitacaoExame {
 	private TimeZone horaExame;
 	private String hipoteseDiagnostica;
 	
+<<<<<<< HEAD
 	public SolicitacaoExame(){
 
 	}
@@ -44,6 +51,13 @@ public class SolicitacaoExame {
 	}
 	public void setId(int id) {
 		this.id = id;
+=======
+	public int getId() {
+		return Id;
+	}
+	public void setId(int id) {
+		Id = id;
+>>>>>>> b1594b08c1be1a7549c22f88d02f758c922485bb
 	}
 	public String getNomeMedico() {
 		return nomeMedico;
