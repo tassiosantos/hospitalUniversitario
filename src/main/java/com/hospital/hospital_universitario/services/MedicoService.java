@@ -22,4 +22,18 @@ public class MedicoService {
         List<Medico> medicos = medicoRepository.findAll();
         return medicos;
     }
+
+    public Medico getMedicoByNumber(String medicoNumber){
+        Medico medico = medicoRepository.findById(Integer.parseInt(medicoNumber));
+        return medico;
+    }
+
+    public void newLaudo(Medico newMedico) {
+        this.medicoRepository.save(newMedico);
+    }
+
+    public Medico update(Medico updatedMedico) {
+        Medico medico = this.medicoRepository.save(updatedMedico);
+        return medico;
+    }
 }
