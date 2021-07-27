@@ -50,7 +50,6 @@ public class MedicoController{
 	public void addMedico(@RequestBody Medico newMedico){
 		this.medicoService.newMedico(newMedico);
      }
-	}
 
 	// @PostMapping(path = "/laudo")
 	// public void addAccount(@RequestBody Account newAccount){
