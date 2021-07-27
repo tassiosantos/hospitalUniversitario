@@ -28,7 +28,7 @@ public class MedicoService {
         return medico;
     }
 
-    public void newLaudo(Medico newMedico) {
+    public void newMedico(Medico newMedico) {
         this.medicoRepository.save(newMedico);
     }
 
