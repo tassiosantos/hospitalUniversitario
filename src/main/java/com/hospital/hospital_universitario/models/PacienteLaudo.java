@@ -8,13 +8,13 @@ import javax.persistence.Table;
 public class PacienteLaudo {
 	
 	@Id
-
 	private int pacienteId;
 	private int laudoId;
 	
 	
-	public PacienteLaudo(){
-
+	public PacienteLaudo(int pacienteId, int laudoId){
+        this.pacienteId = pacienteId;
+        this.laudoId = laudoId;
 	}
 
 

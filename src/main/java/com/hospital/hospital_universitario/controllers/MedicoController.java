@@ -6,12 +6,12 @@ import com.hospital.hospital_universitario.models.Medico;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-// import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.DeleteMapping;
-// import org.springframework.web.bind.annotation.PathVariable;
-// import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,12 +34,13 @@ public class MedicoController{
     }
 
 
-	// @PutMapping(path = "/medico/{medicoNumber}")
-	// public Laudo updateMedico(@PathVariable("medicoNumber") String medicoNumber){
-	// 	//Laudo laudo = this.laudoService.update(laudoNumber);
-	// 	//return laudo;
-    //     return null;
-	// }
+	@PutMapping(path = "/{medicoNumber}")
+	public Medico updateMedico(@RequestBody Medico medico, 
+                               @PathVariable("medicoNumber") String medicoNumber){
+        medico.setId(Integer.parseInt(medicoNumber));                                   
+		medico = this.medicoService.update(medico);
+        return  medico;
+	}
 
 	// @PostMapping(path = "/laudo")
 	// public void addAccount(@RequestBody Account newAccount){

@@ -43,6 +43,14 @@ public class LaudoController{
     //     return this.laudoService.getLaudoByMedicoNumber(laudoNumber);
     // }
 
+    // @PutMapping(path = "/{medicoNumber}")
+	// public Medico updateMedico(@RequestBody Medico medico, 
+    //                            @PathVariable("medicoNumber") String medicoNumber){
+    //     medico.setId(Integer.parseInt(medicoNumber));                                   
+	// 	medico = this.medicoService.update(medico);
+    //     return  medico;
+	// }
+
 	@PutMapping(path = "/{laudoNumber}")
 	public Laudo updateLaudo(
         @RequestBody Laudo changedLaudo){

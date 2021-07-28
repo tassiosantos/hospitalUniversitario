@@ -22,4 +22,8 @@ public class MedicoService {
         List<Medico> medicos = medicoRepository.findAll();
         return medicos;
     }
+
+    public Medico update(Medico medico) {
+        return null;
+    }
 }

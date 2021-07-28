@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PacienteLaudoRepository extends JpaRepository<PacienteLaudo, Long> {
-        PacienteLaudo findByPacienteLaudo(int pacienteId, int laudoId);
-        List<PacienteLaudo> findByPaciente(int pacienteId);
+        PacienteLaudo findByPacienteIdAndLaudoId(int pacienteId, int laudoId);
+        List<PacienteLaudo> findByPacienteId(int pacienteId);
 
 }
