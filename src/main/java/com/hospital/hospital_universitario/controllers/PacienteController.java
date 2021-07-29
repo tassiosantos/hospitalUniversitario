@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 // import org.springframework.web.bind.annotation.PostMapping;
 // import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 // import org.springframework.web.bind.annotation.DeleteMapping;
 // import org.springframework.web.bind.annotation.PathVariable;
 // import org.springframework.web.bind.annotation.RequestBody;
@@ -34,12 +38,22 @@ public class PacienteController{
     }
 
 
-	// @PutMapping(path = "/paciente/{pacienteNumber}")
-	// public Paciente updateLaudo(@PathVariable("pacienteNumber") String pacienteNumber){
-	// 	//Laudo laudo = this.laudoService.update(laudoNumber);
-	// 	//return laudo;
-    //     return null;
-	// }
+	@GetMapping(path = "/paciente/{pacienteNumber}")
+	public Paciente getPacienteByNumber(@PathVariable("pacienteNumber") String pacienteNumber){
+		return this.pacienteService.getPacienteByNumber(pacienteNumber);
+	}
+
+    @PutMapping(path = "/{pacienteNumber}")
+	public Paciente updatePaciente(
+        @RequestBody Paciente changedPaciente){
+		Paciente paciente = this.pacienteService.update(changedPaciente);
+		return paciente;
+	}
+
+    @PostMapping(path = "/")
+	public void addPaciente(@RequestBody Paciente newPaciente){
+		this.pacienteService.newPaciente(newPaciente);
+     }
 
 	// @PostMapping(path = "/laudo")
 	// public void addAccount(@RequestBody Account newAccount){
