@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SolicitacaoExameRepository extends JpaRepository<SolicitacaoExame, Long>{
-    List<SolicitacaoExame> findById(int id);
+    SolicitacaoExame findById(int id);
 
 }
