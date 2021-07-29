@@ -1,6 +1,5 @@
 package com.hospital.hospital_universitario.repositories;
 
-import java.util.List;
 
 import com.hospital.hospital_universitario.models.SolicitacaoExame;
 
