@@ -23,4 +23,18 @@ public class PacienteService {
         List<Paciente> pacientes = pacienteRepository.findAll();
         return pacientes;
     }
+
+    public Paciente getPacienteByNumber(String pacienteNumber){
+        Paciente paciente = pacienteRepository.findById(Integer.parseInt(pacienteNumber));
+        return paciente;
+    }
+
+    public void newPaciente(Paciente newPaciente) {
+        this.pacienteRepository.save(newPaciente);
+    }
+
+    public Paciente update(Paciente updatedPaciente) {
+        Paciente paciente = this.pacienteRepository.save(updatedPaciente);
+        return paciente;
+    }
 }

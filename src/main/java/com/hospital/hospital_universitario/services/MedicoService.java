@@ -23,7 +23,17 @@ public class MedicoService {
         return medicos;
     }
 
-    public Medico update(Medico medico) {
-        return null;
+    public Medico getMedicoByNumber(String medicoNumber){
+        Medico medico = medicoRepository.findById(Integer.parseInt(medicoNumber));
+        return medico;
+    }
+
+    public void newMedico(Medico newMedico) {
+        this.medicoRepository.save(newMedico);
+    }
+
+    public Medico update(Medico updatedMedico) {
+        Medico medico = this.medicoRepository.save(updatedMedico);
+        return medico;
     }
 }

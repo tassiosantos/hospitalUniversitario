@@ -1,6 +1,5 @@
 package com.hospital.hospital_universitario.repositories;
 
-import java.util.List;
 
 import com.hospital.hospital_universitario.models.SolicitacaoExame;
 
@@ -9,6 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SolicitacaoExameRepository extends JpaRepository<SolicitacaoExame, Long>{
-    List<SolicitacaoExame> findById(int id);
+    SolicitacaoExame findById(int id);
 
 }

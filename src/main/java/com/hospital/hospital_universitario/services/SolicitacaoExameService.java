@@ -22,4 +22,18 @@ public class SolicitacaoExameService {
         List<SolicitacaoExame> solicitacoes = solicitacaoExameRepository.findAll();
         return solicitacoes;
     }
+
+    public SolicitacaoExame getSolicitacaoExameByNumber(String solicitacaoExameNumber){
+        SolicitacaoExame solicitacaoExame = solicitacaoExameRepository.findById(Integer.parseInt(solicitacaoExameNumber));
+        return solicitacaoExame;
+    }
+
+    public void newMedico(SolicitacaoExame newSolicitacaoExame) {
+        this.solicitacaoExameRepository.save(newSolicitacaoExame);
+    }
+
+    public SolicitacaoExame update(SolicitacaoExame updatedSolicitacaoExame) {
+        SolicitacaoExame solicitacaoExame = this.solicitacaoExameRepository.save(updatedSolicitacaoExame);
+        return solicitacaoExame;
+    }
 }
