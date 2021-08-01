@@ -25,7 +25,7 @@ public class SolicitacaoExame {
     )
 
 	private int id;
-	private String nomeMedico;
+
 	private String registroMedico;
 	//Um possível enum
 	private String statusExame;
@@ -34,6 +34,9 @@ public class SolicitacaoExame {
 	//Não tenho certeza desse tipo
 	private TimeZone horaExame;
 	private String hipoteseDiagnostica;
+
+	private String pacienteId;
+
 	
 	public SolicitacaoExame(){
 
@@ -44,12 +47,6 @@ public class SolicitacaoExame {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getNomeMedico() {
-		return nomeMedico;
-	}
-	public void setNomeMedico(String nomeMedico) {
-		this.nomeMedico = nomeMedico;
 	}
 	public String getRegistroMedico() {
 		return registroMedico;

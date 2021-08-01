@@ -1,3 +1,4 @@
+/var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/repositories/MedicosLaudoRepository.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/controllers/SolicitacaoExameController.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/services/MedicoService.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/services/LaudoService.java
