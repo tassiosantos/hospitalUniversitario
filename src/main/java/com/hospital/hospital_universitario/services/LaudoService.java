@@ -63,7 +63,9 @@ public class LaudoService {
     }
 
     public Laudo delete(Laudo deleteLaudo) {
-        this.laudoRepository.delete(deleteLaudo);
+         this.laudoRepository.delete(deleteLaudo);
+         return null;
+
     }
         
 
