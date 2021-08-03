@@ -34,8 +34,8 @@ public class LaudoController{
     }
 
     @GetMapping(path = "/{laudoNumber}")
-    public Laudo getLaudoByNumber(@PathVariable("laudoNumber") String laudoNumber){
-        return this.laudoService.getLaudoByNumber(laudoNumber); 
+    public Laudo getLaudoByNumber(@PathVariable("laudoNumber") int laudoNumber){
+        return this.laudoService.getLaudoById(laudoNumber); 
     }
 
     @GetMapping(path = "/{medicoId}")
