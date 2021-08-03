@@ -37,4 +37,8 @@ public class MedicoService {
         Medico medico = this.medicoRepository.save(updatedMedico);
         return medico;
     }
+
+    public void delete(Medico medico) {
+        this.medicoRepository.delete(medico);
+    }
 }

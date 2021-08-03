@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,14 +51,11 @@ public class MedicoController{
 		this.medicoService.newMedico(newMedico);
      }
 	
+    @DeleteMapping(path = "/{medicoId}")
+	public void deleteMedico(
+        @PathVariable("medicoId") int medicoId){
+        Medico medico = this.medicoService.getMedicoById(medicoId);
+		this.medicoService.delete(medico);
+	}
 
-	// @PostMapping(path = "/laudo")
-	// public void addAccount(@RequestBody Account newAccount){
-	// 	this.accountService.addAccount(newAccount);
-    //  }
-
-    //  @DeleteMapping(path = "/laudo")
-    //  public void addAccount(@RequestBody Account newAccount){
-    //      this.accountService.addAccount(newAccount);
-    //   }
 }

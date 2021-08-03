@@ -6,16 +6,14 @@ import com.hospital.hospital_universitario.models.Paciente;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-// import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-// import org.springframework.web.bind.annotation.DeleteMapping;
-// import org.springframework.web.bind.annotation.PathVariable;
-// import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -38,12 +36,12 @@ public class PacienteController{
     }
 
 
-	@GetMapping(path = "/paciente/{pacienteNumber}")
-	public Paciente getPacienteByNumber(@PathVariable("pacienteNumber") String pacienteNumber){
-		return this.pacienteService.getPacienteByNumber(pacienteNumber);
+	@GetMapping(path = "/{pacienteId}")
+	public Paciente getPacienteById(@PathVariable("pacienteId") int pacienteId){
+		return this.pacienteService.getPacienteById(pacienteId);
 	}
 
-    @PutMapping(path = "/{pacienteNumber}")
+    @PutMapping(path = "/{pacienteId}")
 	public Paciente updatePaciente(
         @RequestBody Paciente changedPaciente){
 		Paciente paciente = this.pacienteService.update(changedPaciente);
@@ -60,9 +58,11 @@ public class PacienteController{
 	// 	this.accountService.addAccount(newAccount);
     //  }
 
-    //  @DeleteMapping(path = "/laudo")
-    //  public void addAccount(@RequestBody Account newAccount){
-    //      this.accountService.addAccount(newAccount);
-    //   }
+    @DeleteMapping(path = "/{pacienteId}")
+	public void deletePaciente(
+        @PathVariable("pacienteId") int pacienteId){
+        Paciente paciente = this.pacienteService.getPacienteById(pacienteId);
+		this.pacienteService.delete(paciente);
+	}
 
 }
