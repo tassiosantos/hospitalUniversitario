@@ -11,6 +11,7 @@ import com.hospital.hospital_universitario.models.Medico;
 import com.hospital.hospital_universitario.repositories.LaudoRepository;
 import com.hospital.hospital_universitario.repositories.MedicoRepository;
 
+import com.hospital.hospital_universitario.services.MedicoService;
 
 @Service
 public class LaudoService {
@@ -19,9 +20,9 @@ public class LaudoService {
     private final MedicoService medicoService;
 
     @Autowired
-    public LaudoService(LaudoRepository laudoRepository){
+    public LaudoService(LaudoRepository laudoRepository, MedicoService medicoService){
         this.laudoRepository = laudoRepository;
-        this.medicoService = new MedicoService();
+        this.medicoService = medicoService;
     }
 
     public List<Laudo> getLaudos(){
@@ -62,7 +63,7 @@ public class LaudoService {
         return laudo;
     }
 
-    public Laudo delete(Laudo deleteLaudo) {
+    public void delete(Laudo deleteLaudo) {
         this.laudoRepository.delete(deleteLaudo);
     }
         

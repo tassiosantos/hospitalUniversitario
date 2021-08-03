@@ -34,12 +34,12 @@ public class MedicoController{
     }
 
 
-	@GetMapping(path = "/medico/{medicoNumber}")
-	public Medico getMedicoByNumber(@PathVariable("medicoNumber") String medicoNumber){
-        return this.medicoService.getMedicoByNumber(medicoNumber);
+	@GetMapping(path = "/medico/{medicoId}")
+	public Medico getMedicoById(@PathVariable("medicoId") int medicoId){
+        return this.medicoService.getMedicoById(medicoId);
     }
 		
-    @PutMapping(path = "/{medicoNumber}")
+    @PutMapping(path = "/{medicoId}")
 	public Medico updateMedico(
         @RequestBody Medico changedMedico){
 		Medico medico = this.medicoService.update(changedMedico);

@@ -18,10 +18,7 @@ public class MedicoService {
         this.medicoRepository = medicoRepository;
     }
 
-    public MedicoService(){
-        
-    }
-
+ 
     public List<Medico> getMedicos(){
         List<Medico> medicos = medicoRepository.findAll();
         return medicos;
