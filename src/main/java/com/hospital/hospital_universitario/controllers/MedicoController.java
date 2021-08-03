@@ -33,8 +33,8 @@ public class MedicoController{
         return this.medicoService.getMedicos();
     }
 
-
-	@GetMapping(path = "/medico/{medicoNumber}")
+// mudei o nome do path de /medico/{medicoNumber} para /umMedico/{medicoNumber}
+	@GetMapping(path = "/umMedico/{medicoNumber}")
 	public Medico getMedicoByNumber(@PathVariable("medicoNumber") String medicoNumber){
         return this.medicoService.getMedicoByNumber(medicoNumber);
     }
