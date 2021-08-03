@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,20 +38,13 @@ public class LaudoController{
         return this.laudoService.getLaudoByNumber(laudoNumber); 
     }
 
-    // @GetMapping(path = "/medico/listaMedicos")
-    // public List<Laudo> getLaudoByMedicoNumber(@PathVariable("medicoNumber") String medicoNumber){
-    //     return this.laudoService.getLaudoByMedicoNumber(laudoNumber);
-    // }
+    @GetMapping(path = "/{medicoId}")
+    public List<Laudo> getLaudoByMedicoId(@PathVariable("medicoId") int medicoId){
+        List<Laudo> laudos = this.laudoService.getLaudoByMedicoId(medicoId);
+        return laudos;
+    }
 
-    // @PutMapping(path = "/{medicoNumber}")
-	// public Medico updateMedico(@RequestBody Medico medico, 
-    //                            @PathVariable("medicoNumber") String medicoNumber){
-    //     medico.setId(Integer.parseInt(medicoNumber));                                   
-	// 	medico = this.medicoService.update(medico);
-    //     return  medico;
-	// }
-
-	@PutMapping(path = "/{laudoNumber}")
+	@PutMapping(path = "/{laudoId}")
 	public Laudo updateLaudo(
         @RequestBody Laudo changedLaudo){
 		Laudo laudo = this.laudoService.update(changedLaudo);
@@ -63,9 +56,9 @@ public class LaudoController{
 		this.laudoService.newLaudo(newLaudo);
      }
 
-    //  @DeleteMapping(path = "/laudo")
-    //  public void addAccount(@RequestBody Account newAccount){
-    //      this.accountService.addAccount(newAccount);
-    //   }
+     @DeleteMapping(path = "/{laudoId}")
+         public void addAccount(@RequestBody Laudo deleteLaudo){
+         this.laudoService.delete(deleteLaudo);
+      }
 
 }

@@ -23,11 +23,14 @@ public class Laudo {
 	private String descricao;
 	private String conclusao;
 	//Residente responsável pelo laudo
-	private String residenteConectado;
-	//Tem que criar um enum para a variável embaixo
+	
+	private int residenteId;
+	private int docenteId;
+	private int pacienteId;
+
 	private String status;
 
-	private String pacienteConectado;
+
 	
 	public Laudo(){
 
@@ -51,24 +54,36 @@ public class Laudo {
 	public void setConclusao(String conclusao) {
 		this.conclusao = conclusao;
 	}
-	public String getResidenteConectado() {
-		return residenteConectado;
+	public String getResidenteId() {
+		return residenteId;
 	}
-	public void setResidenteConectado(String residenteConectado) {
-		this.residenteConectado = residenteConectado;
+	public void setResidenteId(String residenteId) {
+		this.residenteId = residenteId;
 	}
+
+
+	public String getDocenteId() {
+		return docenteId;
+	}
+	public void setDocenteId(String docenteId) {
+		this.docenteId = docenteId;
+	}
+
+
+
+	public String getPacienteId() {
+		return pacienteId;
+	}
+	public void setPacienteId(String pacienteId) {
+		this.pacienteId = pacienteId;
+	}
+
+
+
 	public String getStatus() {
 		return status;
 	}
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-	public String getPacienteConectado() {
-		return pacienteConectado;
-	}
-	public void setPacienteConectado(String pacienteConectado) {
-		this.pacienteConectado = pacienteConectado;
-	}
-
 }

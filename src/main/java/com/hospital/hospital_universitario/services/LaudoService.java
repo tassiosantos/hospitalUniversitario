@@ -1,23 +1,27 @@
 package com.hospital.hospital_universitario.services;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hospital.hospital_universitario.models.Laudo;
+import com.hospital.hospital_universitario.models.Medico;
 import com.hospital.hospital_universitario.repositories.LaudoRepository;
+import com.hospital.hospital_universitario.repositories.MedicoRepository;
 
 
 @Service
 public class LaudoService {
     
     private final LaudoRepository laudoRepository;
-    //private final MedicoService medicoService;
+    private final MedicoService medicoService;
 
     @Autowired
     public LaudoService(LaudoRepository laudoRepository){
         this.laudoRepository = laudoRepository;
+        this.medicoService = new MedicoService();
     }
 
     public List<Laudo> getLaudos(){
@@ -25,29 +29,42 @@ public class LaudoService {
         return laudos;
     }
 
-    public Laudo getLaudoByNumber(String laudoNumber){
-        Laudo laudo = laudoRepository.findById(Integer.parseInt(laudoNumber));
+    public Laudo getLaudoById(int laudoId){
+        Laudo laudo = laudoRepository.findById(laudoId);
         return laudo;
     }
 
+    public List<Laudo> getLaudoByPacienteId(int pacienteId){
+        List <Laudo> laudos = laudoRepository.findByPacienteId(pacienteId);
+        return laudos;
+    }
+
+    public List<Laudo> getLaudoByMedicoId(int medicoId){
+        List<Laudo> laudos = new ArrayList<Laudo>();
+        Medico medico = this.medicoService.getMedicoById(medicoId);
+        if(medico.getTitulacao().equalsIgnoreCase("DOCENTE")){
+            laudos = laudoRepository.findByDocenteId(medicoId);
+        }
+        else{
+            laudos = laudoRepository.findByResidenteId(medicoId);
+        }
+
+        return laudos;
+    }
+
+    
     public void newLaudo(Laudo newLaudo) {
         this.laudoRepository.save(newLaudo);
     }
 
-    public Laudo update(Laudo updatedLaudo) {
-        Laudo laudo = this.laudoRepository.save(updatedLaudo);
+    public Laudo update(Laudo updateLaudo) {
+        Laudo laudo = this.laudoRepository.save(updateLaudo);
         return laudo;
     }
 
-    // public List<Laudo> getLaudoByMedicoNumber(String medicoNumber){
-    //     List<Laudo> laudos = laudoRepository.findByPacienteConectado(Integer.parseInt(medicoNumber));
-     //    List<Srting> nomeMedicos = new List<String>();
-    //      for(laudo: laudos){
-        //     int medico = medicoService.getByMedicoNumber(Integer.parseInt(laudo.residenteConectado));
-        //     nomeMedicos.add(medico.nome);    
-        // }
-    //     return nomeMedicos;
-    // }
+    public Laudo delete(Laudo deleteLaudo) {
+        this.laudoRepository.delete(deleteLaudo);
+    }
         
 
 }

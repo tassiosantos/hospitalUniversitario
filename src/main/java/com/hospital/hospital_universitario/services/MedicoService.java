@@ -18,13 +18,17 @@ public class MedicoService {
         this.medicoRepository = medicoRepository;
     }
 
+    public MedicoService(){
+        
+    }
+
     public List<Medico> getMedicos(){
         List<Medico> medicos = medicoRepository.findAll();
         return medicos;
     }
 
-    public Medico getMedicoByNumber(String medicoNumber){
-        Medico medico = medicoRepository.findById(Integer.parseInt(medicoNumber));
+    public Medico getMedicoById(int medicoId){
+        Medico medico = medicoRepository.findById(medicoId);
         return medico;
     }
 
