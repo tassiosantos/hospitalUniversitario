@@ -54,27 +54,27 @@ public class Laudo {
 	public void setConclusao(String conclusao) {
 		this.conclusao = conclusao;
 	}
-	public String getResidenteId() {
+	public int getResidenteId() {
 		return residenteId;
 	}
-	public void setResidenteId(String residenteId) {
+	public void setResidenteId(int residenteId) {
 		this.residenteId = residenteId;
 	}
 
 
-	public String getDocenteId() {
+	public int getDocenteId() {
 		return docenteId;
 	}
-	public void setDocenteId(String docenteId) {
+	public void setDocenteId(int docenteId) {
 		this.docenteId = docenteId;
 	}
 
 
 
-	public String getPacienteId() {
+	public int getPacienteId() {
 		return pacienteId;
 	}
-	public void setPacienteId(String pacienteId) {
+	public void setPacienteId(int pacienteId) {
 		this.pacienteId = pacienteId;
 	}
 
