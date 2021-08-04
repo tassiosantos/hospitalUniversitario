@@ -28,13 +28,13 @@ public class MedicoController{
         this.medicoService = medicoService;
     }
 
-    @GetMapping(path = "/all")
+    @GetMapping(path = "/")
     public List<Medico> getMedicos(){
         return this.medicoService.getMedicos();
     }
 
 
-	@GetMapping(path = "/medico/{medicoId}")
+	@GetMapping(path = "/{medicoId}")
 	public Medico getMedicoById(@PathVariable("medicoId") int medicoId){
         return this.medicoService.getMedicoById(medicoId);
     }
