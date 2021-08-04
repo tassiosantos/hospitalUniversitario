@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,18 +28,18 @@ public class MedicoController{
         this.medicoService = medicoService;
     }
 
-    @GetMapping(path = "/all")
+    @GetMapping(path = "/")
     public List<Medico> getMedicos(){
         return this.medicoService.getMedicos();
     }
 
-// mudei o nome do path de /medico/{medicoNumber} para /umMedico/{medicoNumber}
-	@GetMapping(path = "/umMedico/{medicoNumber}")
-	public Medico getMedicoByNumber(@PathVariable("medicoNumber") int medicoNumber){
-        return this.medicoService.getMedicoById(medicoNumber);
+
+	@GetMapping(path = "/{medicoId}")
+	public Medico getMedicoById(@PathVariable("medicoId") int medicoId){
+        return this.medicoService.getMedicoById(medicoId);
     }
 		
-    @PutMapping(path = "/{medicoNumber}")
+    @PutMapping(path = "/{medicoId}")
 	public Medico updateMedico(
         @RequestBody Medico changedMedico){
 		Medico medico = this.medicoService.update(changedMedico);
@@ -51,14 +51,11 @@ public class MedicoController{
 		this.medicoService.newMedico(newMedico);
      }
 	
+    @DeleteMapping(path = "/{medicoId}")
+	public void deleteMedico(
+        @PathVariable("medicoId") int medicoId){
+        Medico medico = this.medicoService.getMedicoById(medicoId);
+		this.medicoService.delete(medico);
+	}
 
-	// @PostMapping(path = "/laudo")
-	// public void addAccount(@RequestBody Account newAccount){
-	// 	this.accountService.addAccount(newAccount);
-    //  }
-
-    //  @DeleteMapping(path = "/laudo")
-    //  public void addAccount(@RequestBody Account newAccount){
-    //      this.accountService.addAccount(newAccount);
-    //   }
 }

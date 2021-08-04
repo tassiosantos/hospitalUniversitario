@@ -11,6 +11,7 @@ import com.hospital.hospital_universitario.models.Medico;
 import com.hospital.hospital_universitario.repositories.LaudoRepository;
 import com.hospital.hospital_universitario.repositories.MedicoRepository;
 
+import com.hospital.hospital_universitario.services.MedicoService;
 
 @Service
 public class LaudoService {
@@ -62,10 +63,8 @@ public class LaudoService {
         return laudo;
     }
 
-    public Laudo delete(Laudo deleteLaudo) {
-         this.laudoRepository.delete(deleteLaudo);
-         return null;
-
+    public void delete(Laudo deleteLaudo) {
+        this.laudoRepository.delete(deleteLaudo);
     }
         
 

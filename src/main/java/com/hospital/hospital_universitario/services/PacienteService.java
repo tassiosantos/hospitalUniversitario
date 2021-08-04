@@ -24,8 +24,8 @@ public class PacienteService {
         return pacientes;
     }
 
-    public Paciente getPacienteByNumber(String pacienteNumber){
-        Paciente paciente = pacienteRepository.findById(Integer.parseInt(pacienteNumber));
+    public Paciente getPacienteById(int pacienteId){
+        Paciente paciente = pacienteRepository.findById(pacienteId);
         return paciente;
     }
 
@@ -36,5 +36,9 @@ public class PacienteService {
     public Paciente update(Paciente updatedPaciente) {
         Paciente paciente = this.pacienteRepository.save(updatedPaciente);
         return paciente;
+    }
+
+    public void delete(Paciente paciente) {
+        this.pacienteRepository.delete(paciente);
     }
 }

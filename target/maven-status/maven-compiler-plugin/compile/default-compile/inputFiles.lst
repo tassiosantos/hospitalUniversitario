@@ -1,4 +1,3 @@
-/var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/repositories/MedicosLaudoRepository.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/controllers/SolicitacaoExameController.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/services/MedicoService.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/services/LaudoService.java
@@ -6,19 +5,15 @@
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/controllers/LaudoController.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/models/Laudo.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/repositories/MedicoRepository.java
-/var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/models/MedicosLaudo.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/controllers/PacienteController.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/hospital_universitario/.mvn/wrapper/MavenWrapperDownloader.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/repositories/LaudoRepository.java
-/var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/models/PacienteLaudo.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/services/PacienteService.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/repositories/SolicitacaoExameRepository.java
-/var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/repositories/PacienteLaudoRepository.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/services/SolicitacaoExameService.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/HospitalUniversitarioApplication.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/repositories/PacienteRepository.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/controllers/MedicoController.java
-/var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/services/PacienteLaudoService.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/models/SolicitacaoExame.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/models/Medico.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/models/Paciente.java
