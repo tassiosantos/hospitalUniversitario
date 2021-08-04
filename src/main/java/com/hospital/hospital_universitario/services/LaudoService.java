@@ -19,9 +19,9 @@ public class LaudoService {
     private final MedicoService medicoService;
 
     @Autowired
-    public LaudoService(LaudoRepository laudoRepository){
+    public LaudoService(LaudoRepository laudoRepository, MedicoService medicoService){
         this.laudoRepository = laudoRepository;
-        this.medicoService = new MedicoService();
+        this.medicoService = medicoService;
     }
 
     public List<Laudo> getLaudos(){
