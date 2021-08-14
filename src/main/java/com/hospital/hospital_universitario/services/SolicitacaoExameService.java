@@ -36,4 +36,8 @@ public class SolicitacaoExameService {
         SolicitacaoExame solicitacaoExame = this.solicitacaoExameRepository.save(updatedSolicitacaoExame);
         return solicitacaoExame;
     }
+    
+    public void delete(SolicitacaoExame solicitacao) {
+        this.solicitacaoExameRepository.delete(solicitacao);
+    }
 }
