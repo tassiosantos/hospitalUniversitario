@@ -23,8 +23,8 @@ public class SolicitacaoExameService {
         return solicitacoes;
     }
 
-    public SolicitacaoExame getSolicitacaoExameByNumber(String solicitacaoExameNumber){
-        SolicitacaoExame solicitacaoExame = solicitacaoExameRepository.findById(Integer.parseInt(solicitacaoExameNumber));
+    public SolicitacaoExame getSolicitacaoExameByNumber(int solicitacaoExameNumber){
+        SolicitacaoExame solicitacaoExame = solicitacaoExameRepository.findById(solicitacaoExameNumber);
         return solicitacaoExame;
     }
 
