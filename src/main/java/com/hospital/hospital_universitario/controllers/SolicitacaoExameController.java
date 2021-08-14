@@ -6,6 +6,7 @@ import com.hospital.hospital_universitario.models.SolicitacaoExame;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 // import org.springframework.web.bind.annotation.PostMapping;
 // import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping(path = "/exames" )
+@RequestMapping(path = "/exame" )
 @CrossOrigin
 public class SolicitacaoExameController{
 
@@ -32,13 +33,13 @@ public class SolicitacaoExameController{
         this.solicitacaoExameService = solicitacaoExameService;
     }
 
-    @GetMapping(path = "/all")
+    @GetMapping(path = "/")
     public List<SolicitacaoExame> getSolicitacaoExames(){
         return this.solicitacaoExameService.getSolicitacaoExames();
     }
 
-    @GetMapping(path = "/solicitacaoExame/{solicitacaoNumber}")
-	public SolicitacaoExame getSolicitacaoExameByNumber(@PathVariable("solicitacaoNumber") String solicitacaoNumber){
+    @GetMapping(path = "/{solicitacaoNumber}")
+	public SolicitacaoExame getSolicitacaoExameByNumber(@PathVariable("solicitacaoNumber") int solicitacaoNumber){
         return this.solicitacaoExameService.getSolicitacaoExameByNumber(solicitacaoNumber);
     }
 
@@ -53,6 +54,12 @@ public class SolicitacaoExameController{
 	public void addSolicitacaoExame(@RequestBody SolicitacaoExame newSolicitacaoExame){
 		this.solicitacaoExameService.newMedico(newSolicitacaoExame);
      }
+
+    @DeleteMapping(path = "/{solicitacaoNumber}")
+    public void deleteSolicitacaoExame(@PathVariable("solicitacaoNumber") int solicitacaoExameNumber){
+        SolicitacaoExame solicitacao = this.solicitacaoExameService.getSolicitacaoExameByNumber(solicitacaoExameNumber);
+        this.solicitacaoExameService.delete(solicitacao);
+    }
 
 	// @PostMapping(path = "/laudo")
 	// public void addAccount(@RequestBody Account newAccount){
