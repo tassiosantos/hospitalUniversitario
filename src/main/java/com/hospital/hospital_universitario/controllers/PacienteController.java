@@ -28,7 +28,7 @@ public class PacienteController{
         this.pacienteService = pacienteService;
     }
 
-    @GetMapping(path = "/all")
+    @GetMapping(path = "/")
     public List<Paciente> getPacientes(){
         return this.pacienteService.getPacientes();
     }
