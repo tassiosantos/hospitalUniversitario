@@ -9,9 +9,6 @@ import org.springframework.stereotype.Service;
 import com.hospital.hospital_universitario.models.Laudo;
 import com.hospital.hospital_universitario.models.Medico;
 import com.hospital.hospital_universitario.repositories.LaudoRepository;
-import com.hospital.hospital_universitario.repositories.MedicoRepository;
-
-import com.hospital.hospital_universitario.services.MedicoService;
 
 @Service
 public class LaudoService {
