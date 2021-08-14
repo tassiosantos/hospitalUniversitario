@@ -34,9 +34,6 @@ public class SolicitacaoExame {
 	//Não tenho certeza desse tipo
 	private TimeZone horaExame;
 	private String hipoteseDiagnostica;
-
-	private String pacienteId;
-
 	
 	public SolicitacaoExame(){
 
