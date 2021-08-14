@@ -29,7 +29,7 @@ public class PacienteController{
     }
 
     @GetMapping(path = "/all")
-    public List<Paciente> getLaudos(){
+    public List<Paciente> getPacientes(){
         return this.pacienteService.getPacientes();
     }
 
