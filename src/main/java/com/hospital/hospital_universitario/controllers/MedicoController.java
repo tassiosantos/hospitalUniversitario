@@ -47,7 +47,7 @@ public class MedicoController{
 	}
 
     @PostMapping(path = "/")
-	public void addMedico(@RequestBody Medico newMedico){
+	public void addMedico(Medico newMedico){
 		this.medicoService.newMedico(newMedico);
      }
 	
