@@ -23,8 +23,8 @@ public class SolicitacaoExameService {
         return solicitacoes;
     }
 
-    public SolicitacaoExame getSolicitacaoExameByNumber(String solicitacaoExameNumber){
-        SolicitacaoExame solicitacaoExame = solicitacaoExameRepository.findById(Integer.parseInt(solicitacaoExameNumber));
+    public SolicitacaoExame getSolicitacaoExameByNumber(int solicitacaoExameNumber){
+        SolicitacaoExame solicitacaoExame = solicitacaoExameRepository.findById(solicitacaoExameNumber);
         return solicitacaoExame;
     }
 
@@ -35,5 +35,9 @@ public class SolicitacaoExameService {
     public SolicitacaoExame update(SolicitacaoExame updatedSolicitacaoExame) {
         SolicitacaoExame solicitacaoExame = this.solicitacaoExameRepository.save(updatedSolicitacaoExame);
         return solicitacaoExame;
+    }
+    
+    public void delete(SolicitacaoExame solicitacao) {
+        this.solicitacaoExameRepository.delete(solicitacao);
     }
 }

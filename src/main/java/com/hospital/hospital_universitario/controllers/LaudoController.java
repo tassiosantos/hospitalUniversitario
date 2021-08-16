@@ -38,7 +38,7 @@ public class LaudoController{
         return this.laudoService.getLaudoById(laudoId); 
     }
 
-    @GetMapping(path = "/{medicoId}")
+    @GetMapping(path = "/medico/{medicoId}")
     public List<Laudo> getLaudoByMedicoId(@PathVariable("medicoId") int medicoId){
         List<Laudo> laudos = this.laudoService.getLaudoByMedicoId(medicoId);
         return laudos;
@@ -57,7 +57,8 @@ public class LaudoController{
      }
 
      @DeleteMapping(path = "/{laudoId}")
-         public void addAccount(@RequestBody Laudo deleteLaudo){
+         public void addAccount(@PathVariable("laudoId") int laudoId ){
+         Laudo deleteLaudo = this.laudoService.getLaudoById(laudoId);
          this.laudoService.delete(deleteLaudo);
       }
 
