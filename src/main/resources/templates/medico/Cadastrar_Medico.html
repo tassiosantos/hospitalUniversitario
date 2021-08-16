@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600|Open+Sans:400,600,700" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+    <link rel="sortcut icon" href="livro.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="css/medico.css">
+     <title>Cad. Medico</title>
+</head>
+
+<body>
+    <div class="dash">
+        <div class="dash-nav dash-nav-dark">
+            <header>
+                <a href="#!" class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </a>
+                <a href="./index.html" class="easion-logo"><i class="fas fa-cog"></i><span>Hospital Univ.</span></a>
+            </header>
+            <nav class="dash-nav-list">
+                <a href="index.html" class="dash-nav-item">
+                    <i class="fa fa-user"></i> Pacientes </a>
+                <a href="Cadastrar_Medico.html" class="dash-nav-item">
+                    <i class="fa fa-check-square"></i> Medico </a>
+                <a href="Cadastrar_Exame.html" class="dash-nav-item">
+                    <i class="fa fa-laptop"></i> Exame </a>
+                <a href="Cadastrar_Laudo.html" class="dash-nav-item">
+                    <i class="fa fa-file"></i> Laudo </a>       
+            </nav>
+        </div>
+        <div class="dash-app">
+            <header class="dash-toolbar">
+                <a href="#!" class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </a>
+                <div class="tools">
+                    <div class="dropdown tools-item">
+                        <a href="#" class="" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+                            <a class="dropdown-item" href="pagina/exibir/Exibir_Usuario.php">Perfil</a>
+                            <a class="dropdown-item" href="login.html">Sair</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <main class="dash-content">
+                <div class="container-fluid">
+                    <h1 class="dash-title">Medico</h1>
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card easion-card">
+                                <div class="card-header">
+                                    <div class="easion-card-icon">
+                                        <i class="fas fa-chart-bar"></i>
+                                    </div>
+                                    <div class="easion-card-title"> Dados </div>
+                                </div>
+                                <div class="card-body ">
+                                    <form name="medico" action="porURLaqui" method="POST">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-2">
+                                                <label for="">CPF</label>
+                                                <input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF" required>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="">Nome</label>
+                                                <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" required>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="">CRM</label>
+                                                <input type="text" class="form-control" name="crm" id="crm" placeholder="CRM" required>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputDevice">Titulação</label>
+                                                <select id="titulacao" class="form-control" name="titulacao">
+                                                    <option value="e" selected>Graduado</option>
+                                                    <option value="e">Especialista</option>
+                                                    <option value="m">Mestre</option>
+                                                    <option value="d">Doutor</option>
+                                                    <option value="p">Pos-Doutor</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputDevice">Tipo</label>
+                                                <select id="tipo" class="form-control" name="tipo">
+                                                    <option value="f" selected>Residente</option>
+                                                    <option value="m" >Docente</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="container-fluid">
+                                                <button type="submit" class="btn btn-primary">Cadastrar</button> 
+                                                <a class="dropdown-item" href="URLVisualizarCadastro" style="display: contents;"><button type="button" class="btn btn-primary">Visualizar Cadastros</button></a>
+                                            </div>
+                                            
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="../js/main.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
+    <script>
+        
+        //Formatando campos
+        $(document).ready(function () { 
+            $("#inputcpf").mask('000.000.000-00');
+            $("#inputTel").mask('(00)00000-0000');
+            $("#inputZip").mask('00000-000');
+        });
+        
+        function password(){   
+            
+            //Verifica se o campo senha é valido
+            if(password != confirmPassword){
+                alert('Os campos senha e confirmar senha são distintos!');
+            }
+
+            if(password.length > 8){
+                alert('A senha não pode conter mais de 8 digitos');
+            }
+        }
+    </script>
+</body>
+
+</html>
