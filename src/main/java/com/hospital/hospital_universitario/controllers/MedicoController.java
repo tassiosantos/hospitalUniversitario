@@ -47,8 +47,9 @@ public class MedicoController{
 	}
 
     @PostMapping(path = "/")
-	public void addMedico(Medico newMedico){
+	public String addMedico(Medico newMedico){
 		this.medicoService.newMedico(newMedico);
+        return "Cadastrar_Medico";
      }
 	
     @DeleteMapping(path = "/{medicoId}")
