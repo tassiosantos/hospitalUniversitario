@@ -49,7 +49,7 @@ public class MedicoController{
     @PostMapping(path = "/")
 	public String addMedico(Medico newMedico){
 		this.medicoService.newMedico(newMedico);
-        return "Cadastrar_Medico";
+        return "redirect:/medico/Cadastrar_Medico";
      }
 	
     @DeleteMapping(path = "/{medicoId}")
