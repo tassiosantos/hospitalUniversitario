@@ -13,6 +13,23 @@ public class IndexController {
         return "index";   
     }
 
+    @GetMapping("/paciente")
+    public String paciente() {
+        return "./paciente/Cadastrar_Paciente";
+    }
+    @GetMapping("/medico")
+    public String medico() {
+        return "./medico/Cadastrar_Medico";
+    }
+    @GetMapping("/exame")
+    public String exame() {
+        return "./exame/Cadastrar_Exame";
+    }
+    @GetMapping("/laudo")
+    public String laudo() {
+        return "./laudo/Cadastrar_Laudo";
+    }
+
     @RequestMapping(value="/cadastrarPaciente", method=RequestMethod.GET)
 	public String form() {
 		return "index";
