@@ -28,7 +28,7 @@ public class LaudoController{
         this.laudoService = laudoService;
     }
 
-    @GetMapping(path = "")
+    @GetMapping(path = "/")
     public List<Laudo> getLaudos(){
         return this.laudoService.getLaudos();
     }
