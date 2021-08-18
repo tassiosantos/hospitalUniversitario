@@ -47,7 +47,7 @@ public class PacienteController{
 	}
 
     @PostMapping(path = "/")
-	public void addPaciente(@RequestBody Paciente newPaciente){
+	public void addPaciente(Paciente newPaciente){
 		this.pacienteService.newPaciente(newPaciente);
      }
 
