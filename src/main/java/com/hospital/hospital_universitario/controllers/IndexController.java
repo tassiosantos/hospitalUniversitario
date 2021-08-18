@@ -27,7 +27,7 @@ public class IndexController {
     public String paciente() {
         return "./paciente/Cadastrar_Paciente";
     }    
-    
+
     @GetMapping("/exame")
     public String exame() {
         return "./exame/Cadastrar_Exame";
