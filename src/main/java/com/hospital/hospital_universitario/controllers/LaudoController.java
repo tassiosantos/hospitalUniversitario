@@ -28,6 +28,11 @@ public class LaudoController{
         this.laudoService = laudoService;
     }
 
+    @GetMapping("/laudo")
+    public String laudo() {
+        return "./laudo/Cadastrar_Laudo";
+    }
+    
     @GetMapping(path = "/")
     public List<Laudo> getLaudos(){
         return this.laudoService.getLaudos();

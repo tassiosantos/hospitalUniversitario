@@ -28,6 +28,11 @@ public class SolicitacaoExameController{
         this.solicitacaoExameService = solicitacaoExameService;
     }
 
+    @GetMapping("/exame")
+    public String exame() {
+        return "./exame/Cadastrar_Exame";
+    }
+   
     @GetMapping(path = "/")
     public List<SolicitacaoExame> getSolicitacaoExames(){
         return this.solicitacaoExameService.getSolicitacaoExames();
