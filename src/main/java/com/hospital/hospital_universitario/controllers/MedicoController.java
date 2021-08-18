@@ -28,11 +28,6 @@ public class MedicoController{
         this.medicoService = medicoService;
     }
 
-    @GetMapping("/medico")
-    public String medico() {
-        return "./medico/Cadastrar_Medico";
-    }
-    
     @GetMapping(path = "/")
     public List<Medico> getMedicos(){
         return this.medicoService.getMedicos();
