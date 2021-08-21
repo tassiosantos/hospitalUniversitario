@@ -5,6 +5,7 @@ import com.hospital.hospital_universitario.services.PacienteService;
 import com.hospital.hospital_universitario.models.Paciente;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 
-@RestController
+
+@Controller
 @RequestMapping(path = "/paciente" )
 @CrossOrigin
 public class PacienteController{
@@ -28,9 +31,13 @@ public class PacienteController{
         this.pacienteService = pacienteService;
     }
 
-    @GetMapping(path = "/")
-    public List<Paciente> getPacientes(){
-        return this.pacienteService.getPacientes();
+
+    @GetMapping("")
+    public ModelAndView getPacientes() {
+        ModelAndView mv = new ModelAndView("./paciente/Listar_Paciente");
+        Iterable<Paciente> pacientes = this.pacienteService.getPacientes();
+        mv.addObject("pacientes", pacientes);
+        return mv;
     }
 
 

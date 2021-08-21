@@ -23,10 +23,10 @@ public class IndexController {
         return "./medico/Cadastrar_Medico";
     }
     
-    @GetMapping("/paciente")
-    public String paciente() {
-        return "./paciente/Cadastrar_Paciente";
-    }    
+    // @GetMapping("/paciente")
+    // public String paciente() {
+    //     return "./paciente/Listar_Paciente";
+    // }    
 
     @GetMapping("/exame")
     public String exame() {
