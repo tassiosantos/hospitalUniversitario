@@ -18,16 +18,16 @@
                 <a href="#!" class="menu-toggle">
                     <i class="fas fa-bars"></i>
                 </a>
-                <a href="./index.html" class="easion-logo"><i class="fas fa-cog"></i><span>Hospital Univ.</span></a>
+                <a href="/" class="easion-logo"><i class="fas fa-cog"></i><span>Hospital Univ.</span></a>
             </header>
             <nav class="dash-nav-list">
-                <a href="index.html" class="dash-nav-item">
+                <a href="/paciente" class="dash-nav-item">
                     <i class="fa fa-user"></i> Pacientes </a>
-                <a href="Cadastrar_Medico.html" class="dash-nav-item">
+                <a href="/medico" class="dash-nav-item">
                     <i class="fa fa-check-square"></i> Medico </a>
-                <a href="Cadastrar_Exame.html" class="dash-nav-item">
+                <a href="/exame" class="dash-nav-item">
                     <i class="fa fa-laptop"></i> Exame </a>
-                <a href="Cadastrar_Laudo.html" class="dash-nav-item">
+                <a href="/laudo" class="dash-nav-item">
                     <i class="fa fa-file"></i> Laudo </a>       
             </nav>
         </div>
@@ -61,7 +61,7 @@
                                     <div class="easion-card-title"> Dados </div>
                                 </div>
                                 <div class="card-body ">
-                                    <form name="aluno" action="./pagina/cadastrar/Cadastrar_aluno.php" method="POST">
+                                    <form name="aluno" action="/paciente/" method="POST">
                                         <div class="form-row">
                                             <div class="form-group col-md-2">
                                                 <label for="">CPF</label>
@@ -73,7 +73,8 @@
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="inputDevice">Sexo</label>
-                                                <select id="sexo" class="form-control" name="sexo">
+                                                <select id="sexo" class="form-control" name="sexo" value = "Sexo">
+                                                    <option selected = "Sexo"></option>
                                                     <option value="f" selected>Feminino</option>
                                                     <option value="m" >Masculino</option>
                                                     <option value="o">Outro</option>
@@ -99,7 +100,7 @@
                                             </div>
                                             <div class="container-fluid">
                                                 <button type="submit" class="btn btn-primary" >Cadastrar</button> 
-                                                <a class="dropdown-item" href="URLVisualizarCadastro" style="display: contents;"><button type="button" class="btn btn-primary">Visualizar Cadastros</button></a>
+                                                <a class="dropdown-item" href="/paciente/" style="display: contents;"><button type="button" class="btn btn-primary">Visualizar Cadastros</button></a>
                                             </div>
                                             
                                         </div>
