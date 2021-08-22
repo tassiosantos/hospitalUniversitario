@@ -18,10 +18,10 @@ public class IndexController {
         return "./laudo/Cadastrar_Laudo";
     }
     
-    @GetMapping("/medico")
-    public String medico() {
-        return "./medico/Cadastrar_Medico";
-    }
+    // @GetMapping("/medico")
+    // public String medico() {
+    //     return "./medico/Cadastrar_Medico";
+    // }
     
     // @GetMapping("/paciente")
     // public String paciente() {
