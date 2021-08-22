@@ -73,10 +73,12 @@ public class PacienteController{
     //  }
 
     @DeleteMapping(path = "/{pacienteId}")
-	public void deletePaciente(
+	public String deletePaciente(
         @PathVariable("pacienteId") int pacienteId){
         Paciente paciente = this.pacienteService.getPacienteById(pacienteId);
 		this.pacienteService.delete(paciente);
+        return "redirect:/paciente/Listar_Paciente";
+
 	}
 
 }
