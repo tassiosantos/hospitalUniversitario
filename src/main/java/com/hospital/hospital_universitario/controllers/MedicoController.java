@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @RestController
@@ -28,9 +29,17 @@ public class MedicoController{
         this.medicoService = medicoService;
     }
 
-    @GetMapping(path = "/")
-    public List<Medico> getMedicos(){
-        return this.medicoService.getMedicos();
+    @GetMapping("")
+    public ModelAndView getMedico() {
+        ModelAndView mv = new ModelAndView("./medico/Listar_Medico");
+        Iterable<Medico> medicos = this.medicoService.getMedicos();
+        mv.addObject("medicos", medicos);
+        return mv;
+    }
+
+    @GetMapping("/cadastrar")
+    public String viewCadastar(){
+        return "medico/Cadastrar_Medico";
     }
 
 	@GetMapping(path = "/{medicoId}")
