@@ -41,8 +41,9 @@ public class PacienteController{
     }
 
     @GetMapping("/cadastrar")
-    public String viewCadastar(){
-        return "paciente/Cadastrar_paciente";
+    public ModelAndView viewCadastar(){
+        ModelAndView mv = new ModelAndView("./paciente/Cadastrar_Paciente");
+        return mv;
     }
 
 
@@ -54,30 +55,37 @@ public class PacienteController{
         return mv;
 	}
 
-    @PutMapping(path = "/{pacienteId}")
-	public Paciente updatePaciente(
-        @RequestBody Paciente changedPaciente){
-		Paciente paciente = this.pacienteService.update(changedPaciente);
-		return paciente;
-	}
+    // @PutMapping(path = "/{pacienteId}")
+	// public Paciente updatePaciente(
+    //     @RequestBody Paciente changedPaciente){
+	// 	Paciente paciente = this.pacienteService.update(changedPaciente);
+	// 	return paciente;
+	// }
 
-    @PostMapping(path = "/")
-	public String addPaciente(Paciente newPaciente){
-		this.pacienteService.newPaciente(newPaciente);
-        return "paciente/Cadastrar_Paciente";
-     }
+    @PostMapping(path = "/{pacienteId}")
+    public ModelAndView savePaciente(@PathVariable("pacienteId") int pacienteId, @RequestBody Paciente newPaciente){
+        ModelAndView mv = new ModelAndView("./paciente/Detalhar_Paciente");
+        Paciente paciente = new Paciente();
+        if(pacienteId != 0){
+            newPaciente.setId(pacienteId);
+            paciente = this.pacienteService.update(newPaciente);
+        }
+        else{
+            paciente = this.pacienteService.newPaciente(newPaciente);
 
-	// @PostMapping(path = "/laudo")
-	// public void addAccount(@RequestBody Account newAccount){
-	// 	this.accountService.addAccount(newAccount);
-    //  }
+        }
 
-    @DeleteMapping(path = "/{pacienteId}")
+        mv.addObject("paciente", paciente);
+        return mv;
+
+    }
+ 
+    @GetMapping(path = "/delete/{pacienteId}")
 	public String deletePaciente(
         @PathVariable("pacienteId") int pacienteId){
         Paciente paciente = this.pacienteService.getPacienteById(pacienteId);
 		this.pacienteService.delete(paciente);
-        return "redirect:/paciente/Listar_Paciente";
+        return "redirect:/paciente";
 
 	}
 

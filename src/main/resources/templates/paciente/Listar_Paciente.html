@@ -81,7 +81,7 @@
                                             <td><span th:text="${paciente.cpf}"></span>&nbsp;</td>
                                             <td><span th:text="${paciente.dataNascimento}"></span>&nbsp;</td>
                                             <td><a class = "" th:href="${(#mvc.url('PC#getPacienteById').arg(0, paciente.id).build())}">Visualizar Perfil</a></td>                                        
-                                            <td><a class = "waves-effect waves-light" th:href="${(#mvc.url('PC#deletePaciente').arg(0, paciente.id).build())}" method = "DELETE">Deletar</a></td>  
+                                            <td><a class = "" th:href="${(#mvc.url('PC#deletePaciente').arg(0, paciente.id).build())}">Deletar</a></td>                                        
                                             </tr>
                                         </tbody>
                                     </table>

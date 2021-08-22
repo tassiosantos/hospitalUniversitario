@@ -29,8 +29,9 @@ public class PacienteService {
         return paciente;
     }
 
-    public void newPaciente(Paciente newPaciente) {
-        this.pacienteRepository.save(newPaciente);
+    public Paciente newPaciente(Paciente newPaciente) {
+        Paciente paciente = this.pacienteRepository.save(newPaciente);
+        return paciente;
     }
 
     public Paciente update(Paciente updatedPaciente) {
