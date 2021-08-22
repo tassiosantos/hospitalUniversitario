@@ -47,8 +47,11 @@ public class PacienteController{
 
 
 	@GetMapping(path = "/{pacienteId}")
-	public Paciente getPacienteById(@PathVariable("pacienteId") int pacienteId){
-		return this.pacienteService.getPacienteById(pacienteId);
+	public ModelAndView getPacienteById(@PathVariable("pacienteId") int pacienteId){
+        ModelAndView mv = new ModelAndView("./paciente/Detalhar_Paciente");
+        Paciente paciente = pacienteService.getPacienteById(pacienteId);
+        mv.addObject("paciente", paciente);
+        return mv;
 	}
 
     @PutMapping(path = "/{pacienteId}")

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/principal.css">
+    <link rel="stylesheet" href="css/index.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
     <link rel="sortcut icon" href="livro.ico" type="image/x-icon" />
     
@@ -50,7 +50,7 @@
             </header>
             <main class="dash-content">
                 <div class="container-fluid">
-                    <h1 class="dash-title">Pacientes</h1>
+                    <h1 class="dash-title">Paciente</h1>
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="card easion-card">
@@ -60,32 +60,17 @@
                                     </div>
                                     <div class="easion-card-title"> Dados </div>
                                 </div>
-                                <div class="card-body ">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                            <th>ID</th>
-                                            <th>Nome</th>
-                                            <th>CPF</th>
-                                            <th>Data de Nascimento</th>
-                                            <th>Cor</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr th:each="paciente : ${pacientes}">
-                                            <td><span th:text="${paciente.id}"></span>&nbsp;</td>
-                                            <td><a th:href="${(#mvc.url('PC#getPacienteById').arg(0, paciente.id).build())}"><span th:text="${paciente.nome}"></span></a></span>&nbsp;</td>
-                                            <td><span th:text="${paciente.cpf}"></span>&nbsp;</td>
-                                            <td><span th:text="${paciente.dataNascimento}"></span>&nbsp;</td>
-                                            <td><span th:text="${paciente.cor}"></span>&nbsp;</td>
-                                            <td><a th:href="${(#mvc.url('PC#getPacienteById').arg(0, paciente.id).build())}">atualizar</a></td>                                        
-                                            <td><a href="">Deletar</a></td>  
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <div class="opçoes">
-                                        <a href="/paciente/cadastrar">Cadastrar Paciente</a>
-                                    </div>
+                                <div class="card-body ">                                    
+                                        <div th:each="paciente: ${paciente}">
+                                            <p><span th:text ="${paciente.id}"></span></p>
+                                            <p><span th:text ="${paciente.nome}"></span></p>
+                                            <p><span th:text = "${paciente.cpf}"></span></p>
+                                            <p><span th:text = "${paciente.dataNascimento}"></span></p>
+                                            <p><span th:text = "${paciente.cor}"></span></p>
+                                        </div>                                         
+                                        </div>
+                                    </form>
+                                    <a href="/paciente">Voltar</a>
                                 </div>
                             </div>
                         </div>
