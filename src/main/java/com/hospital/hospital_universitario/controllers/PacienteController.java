@@ -40,6 +40,11 @@ public class PacienteController{
         return mv;
     }
 
+    @GetMapping("/cadastrar")
+    public String viewCadastar(){
+        return "paciente/Cadastrar_paciente";
+    }
+
 
 	@GetMapping(path = "/{pacienteId}")
 	public Paciente getPacienteById(@PathVariable("pacienteId") int pacienteId){
@@ -54,8 +59,9 @@ public class PacienteController{
 	}
 
     @PostMapping(path = "/")
-	public void addPaciente(Paciente newPaciente){
+	public String addPaciente(Paciente newPaciente){
 		this.pacienteService.newPaciente(newPaciente);
+        return "paciente/Cadastrar_Paciente";
      }
 
 	// @PostMapping(path = "/laudo")
