@@ -1,6 +1,5 @@
 package com.hospital.hospital_universitario.controllers;
 
-import java.util.List;
 import com.hospital.hospital_universitario.services.PacienteService;
 import com.hospital.hospital_universitario.models.Paciente;
 
@@ -10,11 +9,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -40,17 +36,20 @@ public class PacienteController{
         return mv;
     }
 
-    @GetMapping("/cadastrar")
-    public ModelAndView viewCadastar(){
-        ModelAndView mv = new ModelAndView("./paciente/Cadastrar_Paciente");
+    @GetMapping(path = "/cadastrar")
+    public ModelAndView viewCadastar() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("./paciente/Cadastrar_Paciente");
         return mv;
+        //return "paciente/Cadastrar_Paciente";
     }
 
 
 	@GetMapping(path = "/{pacienteId}")
 	public ModelAndView getPacienteById(@PathVariable("pacienteId") int pacienteId){
-        ModelAndView mv = new ModelAndView("./paciente/Detalhar_Paciente");
+        ModelAndView mv = new ModelAndView();
         Paciente paciente = pacienteService.getPacienteById(pacienteId);
+        mv.setViewName("./paciente/Detalhar_Paciente");
         mv.addObject("paciente", paciente);
         return mv;
 	}
@@ -62,23 +61,32 @@ public class PacienteController{
 	// 	return paciente;
 	// }
 
+    @PostMapping("")
+    public ModelAndView savePaciente(Paciente newPaciente){
+        ModelAndView mv = new ModelAndView("./paciente/Detalhar_Paciente");
+        Paciente paciente = this.pacienteService.newPaciente(newPaciente);
+        mv.addObject("paciente", paciente);
+        return mv;
+
+    }
+
+
     @PostMapping(path = "/{pacienteId}")
-    public ModelAndView savePaciente(@PathVariable("pacienteId") int pacienteId, @RequestBody Paciente newPaciente){
+    public ModelAndView updatePaciente(@PathVariable("pacienteId") int pacienteId, @RequestBody Paciente newPaciente){
         ModelAndView mv = new ModelAndView("./paciente/Detalhar_Paciente");
         Paciente paciente = new Paciente();
-        if(pacienteId != 0){
-            newPaciente.setId(pacienteId);
-            paciente = this.pacienteService.update(newPaciente);
-        }
-        else{
-            paciente = this.pacienteService.newPaciente(newPaciente);
-
-        }
+        newPaciente.setId(pacienteId);
+        paciente = this.pacienteService.update(newPaciente);
 
         mv.addObject("paciente", paciente);
         return mv;
 
     }
+
+
+
+
+
  
     @GetMapping(path = "/delete/{pacienteId}")
 	public String deletePaciente(
