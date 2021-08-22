@@ -73,12 +73,12 @@
                                         </thead>
                                         <tbody>
                                             <tr th:each="paciente : ${pacientes}">
-                                            <td th:text="${paciente.id}"></td>
-                                            <td th:text="${paciente.nome}">&nbsp;</td>
-                                            <td th:text="${paciente.cpf}">&nbsp;</td>
-                                            <td th:text="${paciente.dataNascimento}">&nbsp;</td>
-                                            <td th:text="${paciente.cor}"></td>
-                                            <td><a href="">atualizar</a></td>                                        
+                                            <td><span th:text="${paciente.id}"></span>&nbsp;</td>
+                                            <td><a th:href="${(#mvc.url('PC#getPacienteById').arg(0, paciente.id).build())}"><span th:text="${paciente.nome}"></span></a></span>&nbsp;</td>
+                                            <td><span th:text="${paciente.cpf}"></span>&nbsp;</td>
+                                            <td><span th:text="${paciente.dataNascimento}"></span>&nbsp;</td>
+                                            <td><span th:text="${paciente.cor}"></span>&nbsp;</td>
+                                            <td><a th:href="${(#mvc.url('PC#getPacienteById').arg(0, paciente.id).build())}">atualizar</a></td>                                        
                                             <td><a href="">Deletar</a></td>  
                                             </tr>
                                         </tbody>
