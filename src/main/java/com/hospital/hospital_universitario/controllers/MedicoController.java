@@ -43,10 +43,10 @@ public class MedicoController{
 
 
 	@GetMapping(path = "/{medicoId}")
-	public ModelAndView getMedicoById(@PathVariable("medicoId") int medicoId){
+	public ModelAndView getMedicoById(@PathVariable("medicoId") int medicoId){        
         ModelAndView mv = new ModelAndView();
         Medico medico = medicoService.getMedicoById(medicoId);
-        mv.setViewName("./medico/Detalhar_medico");
+        mv.setViewName("./medico/Detalhar_Medico");
         mv.addObject("medicos", medico);
         return mv;
 	}
@@ -83,7 +83,6 @@ public class MedicoController{
         Medico medico = this.medicoService.getMedicoById(medicoId);
 		this.medicoService.delete(medico);
         return "redirect:/medico";
-
 	}
 
 }
