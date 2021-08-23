@@ -74,10 +74,10 @@
                                             <div class="form-group col-md-4">
                                                 <label for="inputDevice">Sexo</label>
                                                 <select id="sexo" class="form-control" name="sexo"> 
-                                                    <option selected value = "${paciente.sexo}"></option>
-                                                    <option value="f">Feminino</option>
-                                                    <option value="m" >Masculino</option>
-                                                    <option value="o">Outro</option>
+                                                    <option selected value ="${paciente.sexo}"></option>
+                                                    <option value="feminino">Feminino</option>
+                                                    <option value="masculino" >Masculino</option>
+                                                    <option value="outro">Outro</option>
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-4">
@@ -86,23 +86,23 @@
                                             </div>
                                            
                                             <div class="form-group col-md-4">
-                                                <label for="inputDevice">Etnia</label>
-                                                <select id="cor" class="form-control" name="cor">
-                                                    <option value="b" selected>Branco</option>
+                                                <label for="">Etnia</label>
+                                                
+                                                <select id="cor" class="form-control" name="cor" type="select"th:value="${paciente.cor}">                                                     
+                                                    <option value="b">Branco</option>                                                    
                                                     <option value="i">Indígena</option>
                                                     <option value="n" >Negro</option>
                                                     <option value="p" >Pardo</option>
+                                                    <input class="form-control" name="cor" type="text" id="cor" th:value="${paciente.cor}" required readonly>
                                                 </select>
                                             </div>
                                         </div>                    
                                             <div class="">
                                                 <button type="submit" class="btn btn-primary" >Cadastrar</button> 
-                                                <a class="dropdown-item" href="/paciente" style="display: contents;"><button type="button" class="btn btn-primary">Cancelar</button></a>
-                                            </div>
-                                      
+                                                <a class="dropdown-item" href="/paciente" style="display: contents;"><button type="button" class="btn btn-danger">Cancelar</button></a>
+                                            </div>                                      
                                         </div>
-                                    </form>
-                                    <a href="/paciente">Voltar</a>
+                                    </form>                                
                                 </div>
                             </div>
                         </div>
