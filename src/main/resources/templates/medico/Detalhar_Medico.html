@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600|Open+Sans:400,600,700" rel="stylesheet">
     <script src="../js/chart-js-config.js"></script>
-    <title>Paciente</title>
+    <title>Medico</title>
 </head>
 
 <body>
@@ -50,7 +50,7 @@
             </header>
             <main class="dash-content">
                 <div class="container-fluid">
-                    <h1 class="dash-title">Paciente</h1>
+                    <h1 class="dash-title">Medico</h1>
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="card easion-card">
@@ -61,36 +61,35 @@
                                     <div class="easion-card-title"> Dados </div>
                                 </div>
                                 <div class="card-body ">
-                                     <form name="paciente" th:action="@{/paciente/(id = ${paciente.id})}" method="post">
+                                     <form name="paciente" th:action="@{/medico(id = ${medico.id})}" method="post">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label for="">CPF</label>
-                                                <input type="text" class="form-control" name="cpf" id="cpf" th:value="${paciente.cpf}" required>
+                                                <label for="">Nome</label>
+                                                <input type="text" class="form-control" name="nome" id="nome" th:value="${medico.nome}" required>
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="">Nome</label>
-                                                <input type="text" class="form-control" name="nome" id="nome" th:value="${paciente.nome}" required>
+                                                <label for="">CPF</label>
+                                                <input type="text" class="form-control" name="cpf" id="cpf" th:value="${medico.cpf}" required>
                                             </div>
                                         </div>
                                         <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="inputDevice">Sexo</label>
-                                                    <select id="sexo" class="form-control" name="sexo"> 
-                                                        <option selected th:value = "${paciente.sexo}" th:placeholder = "${paciente.sexo}"> </option>
-                                                        <option value="Feminino">Feminino</option>
-                                                        <option value="Masculino" >Masculino</option>
-                                                        <option value="Outro">Outro</option>
-                                                    </select>
+                                                    <label for="inputDevice">CRM</label>
+                                                <input type="text" class="form-control" name="crm" id="crm" th:value="${medico.crm}" required>                                                    
                                                 </div>
                                                 <div class="form-group col-md-4">
-                                                    <label for="">Data de Nascimento</label>
-                                                    <input class="form-control"  name="dataNascimento" type="date" id="dataNascimento" th:value="${paciente.dataNascimento}" required>
+                                                    <label for="">Titulacao</label>
+                                                    <input class="form-control"  name="titulacao" type="text" id="titulacao" th:value="${medico.titulacao}" required>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="">Tipo</label>
+                                                    <input class="form-control"  name="tipo" type="text" id="tipo" th:value="${medico.tipo}" required>
                                                 </div>
                                             </div>                    
                                         </div> 
                                             <div class="" style="margin-left: 5px;">
                                                 <button type="submit" class="btn btn-primary">Atualizar</button> 
-                                                <a class="dropdown-item" href="/paciente" style="display: contents;"><button type="button" class="btn btn-danger">Voltar</button></a>
+                                                <a class="dropdown-item" href="/medico" style="display: contents;"><button type="button" class="btn btn-danger">Voltar</button></a>
                                             </div>
                                       
                                         <br>
