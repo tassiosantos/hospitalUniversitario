@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="/css/paciente.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
-    <link rel="sortcut icon" href="livro.ico" type="image/x-icon" />
-    
-    
-    <title>Hospital Universitário</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600|Open+Sans:400,600,700" rel="stylesheet">
+    <script src="../js/chart-js-config.js"></script>
+    <title>Pacientes</title>
 </head>
 
 <body>
@@ -61,29 +61,29 @@
                                     <div class="easion-card-title"> Dados </div>
                                 </div>
                                 <div class="card-body ">
-                                    <table>
+                                    <div class="opçoes">
+                                        <a href="/paciente/cadastrar">Cadastrar Paciente</a>
+                                    </div>
+                                    <table class = "table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                             <th>ID</th>
                                             <th>Nome</th>
                                             <th>CPF</th>
                                             <th>Data de Nascimento</th>
-                                            <th>Cor</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr th:each="paciente : ${pacientes}">                                            
+                                            <tr th:each="paciente : ${pacientes}">
+                                            <td><span th:text="${paciente.id}"></span>&nbsp;</td>
                                             <td><span th:text="${paciente.nome}"></span>&nbsp;</td>
                                             <td><span th:text="${paciente.cpf}"></span>&nbsp;</td>
                                             <td><span th:text="${paciente.dataNascimento}"></span>&nbsp;</td>
-                                            <td><span th:text="${paciente.cor}"></span>&nbsp;</td>
-                                            <td><a th:href="${(#mvc.url('PC#getPacienteById').arg(0, paciente.id).build())}">Ver perfil</a></td>  
+                                            <td><a class = "" th:href="${(#mvc.url('PC#getPacienteById').arg(0, paciente.id).build())}">Visualizar Perfil</a></td>                                        
+                                            <td><a class = "" th:href="${(#mvc.url('PC#deletePaciente').arg(0, paciente.id).build())}">Deletar</a></td>                                        
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <div class="opçoes">
-                                        <a href="/paciente/cadastrar">Cadastrar Paciente</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
