@@ -28,7 +28,7 @@ public class Paciente {
 
 	private String dataNascimento;
 
-	private String cor;
+	private String sexo;
 	
 	public Paciente(){
 
@@ -58,11 +58,11 @@ public class Paciente {
 	public void setDataNascimento(String dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
-	public String getCor() {
-		return cor;
+	public String getSexo() {
+		return sexo;
 	}
-	public void setCor(String cor) {
-		this.cor = cor;
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
 	
 	
