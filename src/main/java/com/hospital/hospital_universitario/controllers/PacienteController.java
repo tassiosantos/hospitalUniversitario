@@ -42,7 +42,7 @@ public class PacienteController{
 
     @GetMapping("/cadastrar")
     public String viewCadastar(){
-        return "paciente/Cadastrar_paciente";
+        return "paciente/Cadastrar_Paciente";
     }
 
 

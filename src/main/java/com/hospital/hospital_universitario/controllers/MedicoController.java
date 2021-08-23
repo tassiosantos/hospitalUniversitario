@@ -42,6 +42,7 @@ public class MedicoController{
         return "medico/Cadastrar_Medico";
     }
 
+
 	@GetMapping(path = "/{medicoId}")
 	public Medico getMedicoById(@PathVariable("medicoId") int medicoId){
         return this.medicoService.getMedicoById(medicoId);
