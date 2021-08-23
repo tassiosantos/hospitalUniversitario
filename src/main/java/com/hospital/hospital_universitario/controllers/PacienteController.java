@@ -4,7 +4,6 @@ import com.hospital.hospital_universitario.services.PacienteService;
 import com.hospital.hospital_universitario.services.SolicitacaoExameService;
 import com.hospital.hospital_universitario.models.ExameDTO;
 import com.hospital.hospital_universitario.models.Paciente;
-import com.hospital.hospital_universitario.models.SolicitacaoExame;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,8 +44,7 @@ public class PacienteController{
     public ModelAndView viewCadastar() {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("./paciente/Cadastrar_Paciente");
-        return mv;
-        //return "paciente/Cadastrar_Paciente";
+        return mv;        
     }
 
 
@@ -70,11 +68,10 @@ public class PacienteController{
 
     @PostMapping("")
     public ModelAndView savePaciente(Paciente newPaciente){
-        ModelAndView mv = new ModelAndView("./paciente/Detalhar_Paciente");
+        ModelAndView mv = new ModelAndView("./paciente/Cadastrar_Paciente");
         Paciente paciente = this.pacienteService.newPaciente(newPaciente);
         mv.addObject("paciente", paciente);
         return mv;
-
     }
 
 
