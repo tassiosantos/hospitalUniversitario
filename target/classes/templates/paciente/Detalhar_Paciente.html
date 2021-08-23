@@ -60,14 +60,46 @@
                                     </div>
                                     <div class="easion-card-title"> Dados </div>
                                 </div>
-                                <div class="card-body ">                                    
-                                        <div th:each="paciente: ${paciente}">
-                                            <p><span th:text ="${paciente.id}"></span></p>
-                                            <p><span th:text ="${paciente.nome}"></span></p>
-                                            <p><span th:text = "${paciente.cpf}"></span></p>
-                                            <p><span th:text = "${paciente.dataNascimento}"></span></p>
-                                            <p><span th:text = "${paciente.cor}"></span></p>
-                                        </div>                                         
+                                <div class="card-body ">
+                                     <form name="paciente" action="/paciente" method="post">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-2">
+                                                <label for="">CPF</label>
+                                                <input type="text" class="form-control" name="cpf" id="cpf" th:value="${paciente.cpf}" required>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="">Nome</label>
+                                                <input type="text" class="form-control" name="nome" id="nome" th:value="${paciente.nome}" required>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputDevice">Sexo</label>
+                                                <select id="sexo" class="form-control" name="sexo"> 
+                                                    <option selected value = "${paciente.sexo}"></option>
+                                                    <option value="f">Feminino</option>
+                                                    <option value="m" >Masculino</option>
+                                                    <option value="o">Outro</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="">Data de Nascimento</label>
+                                                <input class="form-control"  name="dataNascimento" type="date" id="dataNascimento" th:value="${paciente.dataNascimento}" required>
+                                            </div>
+                                           
+                                            <div class="form-group col-md-4">
+                                                <label for="inputDevice">Etnia</label>
+                                                <select id="cor" class="form-control" name="cor">
+                                                    <option value="b" selected>Branco</option>
+                                                    <option value="i">Indígena</option>
+                                                    <option value="n" >Negro</option>
+                                                    <option value="p" >Pardo</option>
+                                                </select>
+                                            </div>
+                                        </div>                    
+                                            <div class="">
+                                                <button type="submit" class="btn btn-primary" >Cadastrar</button> 
+                                                <a class="dropdown-item" href="/paciente" style="display: contents;"><button type="button" class="btn btn-primary">Cancelar</button></a>
+                                            </div>
+                                      
                                         </div>
                                     </form>
                                     <a href="/paciente">Voltar</a>

@@ -19,9 +19,15 @@ public class Paciente {
     )
 
 	private int id;
+
+	//@NotEmpty(mesage = "Nome não pode estar vazio.")
 	private String nome;
+
+	//@NotEmpty(mesage = "Cpf não pode estar vazio")
 	private String cpf;
+
 	private String dataNascimento;
+
 	private String cor;
 	
 	public Paciente(){
