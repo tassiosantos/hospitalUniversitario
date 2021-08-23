@@ -99,6 +99,39 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card easion-card">
+                                <div class="card-header">
+                                    <div class="easion-card-icon">
+                                        <i class="fas fa-list-ol"></i>
+                                    </div>
+                                    <div class="easion-card-title"> Exames </div>
+                                </div>
+                                <div class="card-body ">
+                                    <table class = "table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                            <th>ID</th>
+                                            <th>Data do Pedido</th>
+                                            <th>Médico Requerente</th>
+                                            <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="exame : ${exames}">
+                                            <td><span th:text="${exame.id}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.dataPedido}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.medico.nome}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.statusExame}"></span>&nbsp;</td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
                 </div>
             </main>
         </div>

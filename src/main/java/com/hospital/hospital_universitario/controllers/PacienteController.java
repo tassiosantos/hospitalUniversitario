@@ -1,7 +1,10 @@
 package com.hospital.hospital_universitario.controllers;
 
 import com.hospital.hospital_universitario.services.PacienteService;
+import com.hospital.hospital_universitario.services.SolicitacaoExameService;
+import com.hospital.hospital_universitario.models.ExameDTO;
 import com.hospital.hospital_universitario.models.Paciente;
+import com.hospital.hospital_universitario.models.SolicitacaoExame;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,10 +24,12 @@ import org.springframework.web.servlet.ModelAndView;
 public class PacienteController{
 
     private final PacienteService pacienteService;
+    private final SolicitacaoExameService exameService;
 
     @Autowired
-    public PacienteController(PacienteService pacienteService){
+    public PacienteController(PacienteService pacienteService, SolicitacaoExameService exameService){
         this.pacienteService = pacienteService;
+        this.exameService = exameService;
     }
 
 
@@ -49,8 +54,10 @@ public class PacienteController{
 	public ModelAndView getPacienteById(@PathVariable("pacienteId") int pacienteId){
         ModelAndView mv = new ModelAndView();
         Paciente paciente = pacienteService.getPacienteById(pacienteId);
+        Iterable<ExameDTO> examesDto = exameService.getSolicitacaoExameByPacienteId(pacienteId);
         mv.setViewName("./paciente/Detalhar_Paciente");
         mv.addObject("paciente", paciente);
+        mv.addObject("exames", examesDto);
         return mv;
 	}
 
