@@ -37,35 +37,56 @@ public class MedicoController{
         return mv;
     }
 
-    @GetMapping("/cadastrar")
-    public String viewCadastar(){
-        return "medico/Cadastrar_Medico";
+    @GetMapping(path = "/cadastrar")
+    public ModelAndView viewCadastar() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("./medico/Cadastrar_Medico");
+        return mv;
     }
 
 
 	@GetMapping(path = "/{medicoId}")
-	public Medico getMedicoById(@PathVariable("medicoId") int medicoId){
-        return this.medicoService.getMedicoById(medicoId);
-    }
-		
-    @PutMapping(path = "/{medicoId}")
-	public Medico updateMedico(
-        @RequestBody Medico changedMedico){
-		Medico medico = this.medicoService.update(changedMedico);
-		return medico;
+	public ModelAndView getMedicoById(@PathVariable("medicoId") int medicoId){
+        ModelAndView mv = new ModelAndView();
+        Medico medico = medicoService.getMedicoById(medicoId);
+        mv.setViewName("./medico/Detalhar_medico");
+        mv.addObject("medicos", medico);
+        return mv;
 	}
+		
+    // @PutMapping(path = "/{medicoId}")
+	// public Medico updateMedico(
+    //     @RequestBody Medico changedMedico){
+	// 	Medico medico = this.medicoService.update(changedMedico);
+	// 	return medico;
+	// }
 
-    @PostMapping(path = "/")
-	public String addMedico(Medico newMedico){
-		this.medicoService.newMedico(newMedico);
-        return "redirect:/medico/Cadastrar_Medico";
-     }
+    @PostMapping("")
+    public ModelAndView saveMedico(Medico newMedico){
+        ModelAndView mv = new ModelAndView("./medico/Cadastrar_Medico");
+        Medico medico = this.medicoService.newMedico(newMedico);
+        mv.addObject("medicos", medico);
+        return mv;
+    }
 	
-    @DeleteMapping(path = "/{medicoId}")
-	public void deleteMedico(
+    @PostMapping(path = "/{medicoId}")
+    public ModelAndView updateMedico(@PathVariable("medicoId") int medicoId, @RequestBody Medico newMedico){
+        ModelAndView mv = new ModelAndView("./medico/Detalhar_Medico");
+        Medico medico = new Medico();
+        newMedico.setId(medicoId);
+        medico = this.medicoService.update(newMedico);
+        mv.addObject("medicos", medico);
+        return mv;
+
+    }
+
+    @GetMapping(path = "/delete/{medicoId}")
+	public String deleteMedico(
         @PathVariable("medicoId") int medicoId){
         Medico medico = this.medicoService.getMedicoById(medicoId);
 		this.medicoService.delete(medico);
+        return "redirect:/medico";
+
 	}
 
 }
