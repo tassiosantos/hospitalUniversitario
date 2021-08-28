@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @RestController
@@ -74,10 +75,16 @@ public class LaudoController{
         return mv;
     }
 
-     @DeleteMapping(path = "/delete/{laudoId}")
-         public void addAccount(@PathVariable("laudoId") int laudoId ){
-         Laudo deleteLaudo = this.laudoService.getLaudoById(laudoId);
-         this.laudoService.delete(deleteLaudo);
-      }
+    @GetMapping(path = "/delete/{laudoId}")
+	public ModelAndView deleteMedico(
+        @PathVariable("laudoId") int laudoId, RedirectAttributes attributes){
+        Laudo laudo = this.laudoService.getLaudoById(laudoId);
+		this.laudoService.delete(laudo);
+        attributes.addFlashAttribute("mensagem", "Removido com sucesso!");     
+        ModelAndView mv = new ModelAndView("./laudo/Listar_Laudo");
+        Iterable<Laudo> laudos = this.laudoService.getLaudos();
+        mv.addObject("laudos", laudos);
+        return mv;
+	}
 
 }
