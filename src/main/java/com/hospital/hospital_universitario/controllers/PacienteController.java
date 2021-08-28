@@ -64,7 +64,7 @@ public class PacienteController{
 
     @PostMapping("")
     public ModelAndView savePaciente(Paciente newPaciente){
-        ModelAndView mv = new ModelAndView("./paciente/Cadastrar_Paciente");
+        ModelAndView mv = new ModelAndView("./paciente/Detalhar_Paciente");
         Paciente paciente = this.pacienteService.newPaciente(newPaciente);
         mv.addObject("paciente", paciente);
         return mv;
