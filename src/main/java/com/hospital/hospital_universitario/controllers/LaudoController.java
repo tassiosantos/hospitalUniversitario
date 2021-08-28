@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @RestController
@@ -28,9 +29,19 @@ public class LaudoController{
         this.laudoService = laudoService;
     }
    
-    @GetMapping(path = "/")
-    public List<Laudo> getLaudos(){
-        return this.laudoService.getLaudos();
+    @GetMapping("")
+    public ModelAndView getLaudo() {
+        ModelAndView mv = new ModelAndView("./laudo/Listar_Laudo");
+        Iterable<Laudo> laudos = this.laudoService.getLaudos();
+        mv.addObject("laudos", laudos);
+        return mv;
+    }
+
+    @GetMapping(path = "/cadastrar")
+    public ModelAndView viewCadastar() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("./laudo/Cadastrar_Laudo");
+        return mv;
     }
 
     @GetMapping(path = "/{laudoId}")
@@ -56,7 +67,7 @@ public class LaudoController{
 		this.laudoService.newLaudo(newLaudo);
      }
 
-     @DeleteMapping(path = "/{laudoId}")
+     @DeleteMapping(path = "/delete/{laudoId}")
          public void addAccount(@PathVariable("laudoId") int laudoId ){
          Laudo deleteLaudo = this.laudoService.getLaudoById(laudoId);
          this.laudoService.delete(deleteLaudo);
