@@ -89,4 +89,13 @@ public class MedicoController{
         return mv;
 	}
 
+    // @GetMapping(path = "/delete/{medicoId}")
+	// public String deleteMedico(
+    //     @PathVariable("medicoId") int medicoId, RedirectAttributes attributes){
+    //     Medico medico = this.medicoService.getMedicoById(medicoId);
+	// 	this.medicoService.delete(medico);
+    //     attributes.addFlashAttribute("mensagem", "Removido com sucesso!");      
+    //     return "redirect:/medico";
+	// }
+
 }
