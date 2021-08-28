@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @RestController
@@ -77,11 +78,15 @@ public class MedicoController{
     }
 
     @GetMapping(path = "/delete/{medicoId}")
-	public String deleteMedico(
-        @PathVariable("medicoId") int medicoId){
+	public ModelAndView deleteMedico(
+        @PathVariable("medicoId") int medicoId, RedirectAttributes attributes){
         Medico medico = this.medicoService.getMedicoById(medicoId);
 		this.medicoService.delete(medico);
-        return "redirect:/medico";
+        attributes.addFlashAttribute("mensagem", "Removido com sucesso!");     
+        ModelAndView mv = new ModelAndView("./medico/Listar_Medico");
+        Iterable<Medico> medicos = this.medicoService.getMedicos();
+        mv.addObject("medicos", medicos);
+        return mv;
 	}
 
 }
