@@ -47,7 +47,7 @@ public class MedicoController{
         ModelAndView mv = new ModelAndView();
         Medico medico = medicoService.getMedicoById(medicoId);
         mv.setViewName("./medico/Detalhar_Medico");
-        mv.addObject("medicos", medico);
+        mv.addObject("medico", medico);
         return mv;
 	}
 		
@@ -74,7 +74,6 @@ public class MedicoController{
         medico = this.medicoService.update(newMedico);
         mv.addObject("medicos", medico);
         return mv;
-
     }
 
     @GetMapping(path = "/delete/{medicoId}")

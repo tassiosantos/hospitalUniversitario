@@ -84,7 +84,7 @@
                                             <td><span th:text="${medico.titulacao}"></span>&nbsp;</td>
                                             <!-- <td><span th:text="${medico.tipo}"></span>&nbsp;</td> -->
                                             <td><a class = "btn btn-info" th:href="${(#mvc.url('MC#getMedicoById').arg(0, medico.id).build())}">Visualizar Perfil</a></td>                                        
-                                            <td><a class = "btn btn-danger" th:href="${(#mvc.url('MC#deleteMedico').arg(0, medico.id).build())}">Deletar</a></td>                                        
+                                            <td><a class = "btn btn-danger" th:href="${(#mvc.url('MC#deleteMedico').arg(0, medico.id).build())}">Remover</a></td>                                        
                                             </tr>
                                         </tbody>
                                     </table>
