@@ -62,10 +62,13 @@ public class LaudoController{
 		return laudo;
 	}
 
-	@PostMapping(path = "/")
-	public void addLaudo(@RequestBody Laudo newLaudo){
-		this.laudoService.newLaudo(newLaudo);
-     }
+	@PostMapping("")
+    public ModelAndView saveLaudo(Laudo newLaudo){
+        ModelAndView mv = new ModelAndView("./laudo/Cadastrar_Laudo");
+        Laudo laudo = this.laudoService.newLaudo(newLaudo);
+        mv.addObject("medicos", laudo);
+        return mv;
+    }
 
      @DeleteMapping(path = "/delete/{laudoId}")
          public void addAccount(@PathVariable("laudoId") int laudoId ){
