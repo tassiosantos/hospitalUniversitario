@@ -59,12 +59,8 @@ public class PacienteController{
         return mv;
 	}
 
-    // @PutMapping(path = "/{pacienteId}")
-	// public Paciente updatePaciente(
-    //     @RequestBody Paciente changedPaciente){
-	// 	Paciente paciente = this.pacienteService.update(changedPaciente);
-	// 	return paciente;
-	// }
+
+	
 
     @PostMapping("")
     public ModelAndView savePaciente(Paciente newPaciente){
@@ -77,11 +73,11 @@ public class PacienteController{
 
     @PostMapping(path = "/{pacienteId}")
     public ModelAndView updatePaciente(@PathVariable("pacienteId") int pacienteId, @RequestBody Paciente newPaciente){
-        ModelAndView mv = new ModelAndView("./paciente/Detalhar_Paciente");
+        ModelAndView mv = new ModelAndView();
         Paciente paciente = new Paciente();
         newPaciente.setId(pacienteId);
         paciente = this.pacienteService.update(newPaciente);
-
+        mv.setViewName("./paciente/Detalhar_Paciente");
         mv.addObject("paciente", paciente);
         return mv;
 
