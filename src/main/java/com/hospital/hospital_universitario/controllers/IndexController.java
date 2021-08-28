@@ -13,10 +13,10 @@ public class IndexController {
         return "index";   
     }
 
-    @GetMapping("/laudo")
-    public String laudo() {
-        return "./laudo/Cadastrar_Laudo";
-    }
+    // @GetMapping("/laudo")
+    // public String laudo() {
+    //     return "./laudo/Cadastrar_Laudo";
+    // }
     
     // @GetMapping("/medico")
     // public String medico() {
@@ -28,14 +28,14 @@ public class IndexController {
     //     return "./paciente/Listar_Paciente";
     // }    
 
-    @GetMapping("/exame")
-    public String exame() {
-        return "./exame/Cadastrar_Exame";
-    }
+    // @GetMapping("/exame")
+    // public String exame() {
+    //     return "./exame/Cadastrar_Exame";
+    // }
    
-    @RequestMapping(value="/cadastrarPaciente", method=RequestMethod.GET)
-	public String form() {
-		return "index";
-	}
+    // @RequestMapping(value="/cadastrarPaciente", method=RequestMethod.GET)
+	// public String form() {
+	// 	return "index";
+	// }
 
 }
