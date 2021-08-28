@@ -51,9 +51,10 @@
             <main class="dash-content">
                 <div class="container-fluid">
                     <h1 class="dash-title">Pacientes</h1>
+                    <p th:if="${mensagem}" th:text="${mensagem}"></p>
                     <div class="row">
                         <div class="col-xl-12">
-                            <div class="card easion-card">
+                            <div class="card easion-card"> 
                                 <div class="card-header">
                                     <div class="easion-card-icon">
                                         <i class="fas fa-chart-bar"></i>

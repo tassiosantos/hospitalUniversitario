@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 
@@ -67,13 +68,13 @@ public class PacienteController{
 	// }
 
     @PostMapping("")
-    public ModelAndView savePaciente(Paciente newPaciente){
+    public ModelAndView savePaciente(Paciente newPaciente, RedirectAttributes attributes){
         ModelAndView mv = new ModelAndView("./paciente/Cadastrar_Paciente");
         Paciente paciente = this.pacienteService.newPaciente(newPaciente);
-        mv.addObject("paciente", paciente);
+        attributes.addFlashAttribute("mensagem", "Salvo!");
+        mv.addObject("paciente", paciente);          
         return mv;
     }
-
 
     @PostMapping(path = "/{pacienteId}")
     public ModelAndView updatePaciente(@PathVariable("pacienteId") int pacienteId, @RequestBody Paciente newPaciente){
@@ -89,9 +90,10 @@ public class PacienteController{
  
     @GetMapping(path = "/delete/{pacienteId}")
 	public String deletePaciente(
-        @PathVariable("pacienteId") int pacienteId){
+        @PathVariable("pacienteId") int pacienteId, RedirectAttributes attributes){
         Paciente paciente = this.pacienteService.getPacienteById(pacienteId);
 		this.pacienteService.delete(paciente);
+        attributes.addFlashAttribute("mensagem", "Removido com sucesso!");      
         return "redirect:/paciente";
 	}
 
