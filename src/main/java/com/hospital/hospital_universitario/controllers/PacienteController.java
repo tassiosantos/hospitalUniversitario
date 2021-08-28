@@ -89,7 +89,6 @@ public class PacienteController{
         Paciente paciente = this.pacienteService.getPacienteById(pacienteId);
 		this.pacienteService.delete(paciente);
         return "redirect:/paciente";
-
 	}
 
 }
