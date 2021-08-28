@@ -44,16 +44,20 @@ public class LaudoController{
         return mv;
     }
 
-    @GetMapping(path = "/{laudoId}")
-    public Laudo getLaudoById(@PathVariable("laudoId") int laudoId){
-        return this.laudoService.getLaudoById(laudoId); 
-    }
-
     @GetMapping(path = "/medico/{medicoId}")
     public List<Laudo> getLaudoByMedicoId(@PathVariable("medicoId") int medicoId){
         List<Laudo> laudos = this.laudoService.getLaudoByMedicoId(medicoId);
         return laudos;
     }
+
+    @GetMapping(path = "/{laudoId}")
+	public ModelAndView getLaudoById(@PathVariable("laudoId") int laudoId){        
+        ModelAndView mv = new ModelAndView();
+        Laudo laudo = laudoService.getLaudoById(laudoId);
+        mv.setViewName("./laudo/Detalhar_Laudo");
+        mv.addObject("laudo", laudo);
+        return mv;
+	}
 
 	@PutMapping(path = "/{laudoId}")
 	public Laudo updateLaudo(
