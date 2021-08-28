@@ -51,7 +51,7 @@
             <main class="dash-content">
                 <div class="container-fluid">
                     <h1 class="dash-title">Pacientes</h1>
-                    <p th:if="${mensagem}" th:text="${mensagem}"></p>
+                    <p th:if="${mensagem}" th:text="${mensagem}" style="background-color: greenyellow; padding: 10px;"></p>
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="card easion-card"> 
@@ -94,7 +94,7 @@
                                                 </button>
                                         </div>
                                         <div class="modal-body">
-                                        <p>Tem certeza que quer remover o paciente?</p>
+                                        <p>Tem certeza que quer remover o paciente (<span th:text=${paciente.nome}></span>)?</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
