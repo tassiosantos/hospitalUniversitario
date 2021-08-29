@@ -10,9 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MedicoRepository extends JpaRepository<Medico, Long>{
    Medico findById(int id);
-<<<<<<< HEAD
-=======
    Medico findByCrmAndSenha(String crm, String senha);
 
->>>>>>> f3f253b6cad0c1b71806ccbb39c19b8ec5cd5171
 }
