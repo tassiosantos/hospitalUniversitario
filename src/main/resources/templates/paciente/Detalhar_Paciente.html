@@ -109,7 +109,7 @@
                                     <div class="easion-card-title"> Exames </div>
                                 </div>
                                 <div class="card-body ">
-                                                                        <div class="opçoes">
+                                    <div class="opçoes">
                                         <a href="/exame/cadastrar" class="btn btn-primary" style="margin-bottom: 5px;">Pedir Exame</a>                                   
                                     </div>
                                     <table class = "table table-bordered table-striped">
@@ -127,7 +127,7 @@
                                             <td><span th:text="${exame.dataPedido}"></span>&nbsp;</td>
                                             <td><span th:text="${exame.medico.nome}"></span>&nbsp;</td>
                                             <td><span th:text="${exame.statusExame}"></span>&nbsp;</td>
-                                            <td><a class = "btn btn-info" th:href="${(#mvc.url('SEC#getExameById').arg(0, exame.id).build())}">Visualizar Perfil</a></td>                                        
+                                            <td><a class = "btn btn-info" th:href="${(#mvc.url('SEC#getExameById').arg(0, exame.id).build())}">Visualizar Exame</a></td>                                        
                                             </tr>
                                         </tbody>
                                     </table>
