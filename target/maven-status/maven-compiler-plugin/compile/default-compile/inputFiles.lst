@@ -5,6 +5,7 @@
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/models/ExameDTO.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/models/Laudo.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/repositories/MedicoRepository.java
+/var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/SecurityConfig.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/controllers/PacienteController.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/hospital_universitario/.mvn/wrapper/MavenWrapperDownloader.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/repositories/LaudoRepository.java
@@ -16,5 +17,6 @@
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/controllers/MedicoController.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/controllers/IndexController.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/models/SolicitacaoExame.java
+/var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/controllers/LoginController.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/models/Medico.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/models/Paciente.java
