@@ -86,7 +86,7 @@
                                             <td><span th:text="${laudo.residenteId}"></span>&nbsp;</td>
                                             <td><span th:text="${laudo.docenteId}"></span>&nbsp;</td>
                                             <td><span th:text="${laudo.status}"></span>&nbsp;</td>
-                                            <td><a class = "btn btn-info" th:href="${(#mvc.url('LC#getLaudoById').arg(0, laudo.id).build())}">Visualizar Perfil</a></td>                                        
+                                            <td><a class = "btn btn-info" th:href="${(#mvc.url('LC#getLaudoById').arg(0, laudo.id).build())}">Visualizar Laudo</a></td>                                        
 
         <td>
             <button type="button" class="btn btn-danger" data-toggle="modal" th:attr="data-target='#remover_'+${laudo.id}" >Remover</button>
