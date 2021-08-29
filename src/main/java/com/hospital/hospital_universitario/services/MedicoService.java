@@ -41,4 +41,9 @@ public class MedicoService {
     public void delete(Medico medico) {
         this.medicoRepository.delete(medico);
     }
+
+    public Medico getMedicoByCrmSenha(String crm, String senha) {
+        Medico medicoLogado = this.medicoRepository.findByCrmAndSenha(crm, senha);
+        return medicoLogado;
+    }
 }

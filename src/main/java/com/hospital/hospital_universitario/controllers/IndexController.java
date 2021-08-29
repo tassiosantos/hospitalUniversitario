@@ -15,7 +15,7 @@ public class IndexController {
 
     @GetMapping("/index")
     public String index(){
-        return "index";
+        return login();
     }
 
     // @GetMapping("/laudo")
