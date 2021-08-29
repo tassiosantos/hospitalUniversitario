@@ -1,6 +1,11 @@
 package com.hospital.hospital_universitario.controllers;
 
+import com.hospital.hospital_universitario.services.MedicoService;
+import com.hospital.hospital_universitario.services.PacienteService;
 import com.hospital.hospital_universitario.services.SolicitacaoExameService;
+import com.hospital.hospital_universitario.models.ExameDTO;
+import com.hospital.hospital_universitario.models.Medico;
+import com.hospital.hospital_universitario.models.Paciente;
 import com.hospital.hospital_universitario.models.SolicitacaoExame;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +26,15 @@ import org.springframework.web.servlet.ModelAndView;
 @CrossOrigin
 public class SolicitacaoExameController{
 
+    private final PacienteService pacienteService;
     private final SolicitacaoExameService solicitacaoExameService;
+    private final MedicoService medicoService;
 
     @Autowired
-    public SolicitacaoExameController(SolicitacaoExameService solicitacaoExameService){
-        this.solicitacaoExameService = solicitacaoExameService;
+    public SolicitacaoExameController(PacienteService pacienteService, SolicitacaoExameService exameService, MedicoService medicoService){
+        this.pacienteService = pacienteService;
+        this.solicitacaoExameService = exameService;
+        this.medicoService = medicoService;
     }
 
     @GetMapping("")
@@ -36,9 +45,13 @@ public class SolicitacaoExameController{
         return mv;
     }
     
-    @GetMapping(path = "/cadastrar")
-    public ModelAndView viewCadastar() {
+    @GetMapping(path = "/cadastrar/{medicoId}/{pacienteId}")
+    public ModelAndView viewCadastar(@PathVariable("pacienteId") int pacienteId, @PathVariable("medicoId") int medicoId) {
+        Paciente paciente = pacienteService.getPacienteById(pacienteId);
+        Medico medico = this.medicoService.getMedicoById(medicoId);
         ModelAndView mv = new ModelAndView();
+        mv.addObject("paciente", paciente);
+        mv.addObject("medico", medico);
         mv.setViewName("./exame/Cadastrar_Exame");
         return mv;
     }
@@ -62,9 +75,19 @@ public class SolicitacaoExameController{
 
     @PostMapping("")
     public ModelAndView saveExame(SolicitacaoExame newSolicitacaoExame){
-        ModelAndView mv = new ModelAndView("./exame/Cadastrar_Exame");
+        ModelAndView mv = new ModelAndView();
         SolicitacaoExame solicitacao = this.solicitacaoExameService.newSolicitacaoExame(newSolicitacaoExame);
+        Paciente paciente = pacienteService.getPacienteById(solicitacao.getPacienteId());
+        Medico medico = this.medicoService.getMedicoByCrm(Integer.toString(solicitacao.getRegistroMedico()));
+        Iterable<ExameDTO> examesDto = solicitacaoExameService.getSolicitacaoExameByPacienteId(solicitacao.getPacienteId());
+        
+        
+        mv.setViewName("./paciente/Detalhar_Paciente");
+        mv.addObject("paciente", paciente);
+        mv.addObject("medico", medico);
+        mv.addObject("exames", examesDto);
         mv.addObject("solicitacao", solicitacao);
+        
         return mv;
     }
 

@@ -80,7 +80,9 @@
                                             <td><span th:text="${paciente.nome}"></span>&nbsp;</td>
                                             <td><span th:text="${paciente.cpf}"></span>&nbsp;</td>
                                             <td><span th:text="${paciente.dataNascimento}"></span>&nbsp;</td>
-                                            <td><a class = "btn btn-info" th:href="${(#mvc.url('PC#getPacienteById').arg(0, paciente.id).build())}">Visualizar Perfil</a></td>                                        
+                                            
+                                            <!-- <td><a class = "btn btn-info" th:href="${(#mvc.url('PC#getPacienteById').arg(0, paciente.id).build())}">Visualizar Perfil</a></td> -->
+                                            <td><a class = "btn btn-info" th:href="@{/paciente/{medicoId}/{pacienteId}(medicoId = ${medico.id}, pacienteId = ${paciente.id})}">Visualizar Perfil</a></td>                                        
 
         <td>
             <button type="button" class="btn btn-danger" data-toggle="modal" th:attr="data-target='#remover_'+${paciente.id}" >Remover</button>

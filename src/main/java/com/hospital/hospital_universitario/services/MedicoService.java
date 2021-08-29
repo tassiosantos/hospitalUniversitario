@@ -28,6 +28,11 @@ public class MedicoService {
         return medico;
     }
 
+    public Medico getMedicoByCrm(String crm){
+        Medico medico = medicoRepository.findByCrm(crm);
+        return medico;
+    }
+
     public Medico newMedico(Medico newMedico) {
         Medico medico = this.medicoRepository.save(newMedico);
         return medico;

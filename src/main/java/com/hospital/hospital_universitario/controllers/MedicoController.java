@@ -61,10 +61,6 @@ public class MedicoController{
         String senha = login2[1].split("=")[1];
         System.out.println("crm: " + crm + " senha: " + senha);
         Medico medicoLogado = this.medicoService.getMedicoByCrmSenha(crm, senha);
-        System.out.println(medicoLogado.getId());
-        // ModelAndView mv = new ModelAndView();
-        // mv.setViewName("./medico/Detalhar_Medico");
-        // mv.addObject("medico", medicoLogado);
         ModelAndView mv = this.getMedicoById(medicoLogado.getId());
         return mv;
     }

@@ -21,7 +21,7 @@
                 <a href="/" class="easion-logo"><i class="fas fa-cog"></i><span>Hospital Univ.</span></a>
             </header>
             <nav class="dash-nav-list">
-                <a href="/paciente" class="dash-nav-item">
+                <a th:href="@{/paciente/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-user"></i> Pacientes </a>
                 <a href="/medico" class="dash-nav-item">
                     <i class="fa fa-check-square"></i> Medico </a>
