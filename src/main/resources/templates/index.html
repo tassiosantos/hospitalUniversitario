@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600|Open+Sans:400,600,700" rel="stylesheet">
     <script src="../js/chart-js-config.js"></script>
-    <title>Medicos</title>
+    <title>Página inicial</title>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
                 </a>
                 <a href="/" class="easion-logo"><i class="fas fa-cog"></i><span>Hospital Univ.</span></a>
             </header>
-            <nav class="dash-nav-list">
+            <!-- <nav class="dash-nav-list">
                 <a href="/paciente" class="dash-nav-item">
                     <i class="fa fa-user"></i> Pacientes </a>
                 <a href="/medico" class="dash-nav-item">
@@ -29,7 +29,7 @@
                     <i class="fa fa-laptop"></i> Exame </a>
                 <a href="/laudo" class="dash-nav-item">
                     <i class="fa fa-file"></i> Laudo </a>       
-            </nav>
+            </nav> -->
         </div>
         <div class="dash-app">
             <header class="dash-toolbar">
@@ -49,6 +49,24 @@
                 </div>
             </header>
             <main class="dash-content">
+                <div class="form-screen">
+                    <div class="card account-dialog">
+                        <div class="card-header bg-primary text-white"> Hospital </div>
+                        <div class="card-body">
+                            <form name="login" action="/medico/" method="GET">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="CRM" aria-describedby="emailHelp" placeholder="CRM">
+                                </div>                    
+                                <div class="account-dialog-actions">
+                                    <button type="submit" class="btn btn-primary">Entre</button>
+                                </div>
+                                <div class="account-dialog-actions">
+                                    <a href="/login/cadastrar" class="btn btn-info">Não possui cadastro?</a>
+                                </div>
+                            </form>
+                            </form>
+                        </div>
+                    </div>
             </main>
         </div>
     </div>
