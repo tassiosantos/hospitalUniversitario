@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600|Open+Sans:400,600,700" rel="stylesheet">
     <script src="../js/chart-js-config.js"></script>
-    <title>Laudos</title>
+    <title>Solicitação de exames</title>
 </head>
 
 <body>
@@ -50,7 +50,7 @@
             </header>
             <main class="dash-content">
                 <div class="container-fluid">
-                    <h1 class="dash-title">Laudos</h1>
+                    <h1 class="dash-title">Exames</h1>
                     <p th:if="${mensagem}" th:text="${mensagem}" style="background-color: greenyellow; padding: 10px;"></p>
                     <div class="row">
                         <div class="col-xl-12">
@@ -63,34 +63,36 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="opçoes">
-                                        <a href="/laudo/cadastrar" class="btn btn-primary" style="margin-bottom: 5px;">Cadastrar Laudo</a>                                   
+                                        <a href="/exame/cadastrar" class="btn btn-primary" style="margin-bottom: 5px;">Cadastrar Solicitação de Exame</a>                                   
                                     </div>
                                     <table class = "table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                             <th>ID</th>
-                                            <th>Descrição</th>
-                                            <th>Conclusão</th>
+                                            <th>Registro Médico</th>
                                             <th>PacienteId</th>
-                                            <th>ResidenteId</th>
-                                            <th>DocenteId</th>
-                                            <th>Status</th>
+                                            <th>StatusExame</th>
+                                            <th>Data Pedido</th>
+                                            <th>Data Exame</th>
+                                            <th>Hora Exame</th>
+                                            <th>Hipotese Diagnostica</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr th:each="laudo : ${laudos}">
-                                            <td><span th:text="${laudo.id}"></span>&nbsp;</td>
-                                            <td><span th:text="${laudo.descricao}"></span>&nbsp;</td>
-                                            <td><span th:text="${laudo.conclusao}"></span>&nbsp;</td>
-                                            <td><span th:text="${laudo.pacienteId}"></span>&nbsp;</td>
-                                            <td><span th:text="${laudo.residenteId}"></span>&nbsp;</td>
-                                            <td><span th:text="${laudo.docenteId}"></span>&nbsp;</td>
-                                            <td><span th:text="${laudo.status}"></span>&nbsp;</td>
-                                            <td><a class = "btn btn-info" th:href="${(#mvc.url('LC#getLaudoById').arg(0, laudo.id).build())}">Visualizar Laudo</a></td>                                        
+                                            <tr th:each="exame : ${exames}">
+                                            <td><span th:text="${exame.id}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.registroMedico}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.pacienteId}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.statusExame}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.dataPedido}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.dataExame}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.horaExame}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.hipoteseDiagnostica}"></span>&nbsp;</td>
+                                            <td><a class = "btn btn-info" th:href="${(#mvc.url('SEC#getLaudoById').arg(0, exame.id).build())}">Visualizar exame</a></td>                                        
 
         <td>
-            <button type="button" class="btn btn-danger" data-toggle="modal" th:attr="data-target='#remover_'+${laudo.id}" >Remover</button>
-              <div class="modal fade" th:id="remover_+${laudo.id}"  tabindex="-1" role="dialog" aria-hidden="true">
+            <button type="button" class="btn btn-danger" data-toggle="modal" th:attr="data-target='#remover_'+${exame.id}" >Remover</button>
+              <div class="modal fade" th:id="remover_+${exame.id}"  tabindex="-1" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
                                         <div class="modal-header">
@@ -100,7 +102,7 @@
                                                 </button>
                                         </div>
                                         <div class="modal-body">
-                                        <p>Tem certeza que quer remover o laudo?</p>
+                                        <p>Tem certeza que quer remover o exame?</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
