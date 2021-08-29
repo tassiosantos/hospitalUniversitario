@@ -14,19 +14,19 @@ public class HospitalUniversitarioApplication {
 	}
 
 
-	@GetMapping("/")
-	public String teste() {
-		return "index";
-	}
+	// @GetMapping("/")
+	// public String teste() {
+	// 	return "index";
+	// }
 
-	@GetMapping("/home")
-	public String home() {
-		return "home";
-	}
+	// @GetMapping("/home")
+	// public String home() {
+	// 	return "home";
+	// }
 
-	@GetMapping("/login")
-	public String login() {
-		return "login";
-	}
+	// @GetMapping("/login")
+	// public String login() {
+	// 	return "login";
+	// }
 
 }

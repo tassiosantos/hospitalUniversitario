@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="card-body ">
                                      <form name="paciente" th:action="@{/medico/(id = ${medico.id})}" method="post">
-                                        <!-- <div class="form-row">
+                                        <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="">Nome</label>
                                                 <input type="text" class="form-control" name="nome" id="nome" th:value="${medico.nome}" required>
@@ -73,10 +73,10 @@
                                             </div>
                                         </div>
                                         <div class="form-row">
-                                                <div class="form-group col-md-6">
+                                                <!-- <div class="form-group col-md-6">
                                                     <label for="inputDevice">CRM</label>
                                                 <input type="text" class="form-control" name="crm" id="crm" th:value="${medico.crm}" required>                                                    
-                                                </div>
+                                                </div> -->
                                                 <div class="form-group col-md-4">
                                                     <label for="">Titulacao</label>
                                                     <input class="form-control"  name="titulacao" type="text" id="titulacao" th:value="${medico.titulacao}" required>
@@ -92,7 +92,7 @@
                                                 <a class="dropdown-item" href="/medico" style="display: contents;"><button type="button" class="btn btn-danger">Voltar</button></a>
                                             </div>
                                       
-                                        <br> -->
+                                        <br>
                                     </form>
                                 </div>
                             </div>

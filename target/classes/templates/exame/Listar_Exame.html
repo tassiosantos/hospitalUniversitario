@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600|Open+Sans:400,600,700" rel="stylesheet">
     <script src="../js/chart-js-config.js"></script>
-    <title>Medicos</title>
+    <title>Solicitação de exames</title>
 </head>
 
 <body>
@@ -50,62 +50,68 @@
             </header>
             <main class="dash-content">
                 <div class="container-fluid">
-                    <h1 class="dash-title">Médicos</h1>
+                    <h1 class="dash-title">Exames</h1>
                     <p th:if="${mensagem}" th:text="${mensagem}" style="background-color: greenyellow; padding: 10px;"></p>
                     <div class="row">
                         <div class="col-xl-12">
-                            <div class="card easion-card">
+                            <div class="card easion-card"> 
                                 <div class="card-header">
                                     <div class="easion-card-icon">
                                         <i class="fas fa-chart-bar"></i>
                                     </div>
                                     <div class="easion-card-title"> Dados </div>
                                 </div>
-                                <div class="card-body ">
+                                <div class="card-body">
                                     <div class="opçoes">
-                                        <a href="/medico/cadastrar" class="btn btn-primary" style="margin-bottom: 5px;">Cadastrar Médico</a>                                   
+                                        <a href="/exame/cadastrar" class="btn btn-primary" style="margin-bottom: 5px;">Cadastrar Solicitação de Exame</a>                                   
                                     </div>
                                     <table class = "table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                             <th>ID</th>
-                                            <th>Nome</th>
-                                            <th>CPF</th>
-                                            <!-- <th>CRM</th> -->
-                                            <th>titulacao</th>
-                                            <!-- <th>tipo</th> -->
+                                            <th>Registro Médico</th>
+                                            <th>PacienteId</th>
+                                            <th>StatusExame</th>
+                                            <th>Data Pedido</th>
+                                            <th>Data Exame</th>
+                                            <th>Hora Exame</th>
+                                            <th>Hipotese Diagnostica</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr th:each="medico : ${medicos}">
-                                            <td><span th:text="${medico.id}"></span>&nbsp;</td>
-                                            <td><span th:text="${medico.nome}"></span>&nbsp;</td>
-                                            <td><span th:text="${medico.cpf}"></span>&nbsp;</td>
-                                            <!-- <td><span th:text="${medico.crm}"></span>&nbsp;</td> -->
-                                            <td><span th:text="${medico.titulacao}"></span>&nbsp;</td>
-                                            <!-- <td><span th:text="${medico.tipo}"></span>&nbsp;</td> -->
-                                            <td><a class = "btn btn-info" th:href="${(#mvc.url('MC#getMedicoById').arg(0, medico.id).build())}">Visualizar Perfil</a></td>                                        
-                                            <td><button type="button" class="btn btn-danger" data-toggle="modal" th:attr="data-target='#remover_'+${medico.id}" >Remover</button>
-                                                <div class="modal fade" th:id="remover_+${medico.id}"  tabindex="-1" role="dialog" aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                                            <div class="modal-content">
-                                                                            <div class="modal-header">
-                                                                                    <h5 class="modal-title" id="exampleModalLongTitle">Confirmação</h5>
-                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                        <span aria-hidden="true">&times;</span>
-                                                                                    </button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                            <p>Tem certeza que quer remover o medico (<span th:text=${medico.nome}></span>)?</p>
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                                                                                <a type="button" class="btn btn-primary" th:href="@{/medico/delete/{id}(id=${medico.id})}">Sim</a>
-                                                                            </div>
-                                                            </div>
-                                                        </div>
-                                                </div>                  
-                                            </td>                     
+                                            <tr th:each="exame : ${exames}">
+                                            <td><span th:text="${exame.id}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.registroMedico}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.pacienteId}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.statusExame}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.dataPedido}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.dataExame}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.horaExame}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.hipoteseDiagnostica}"></span>&nbsp;</td>
+                                            <td><a class = "btn btn-info" th:href="${(#mvc.url('SEC#getLaudoById').arg(0, exame.id).build())}">Visualizar exame</a></td>                                        
+
+        <td>
+            <button type="button" class="btn btn-danger" data-toggle="modal" th:attr="data-target='#remover_'+${exame.id}" >Remover</button>
+              <div class="modal fade" th:id="remover_+${exame.id}"  tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                                        <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Confirmação</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                        </div>
+                                        <div class="modal-body">
+                                        <p>Tem certeza que quer remover o exame?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                                            <a type="button" class="btn btn-primary" th:href="@{/laudo/delete/{id}(id=${laudo.id})}">Sim</a>
+                                        </div>
+                        </div>
+                    </div>
+              </div>       
+        </td>                               
                                             </tr>
                                         </tbody>
                                     </table>

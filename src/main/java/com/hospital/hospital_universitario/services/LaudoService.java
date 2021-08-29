@@ -51,8 +51,9 @@ public class LaudoService {
     }
 
     
-    public void newLaudo(Laudo newLaudo) {
-        this.laudoRepository.save(newLaudo);
+    public Laudo newLaudo(Laudo newLaudo) {
+        Laudo laudo = this.laudoRepository.save(newLaudo);
+        return laudo;
     }
 
     public Laudo update(Laudo updateLaudo) {

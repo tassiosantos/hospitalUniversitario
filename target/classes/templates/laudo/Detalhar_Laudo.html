@@ -61,30 +61,78 @@
                                     <div class="easion-card-title"> Dados </div>
                                 </div>
                                 <div class="card-body ">
-                                    <form name="laudo" action="/laudo" method="post">
+                                     <form name="laudo" th:action="@{/laudo/(id = ${laudo.id})}" method="post">
                                         <div class="form-row">
-                                            <div class="form-group col-md-2">
+                                            <div class="form-group col-md-6">
                                                 <label for="">Descrição</label>
-                                                <input type="text" class="form-control" name="descricao" id="descricao" placeholder="Descrição" required>
+                                                <input type="text" class="form-control" name="descricao" id="descricao" th:value="${laudo.descricao}" required>
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="">Conclusão</label>
-                                                <input type="text" class="form-control" name="conclusao" id="conclusao" placeholder="Conclusão" required>
-                                            </div>   
+                                                <input type="text" class="form-control" name="conclusao" id="conclusao" th:value="${laudo.conclusao}" required>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="">ResidenteId</label>
+                                                <input type="text" class="form-control" name="residenteId" id="residenteId" th:value="${laudo.residenteId}" readonly>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="">DocenteId</label>
+                                                <input type="text" class="form-control" name="docenteId" id="docenteId" th:value="${laudo.docenteId}" readonly>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="">PacienteId</label>
+                                                <input type="text" class="form-control" name="pacienteId" id="pacienteId" th:value="${laudo.pacienteId}" readonly>
+                                            </div>
                                             <div class="form-group col-md-6">
                                                 <label for="">Status</label>
-                                                <input type="text" class="form-control" name="status" id="status" placeholder="Status" value="Em andamento" readonly>
-                                            </div>                                          
-                                        </div>                    
-                                            <div class="">
-                                                <button type="submit" class="btn btn-primary" >Cadastrar</button> 
-                                                <a class="dropdown-item" href="/laudo" style="display: contents;"><button type="button" class="btn btn-danger">Cancelar</button></a>
-                                            </div>                                        
-                                    </form>                                    
+                                                <input type="text" class="form-control" name="status" id="status" th:value="${laudo.status}" required>
+                                            </div>
+                                        </div>
+                                        
+                                            <div class="" style="margin-left: 5px;">
+                                                <button type="submit" class="btn btn-primary">Atualizar</button> 
+                                                <a class="dropdown-item" href="/laudo" style="display: contents;"><button type="button" class="btn btn-danger">Voltar</button></a>
+                                            </div>
+                                      
+                                        <br>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card easion-card">
+                                <div class="card-header">
+                                    <div class="easion-card-icon">
+                                        <i class="fas fa-list-ol"></i>
+                                    </div>
+                                    <div class="easion-card-title"> Exames </div>
+                                </div>
+                                <div class="card-body ">
+                                    <table class = "table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                            <th>ID</th>
+                                            <th>Data do Pedido</th>
+                                            <th>Médico Requerente</th>
+                                            <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="exame : ${exames}">
+                                            <td><span th:text="${exame.id}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.dataPedido}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.medico.nome}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.statusExame}"></span>&nbsp;</td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
                 </div>
             </main>
         </div>
