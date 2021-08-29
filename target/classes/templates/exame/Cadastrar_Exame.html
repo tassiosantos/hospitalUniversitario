@@ -21,7 +21,7 @@
                 <a href="/" class="easion-logo"><i class="fas fa-cog"></i><span>Hospital Univ.</span></a>
             </header>
             <nav class="dash-nav-list">
-                <a href="/paciente" class="dash-nav-item">
+                <a th:href="@{/paciente/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">    
                     <i class="fa fa-user"></i> Pacientes </a>
                 <a href="/medico" class="dash-nav-item">
                     <i class="fa fa-check-square"></i> Medico </a>
@@ -86,11 +86,7 @@
                                             <div class="form-group col-md-6">
                                                 <label for="">Hora Exame</label>
                                                 <input type="time" class="form-control" name="horaExame" id="horaExame" placeholder="horaExame" required>
-<<<<<<< HEAD
                                             </div> 
-=======
-                                            </div>      
->>>>>>> 1e8c86c8dd791c8c593c8d65d94f162aebe4c070
                                             <div class="form-group col-md-6">
                                                 <label for="">Hipotese Diagnostica</label>
                                                 <input type="text" class="form-control" name="hipoteseDiagnostica" id="hipoteseDiagnostica" placeholder="Hipotese Diagnostica" required>

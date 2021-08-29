@@ -44,7 +44,8 @@ public class SolicitacaoExameService {
         for(SolicitacaoExame solicitacao : solicitacoes){
             ExameDTO exame = new ExameDTO();
             extracted(solicitacao, exame);
-            Medico medico = medicoService.getMedicoById(solicitacao.getRegistroMedico());
+            Medico medico = medicoService.getMedicoByCrm(Integer.toString(solicitacao.getRegistroMedico()));
+            System.out.println(medico.getNome());
             Paciente paciente = pacienteService.getPacienteById(solicitacao.getPacienteId());
             exame.setMedico(medico);
             exame.setPaciente(paciente);
