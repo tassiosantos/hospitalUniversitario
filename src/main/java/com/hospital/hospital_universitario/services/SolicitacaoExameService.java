@@ -57,8 +57,9 @@ public class SolicitacaoExameService {
         BeanUtils.copyProperties(solicitacao, exame);
     }
 
-    public void newMedico(SolicitacaoExame newSolicitacaoExame) {
-        this.solicitacaoExameRepository.save(newSolicitacaoExame);
+    public SolicitacaoExame newSolicitacaoExame(SolicitacaoExame newSolicitacaoExame) {
+        SolicitacaoExame solicitacao = this.solicitacaoExameRepository.save(newSolicitacaoExame);
+        return solicitacao;
     }
 
     public SolicitacaoExame update(SolicitacaoExame updatedSolicitacaoExame) {
