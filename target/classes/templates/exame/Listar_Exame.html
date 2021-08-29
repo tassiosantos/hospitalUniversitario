@@ -84,9 +84,9 @@
                                             <td><span th:text="${exame.registroMedico}"></span>&nbsp;</td>
                                             <td><span th:text="${exame.pacienteId}"></span>&nbsp;</td>
                                             <td><span th:text="${exame.statusExame}"></span>&nbsp;</td>
-                                            <td><span th:text="${exame.dataPedido}"></span>&nbsp;</td>
-                                            <td><span th:text="${exame.dataExame}"></span>&nbsp;</td>
-                                            <td><span th:text="${exame.horaExame}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.data_Pedido}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.data_Exame}"></span>&nbsp;</td>
+                                            <td><span th:text="${exame.hora_Exame}"></span>&nbsp;</td>
                                             <td><span th:text="${exame.hipoteseDiagnostica}"></span>&nbsp;</td>
                                             <td><a class = "btn btn-info" th:href="${(#mvc.url('SEC#getLaudoById').arg(0, exame.id).build())}">Visualizar exame</a></td>                                        
 
