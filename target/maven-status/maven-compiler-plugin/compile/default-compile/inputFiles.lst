@@ -17,5 +17,6 @@
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/controllers/MedicoController.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/controllers/IndexController.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/models/SolicitacaoExame.java
+/var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/controllers/LoginController.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/models/Medico.java
 /var/www/hospital_universitario/src/main/java/com/hospital/hospital_universitario/models/Paciente.java
