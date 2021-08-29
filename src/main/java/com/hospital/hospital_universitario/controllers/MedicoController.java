@@ -52,12 +52,22 @@ public class MedicoController{
         return mv;
 	}
 		
-    // @PutMapping(path = "/{medicoId}")
-	// public Medico updateMedico(
-    //     @RequestBody Medico changedMedico){
-	// 	Medico medico = this.medicoService.update(changedMedico);
-	// 	return medico;
-	// }
+    @PostMapping(path = "/logar")
+    public ModelAndView loginMedico(@RequestBody String login)
+    {   
+        
+        String login2[] = login.split("&");
+        String crm = login2[0].split("=")[1];
+        String senha = login2[1].split("=")[1];
+        System.out.println("crm: " + crm + " senha: " + senha);
+        Medico medicoLogado = this.medicoService.getMedicoByCrmSenha(crm, senha);
+        System.out.println(medicoLogado.getId());
+        // ModelAndView mv = new ModelAndView();
+        // mv.setViewName("./medico/Detalhar_Medico");
+        // mv.addObject("medico", medicoLogado);
+        ModelAndView mv = this.getMedicoById(medicoLogado.getId());
+        return mv;
+    }
 
     @PostMapping("")
     public ModelAndView saveMedico(Medico newMedico){

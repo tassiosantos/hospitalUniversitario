@@ -4,23 +4,27 @@ import com.hospital.hospital_universitario.models.Medico;
 import com.hospital.hospital_universitario.services.MedicoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-@RestController
+@Controller
 @RequestMapping(path = "/login" )
 @CrossOrigin
 public class LoginController {
  
     private final MedicoService medicoService;
+    private final IndexController indexController;
 
     @Autowired
-    public LoginController(MedicoService medicoService){
+    public LoginController(MedicoService medicoService, IndexController indexController){
         this.medicoService = medicoService;
+        this.indexController = indexController;
     }
 
     @GetMapping("/cadastrar")
@@ -30,10 +34,12 @@ public class LoginController {
         return mv;
     }
 
-    @PostMapping("/cadastrar")
-    public ModelAndView cadastrar(){
-        ModelAndView mv = new ModelAndView("./login");
-        mv.setViewName("./login");
+    @PostMapping(path = "/cadastrar")
+    public ModelAndView cadastrar(Medico newMedico){
+        this.medicoService.newMedico(newMedico);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("login");
+        
         return mv;
     }
 }

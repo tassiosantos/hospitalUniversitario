@@ -27,9 +27,20 @@ public class Medico {
 	private String titulacao;
 	//Tem que criar um enum para a variável embaixo
 	private String tipo;
+
+	
+	private String senha;
 	
 	public Medico(){
 
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public int getId() {
@@ -50,10 +61,10 @@ public class Medico {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public void setCRM(String crm) {
+	public void setCrm(String crm) {
 		this.crm = crm;
 	}
-	public String getCRM() {
+	public String getCrm() {
 		return crm;
 	}
 	public void setTitulacao(String titulacao) {
