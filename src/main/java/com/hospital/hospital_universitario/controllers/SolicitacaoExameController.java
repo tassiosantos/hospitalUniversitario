@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @RestController
@@ -31,8 +32,8 @@ public class SolicitacaoExameController{
     @GetMapping("")
     public ModelAndView getMedico() {
         ModelAndView mv = new ModelAndView("./exame/Listar_Exame");
-        Iterable<SolicitacaoExame> solicitacoes = this.solicitacaoExameService.getSolicitacaoExames();
-        mv.addObject("exames", solicitacoes);
+        Iterable<SolicitacaoExame> exame = this.solicitacaoExameService.getSolicitacaoExames();
+        mv.addObject("exames", exame);
         return mv;
     }
     
@@ -68,11 +69,16 @@ public class SolicitacaoExameController{
         return mv;
     }
 
-    @DeleteMapping(path = "/{solicitacaoNumber}")
-    public void deleteSolicitacaoExame(@PathVariable("solicitacaoNumber") int solicitacaoExameNumber){
-        SolicitacaoExame solicitacao = this.solicitacaoExameService.getSolicitacaoExameByNumber(solicitacaoExameNumber);
-        this.solicitacaoExameService.delete(solicitacao);
-    }
+    @GetMapping(path = "/delete/{solicitacaoId}")
+	public ModelAndView deleteSolicitacao(@PathVariable("solicitacaoId") int solicitacaoId, RedirectAttributes attributes){
+        SolicitacaoExame solicitacao = this.solicitacaoExameService.getSolicitacaoExameByNumber(solicitacaoId);
+		this.solicitacaoExameService.delete(solicitacao);           
+        attributes.addFlashAttribute("mensagem", "Removido com sucesso!");     
+        ModelAndView mv = new ModelAndView("./exame/Listar_Exame");
+        Iterable<SolicitacaoExame> exame = this.solicitacaoExameService.getSolicitacaoExames();
+        mv.addObject("exames", exame);
+        return mv;
+	}
 
 	// @PostMapping(path = "/laudo")
 	// public void addAccount(@RequestBody Account newAccount){
