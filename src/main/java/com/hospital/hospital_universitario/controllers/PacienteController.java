@@ -75,10 +75,12 @@ public class PacienteController{
     public ModelAndView updatePaciente(@PathVariable("pacienteId") int pacienteId, @RequestBody Paciente newPaciente){
         ModelAndView mv = new ModelAndView();
         Paciente paciente = new Paciente();
+        Iterable<ExameDTO> examesDto = exameService.getSolicitacaoExameByPacienteId(pacienteId);
         newPaciente.setId(pacienteId);
         paciente = this.pacienteService.update(newPaciente);
         mv.setViewName("./paciente/Detalhar_Paciente");
         mv.addObject("paciente", paciente);
+        mv.addObject("exames", examesDto);
         return mv;
 
     }

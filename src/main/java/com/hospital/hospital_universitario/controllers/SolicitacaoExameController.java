@@ -44,7 +44,7 @@ public class SolicitacaoExameController{
     }
 
     @GetMapping(path = "/{solicitacaoId}")
-	public ModelAndView getMedicoById(@PathVariable("solicitacaoId") int solicitacaoId){        
+	public ModelAndView getExameById(@PathVariable("solicitacaoId") int solicitacaoId){        
         ModelAndView mv = new ModelAndView();
         SolicitacaoExame solicitacao = solicitacaoExameService.getSolicitacaoExameByNumber(solicitacaoId);
         mv.setViewName("./exame/Detalhar_Exame");

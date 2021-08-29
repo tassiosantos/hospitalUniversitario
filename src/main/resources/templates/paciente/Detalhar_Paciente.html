@@ -75,10 +75,10 @@
                                         <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="inputDevice">Sexo</label>
-                                                    <select id="sexo" class="form-control" name="sexo"> 
-                                                        <option selected th:value = "${paciente.sexo}" th:placeholder = "${paciente.sexo}"> </option>
-                                                        <option value="Feminino">Feminino</option>
-                                                        <option value="Masculino" >Masculino</option>
+                                                    <select id="sexo" class="form-control" name="sexo" th:value = "${paciente.sexo}"> 
+                                                        <option selected th:value = "${paciente.sexo}"> <span th:text = "${paciente.sexo}"></span> </option>
+                                                        <option th:if = "${paciente.sexo == 'Masculino'}" value="Feminino">Feminino</option>
+                                                        <option th:if = "${paciente.sexo == 'Feminino'}" value="Masculino" >Masculino</option>
                                                         <option value="Outro">Outro</option>
                                                     </select>
                                                 </div>
@@ -109,6 +109,9 @@
                                     <div class="easion-card-title"> Exames </div>
                                 </div>
                                 <div class="card-body ">
+                                                                        <div class="opçoes">
+                                        <a href="/exame/cadastrar" class="btn btn-primary" style="margin-bottom: 5px;">Pedir Exame</a>                                   
+                                    </div>
                                     <table class = "table table-bordered table-striped">
                                         <thead>
                                             <tr>
@@ -124,7 +127,7 @@
                                             <td><span th:text="${exame.dataPedido}"></span>&nbsp;</td>
                                             <td><span th:text="${exame.medico.nome}"></span>&nbsp;</td>
                                             <td><span th:text="${exame.statusExame}"></span>&nbsp;</td>
-
+                                            <td><a class = "btn btn-info" th:href="${(#mvc.url('SEC#getExameById').arg(0, exame.id).build())}">Visualizar Perfil</a></td>                                        
                                             </tr>
                                         </tbody>
                                     </table>
