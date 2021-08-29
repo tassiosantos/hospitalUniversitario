@@ -18,7 +18,7 @@
         <div class="card account-dialog">
             <div class="card-header bg-primary text-white"> Hospital </div>
             <div class="card-body">
-                <form name="login" action="pagina/Buscar_Usuario.php" method="POST">
+                <form name="login" action="/index" method="GET">
                     <div class="form-group">
                         <input type="text" class="form-control" name="CRM" aria-describedby="emailHelp" placeholder="CRM">
                     </div>                    
@@ -26,7 +26,7 @@
                         <button type="submit" class="btn btn-primary">Entre</button>
                     </div>
                     <div class="account-dialog-actions">
-                        <a href="#" class="btn btn-info">Não possui cadastro?</a>
+                        <a href="/login/cadastrar" class="btn btn-info">Não possui cadastro?</a>
                     </div>
                 </form>
                 </form>
