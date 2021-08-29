@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600|Open+Sans:400,600,700" rel="stylesheet">
     <script src="../js/chart-js-config.js"></script>
-    <title>Exame</title>
+    <title>Laudo</title>
 </head>
 
 <body>
@@ -61,46 +61,45 @@
                                     <div class="easion-card-title"> Dados </div>
                                 </div>
                                 <div class="card-body ">
-                                    <form name="exame" th:action="@{/exame}" method="post">
+                                     <form name="exame" th:action="@{/exame/(id = ${exame.id})}" method="post">
                                         <div class="form-row">
-                                            <div class="form-group col-md-4">
-                                                <label for="">Registro Médico</label>
-                                                <input readonly type="text" class="form-control" name="registroMedico" id="registroMedico" th:value = "${medico.crm}" required>
+                                            <div class="form-group col-md-6">
+                                                <label for="">ID</label>
+                                                <input type="text" class="form-control" name="id" id="id" th:value="${exame.id}" required>
                                             </div>
-                                            <div class="form-group col-md-4">
-                                                <label for="">Paciente ID</label>
-                                                <input readonly type="text" class="form-control" name="pacienteId" id="pacienteId" th:value = "${paciente.id}" required>
-                                            </div>   
-                                            <div class="form-group col-md-4">
-                                                <label for="">Status Exame</label>
-                                                <input readonly type="text" class="form-control" name="statusExame" id="statusExame" value="Não Realizado" required>
-                                            </div>    
                                             <div class="form-group col-md-6">
-                                                <label for="">Data pedido</label>
-                                                <input type="date" class="form-control" name="dataPedido" id="dataPedido" placeholder="Data do Pedido" required>
-                                            </div>    
+                                                <label for="">Registro Medico</label>
+                                                <input type="text" class="form-control" name="registroMedico" id="registroMedico" th:value="${exame.registroMedico}" required>
+                                            </div>
                                             <div class="form-group col-md-6">
-                                                <label for="">Data Exame</label>
-                                                <input type="date" class="form-control" name="dataExame" id="dataExame" placeholder="Data do Exame" required>
-                                            </div>    
+                                                <label for="">Status</label>
+                                                <input type="text" class="form-control" name="statusExame" id="statusExame" th:value="${exame.statusExame}" readonly>
+                                            </div>
                                             <div class="form-group col-md-6">
-                                                <label for="">Hora Exame</label>
-                                                <input type="time" class="form-control" name="horaExame" id="horaExame" placeholder="horaExame" required>
-<<<<<<< HEAD
-                                            </div> 
-=======
-                                            </div>      
->>>>>>> 1e8c86c8dd791c8c593c8d65d94f162aebe4c070
+                                                <label for="">Data do Pedido</label>
+                                                <input type="date" class="form-control" name="dataPedido" id="dataPedido" th:value="${exame.dataPedido}" readonly>
+                                            </div>
                                             <div class="form-group col-md-6">
-                                                <label for="">Hipotese Diagnostica</label>
-                                                <input type="text" class="form-control" name="hipoteseDiagnostica" id="hipoteseDiagnostica" placeholder="Hipotese Diagnostica" required>
-                                            </div>                                        
-                                        </div>                    
-                                            <div class="">
-                                                <button type="submit" class="btn btn-primary" >Cadastrar</button> 
-                                                <a class="dropdown-item" href="/exame" style="display: contents;"><button type="button" class="btn btn-danger">Cancelar</button></a>
-                                            </div>                                        
-                                    </form>                                    
+                                                <label for="">Data do Exame</label>
+                                                <input type="date" class="form-control" name="dataExame" id="dataExame" th:value="${exame.dataExame}" readonly>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="">Hora do Exame</label>
+                                                <input type="time" class="form-control" name="horaExame" id="horaExame" th:value="${exame.horaExame}" required>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="">Hipótese Diagnostica</label>
+                                                <input type="text" class="form-control" name="hipoteseDiagnostica" id="hipoteseDiagnostica" th:value="${exame.hipoteseDiagnostica}" required>
+                                            </div>
+                                        </div>
+                                        
+                                            <div class="" style="margin-left: 5px;">
+                                                <button type="submit" class="btn btn-primary">Atualizar</button> 
+                                                <a class="dropdown-item" href="/exame" style="display: contents;"><button type="button" class="btn btn-danger">Voltar</button></a>
+                                            </div>
+                                      
+                                        <br>
+                                    </form>
                                 </div>
                             </div>
                         </div>

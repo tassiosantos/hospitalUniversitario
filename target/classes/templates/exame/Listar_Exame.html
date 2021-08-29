@@ -88,8 +88,7 @@
                                             <td><span th:text="${exame.dataExame}"></span>&nbsp;</td>
                                             <td><span th:text="${exame.horaExame}"></span>&nbsp;</td>
                                             <td><span th:text="${exame.hipoteseDiagnostica}"></span>&nbsp;</td>
-                                            <td><a class = "btn btn-info" th:href="${(#mvc.url('SEC#getLaudoById').arg(0, exame.id).build())}">Visualizar exame</a></td>                                        
-
+                                            <td><a class = "btn btn-info" th:href="${(#mvc.url('SEC#getExameById').arg(0, exame.id).build())}">Visualizar Exame</a></td>                                        
         <td>
             <button type="button" class="btn btn-danger" data-toggle="modal" th:attr="data-target='#remover_'+${exame.id}" >Remover</button>
               <div class="modal fade" th:id="remover_+${exame.id}"  tabindex="-1" role="dialog" aria-hidden="true">
@@ -106,7 +105,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                                            <a type="button" class="btn btn-primary" th:href="@{/laudo/delete/{id}(id=${laudo.id})}">Sim</a>
+                                            <a type="button" class="btn btn-primary" th:href="@{/exame/delete/{id}(id=${exame.id})}">Sim</a>
                                         </div>
                         </div>
                     </div>

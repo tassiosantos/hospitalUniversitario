@@ -18,29 +18,4 @@ public class IndexController {
         return login();
     }
 
-    // @GetMapping("/laudo")
-    // public String laudo() {
-    //     return "./laudo/Cadastrar_Laudo";
-    // }
-    
-    // @GetMapping("/medico")
-    // public String medico() {
-    //     return "./medico/Cadastrar_Medico";
-    // }
-    
-    // @GetMapping("/paciente")
-    // public String paciente() {
-    //     return "./paciente/Listar_Paciente";
-    // }    
-
-    // @GetMapping("/exame")
-    // public String exame() {
-    //     return "./exame/Cadastrar_Exame";
-    // }
-   
-    // @RequestMapping(value="/cadastrarPaciente", method=RequestMethod.GET)
-	// public String form() {
-	// 	return "index";
-	// }
-
 }
