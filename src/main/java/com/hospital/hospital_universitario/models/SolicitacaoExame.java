@@ -1,8 +1,6 @@
 
 package com.hospital.hospital_universitario.models;
 
-import java.util.Date;
-import java.util.TimeZone;
 //Depois por favor, revisem os tipos das variáveis!
 
 import javax.persistence.Entity;
@@ -33,11 +31,11 @@ public class SolicitacaoExame {
 	//Um possível enum
 	private String statusExame;
 
-	private Date dataPedido;
-	private Date dataExame;
+	private String dataPedido;
+	private String dataExame;
 
 	//Não tenho certeza desse tipo
-	private TimeZone horaExame;
+	private String horaExame;
 	private String hipoteseDiagnostica;
 	
 	public SolicitacaoExame(){
@@ -72,22 +70,22 @@ public class SolicitacaoExame {
 	public void setStatusExame(String statusExame) {
 		this.statusExame = statusExame;
 	}
-	public Date getDataPedido() {
+	public String getDataPedido() {
 		return dataPedido;
 	}
-	public void setDataPedido(Date dataPedido) {
+	public void setDataPedido(String dataPedido) {
 		this.dataPedido = dataPedido;
 	}
-	public Date getDataExame() {
+	public String getDataExame() {
 		return dataExame;
 	}
-	public void setDataExame(Date dataExame) {
+	public void setDataExame(String dataExame) {
 		this.dataExame = dataExame;
 	}
-	public TimeZone getHoraExame() {
+	public String getHoraExame() {
 		return horaExame;
 	}
-	public void setHoraExame(TimeZone horaExame) {
+	public void setHoraExame(String horaExame) {
 		this.horaExame = horaExame;
 	}
 	public String getHipoteseDiagnostica() {
