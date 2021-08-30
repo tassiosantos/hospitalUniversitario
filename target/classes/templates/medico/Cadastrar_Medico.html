@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600|Open+Sans:400,600,700" rel="stylesheet">
     <script src="../js/chart-js-config.js"></script>
-    <title>Pacientes</title>
+    <title>Médico</title>
 </head>
 
 <body>
@@ -23,11 +23,11 @@
             <nav class="dash-nav-list">
                 <a th:href="@{/paciente/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-user"></i> Pacientes </a>
-                <a href="/medico" class="dash-nav-item">
+                <a th:href="@{/medico/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-check-square"></i> Medico </a>
-                <a href="/exame" class="dash-nav-item">
+                <a th:href="@{/exame/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-laptop"></i> Exame </a>
-                <a href="/laudo" class="dash-nav-item">
+                <a th:href="@{/laudo/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-file"></i> Laudo </a>       
             </nav>
         </div>
@@ -61,7 +61,7 @@
                                     <div class="easion-card-title"> Dados </div>
                                 </div>
                                 <div class="card-body ">
-                                    <form name="medico" action="/medico" method="post">
+                                    <form name="medico" th:action="@{/medico/{medicoId}/(medicoId = ${medico.id})}" method="post">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="">Nome</label>
@@ -90,7 +90,7 @@
                                         </div>                    
                                             <div class="">
                                                 <button type="submit" class="btn btn-primary" >Cadastrar</button> 
-                                                <a class="dropdown-item" href="/medico" style="display: contents;"><button type="button" class="btn btn-danger">Cancelar</button></a>
+                                                <a class="dropdown-item" th:href="@{/medico/{medicoId}/(medicoId = ${medico.id})}" style="display: contents;"><button type="button" class="btn btn-danger">Cancelar</button></a>
                                             </div>
                                        
                                     </form>

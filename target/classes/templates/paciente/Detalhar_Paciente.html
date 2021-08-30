@@ -23,11 +23,11 @@
             <nav class="dash-nav-list">
                 <a th:href="@{/paciente/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-user"></i> Pacientes </a>
-                <a href="/medico" class="dash-nav-item">
+                <a th:href="@{/medico/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-check-square"></i> Medico </a>
-                <a href="/exame" class="dash-nav-item">
+                <a th:href="@{/exame/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-laptop"></i> Exame </a>
-                <a href="/laudo" class="dash-nav-item">
+                <a th:href="@{/laudo/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-file"></i> Laudo </a>       
             </nav>
         </div>
@@ -127,7 +127,30 @@
                                             <td><span th:text="${exame.dataPedido}"></span>&nbsp;</td>
                                             <td><span th:text="${exame.medico.nome}"></span>&nbsp;</td>
                                             <td><span th:text="${exame.statusExame}"></span>&nbsp;</td>
-                                            <td><a class = "btn btn-info" th:href="@{/exame/{medicoId}/{pacienteId}/{exameId}(medicoId = ${medico.id}, pacienteId = ${paciente.id}, exameId = ${exame.id} )}">Visualizar Exame</a></td>                                        
+                                            <td><a class = "btn btn-info" th:href="@{/exame/{medicoId}/{pacienteId}/{exameId}(medicoId = ${medico.id}, pacienteId = ${paciente.id}, exameId = ${exame.id} )}">Visualizar Exame</a>
+                                            <td>
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" th:attr="data-target='#remover_'+${exame.id}" >Remover</button>
+                                                <div class="modal fade" th:id="remover_+${exame.id}"  tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLongTitle">Confirmação</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                <p>Tem certeza que quer remover o exame?</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                                                                    <a type="button" class="btn btn-primary" th:href="@{/exame/delete/{medicoId}/{id}(medicoId = ${medico.id}, id=${exame.id})}">Sim</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </div>       
+                                            </td>               
+                                            </td>                                        
                                             </tr>
                                         </tbody>
                                     </table>
