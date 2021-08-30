@@ -21,7 +21,7 @@
                 <a href="/" class="easion-logo"><i class="fas fa-cog"></i><span>Hospital Univ.</span></a>
             </header>
             <nav class="dash-nav-list">
-                <a href="/paciente" class="dash-nav-item">
+                <a th:href="@{/paciente/{medicoId}/(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-user"></i> Pacientes </a>
                 <a href="/medico" class="dash-nav-item">
                     <i class="fa fa-check-square"></i> Medico </a>
@@ -61,7 +61,7 @@
                                     <div class="easion-card-title"> Dados </div>
                                 </div>
                                 <div class="card-body ">
-                                    <form name="paciente" action="/paciente" method="post">
+                                    <form name="paciente" th:action="@{/paciente/{medicoId}/(medicoId = ${medico.id})}" method="post">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="">CPF</label>
@@ -89,7 +89,7 @@
                                         </div>                    
                                             <div class="">
                                                 <button type="submit" class="btn btn-primary" >Cadastrar</button> 
-                                                <a class="dropdown-item" href="/paciente" style="display: contents;"><button type="button" class="btn btn-danger">Cancelar</button></a>
+                                                <a class="dropdown-item" th:href="@{/paciente/{medicoId}/(medicoId = ${medico.id})}" style="display: contents;"><button type="button" class="btn btn-danger">Cancelar</button></a>
                                             </div>                                        
                                     </form>
                                     <p th:if="${mensagem}" th:text="${mensagem}"></p> 

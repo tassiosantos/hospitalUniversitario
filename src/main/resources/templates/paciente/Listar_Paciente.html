@@ -21,9 +21,9 @@
                 <a href="/" class="easion-logo"><i class="fas fa-cog"></i><span>Hospital Univ.</span></a>
             </header>
             <nav class="dash-nav-list">
-                <a href="/paciente" class="dash-nav-item">
+                <a href="" class="dash-nav-item">
                     <i class="fa fa-user"></i> Pacientes </a>
-                <a href="/medico" class="dash-nav-item">
+                <a th:href="@{/medico/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-check-square"></i> Medico </a>
                 <a href="/exame" class="dash-nav-item">
                     <i class="fa fa-laptop"></i> Exame </a>
@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="opçoes">
-                                        <a href="/paciente/cadastrar" class="btn btn-primary" style="margin-bottom: 5px;">Cadastrar Paciente</a>                                   
+                                        <a th:href="@{/paciente/cadastrar/{medicoId}/(medicoId = ${medico.id})}" class="btn btn-primary" style="margin-bottom: 5px;">Cadastrar Paciente</a>                                   
                                     </div>
                                     <table class = "table table-bordered table-striped">
                                         <thead>
@@ -79,8 +79,7 @@
                                             <td><span th:text="${paciente.id}"></span>&nbsp;</td>
                                             <td><span th:text="${paciente.nome}"></span>&nbsp;</td>
                                             <td><span th:text="${paciente.cpf}"></span>&nbsp;</td>
-                                            <td><span th:text="${paciente.dataNascimento}"></span>&nbsp;</td>
-                                            
+                                            <td><span th:text="${paciente.dataNascimento}"></span>&nbsp;</td>                                            
                                             <!-- <td><a class = "btn btn-info" th:href="${(#mvc.url('PC#getPacienteById').arg(0, paciente.id).build())}">Visualizar Perfil</a></td> -->
                                             <td><a class = "btn btn-info" th:href="@{/paciente/{medicoId}/{pacienteId}(medicoId = ${medico.id}, pacienteId = ${paciente.id})}">Visualizar Perfil</a></td>                                        
 
@@ -100,7 +99,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                                            <a type="button" class="btn btn-primary" th:href="@{/paciente/delete/{id}(id=${paciente.id})}">Sim</a>
+                                            <a type="button" class="btn btn-primary" th:href="@{/paciente/delete/{medicoId}/{id}(medicoId = ${medico.id}, id=${paciente.id})}">Sim</a>
                                         </div>
                         </div>
                     </div>

@@ -27,28 +27,42 @@ public class MedicoController{
         this.medicoService = medicoService;
     }
 
-    @GetMapping("")
-    public ModelAndView getMedico() {
+        // @GetMapping("")
+        // public ModelAndView getMedico() {
+        //     ModelAndView mv = new ModelAndView("./medico/Listar_Medico");
+        //     Iterable<Medico> medicos = this.medicoService.getMedicos();
+        //     mv.addObject("medicos", medicos);
+        //     return mv;
+        // }
+
+    @GetMapping(path = "/{medicoId}")
+    public ModelAndView getMedicos(@PathVariable int medicoId) {
         ModelAndView mv = new ModelAndView("./medico/Listar_Medico");
+        Medico medico = this.medicoService.getMedicoById(medicoId);
         Iterable<Medico> medicos = this.medicoService.getMedicos();
         mv.addObject("medicos", medicos);
+        mv.addObject("medicoReg", medico);
         return mv;
     }
 
-    @GetMapping(path = "/cadastrar")
-    public ModelAndView viewCadastar() {
+    @GetMapping(path = "/cadastrar/{medicoId}")
+    public ModelAndView viewCadastar(@PathVariable int medicoId) {
         ModelAndView mv = new ModelAndView();
+        Medico medico = this.medicoService.getMedicoById(medicoId);
         mv.setViewName("./medico/Cadastrar_Medico");
+        mv.addObject("medicoReg", medico);
         return mv;
     }
 
 
-	@GetMapping(path = "/{medicoId}")
-	public ModelAndView getMedicoById(@PathVariable("medicoId") int medicoId){        
+	@GetMapping(path = "/{id}")
+	public ModelAndView getMedicoById(@PathVariable int id){        
         ModelAndView mv = new ModelAndView();
-        Medico medico = medicoService.getMedicoById(medicoId);
+        // Medico medico = medicoService.getMedicoById(medicoId);
+        Medico medicoEscolhido = this.medicoService.getMedicoById(id);
         mv.setViewName("./medico/Detalhar_Medico");
-        mv.addObject("medico", medico);
+        // mv.addObject("medicoReg", medico);
+        mv.addObject("medico", medicoEscolhido);
         return mv;
 	}
 		
@@ -62,6 +76,8 @@ public class MedicoController{
         System.out.println("crm: " + crm + " senha: " + senha);
         Medico medicoLogado = this.medicoService.getMedicoByCrmSenha(crm, senha);
         ModelAndView mv = this.getMedicoById(medicoLogado.getId());
+        // ModelAndView mv = new ModelAndView();
+        // mv.addObject("medico", medicoLogado.getId());
         return mv;
     }
 
@@ -83,25 +99,26 @@ public class MedicoController{
         return mv;
     }
 
-    @GetMapping(path = "/delete/{medicoId}")
-	public ModelAndView deleteMedico(
-        @PathVariable("medicoId") int medicoId, RedirectAttributes attributes){
-        Medico medico = this.medicoService.getMedicoById(medicoId);
-		this.medicoService.delete(medico);
-        attributes.addFlashAttribute("mensagem", "Removido com sucesso!");     
-        ModelAndView mv = new ModelAndView("./medico/Listar_Medico");
-        Iterable<Medico> medicos = this.medicoService.getMedicos();
-        mv.addObject("medicos", medicos);
-        return mv;
-	}
-
     // @GetMapping(path = "/delete/{medicoId}")
-	// public String deleteMedico(
+	// public ModelAndView deleteMedico(
     //     @PathVariable("medicoId") int medicoId, RedirectAttributes attributes){
     //     Medico medico = this.medicoService.getMedicoById(medicoId);
 	// 	this.medicoService.delete(medico);
+    //     attributes.addFlashAttribute("mensagem", "Removido com sucesso!");     
+    //     ModelAndView mv = new ModelAndView("./medico/Listar_Medico");
+    //     Iterable<Medico> medicos = this.medicoService.getMedicos();
+    //     mv.addObject("medicos", medicos);
+    //     return mv;
+	// }
+
+    // @GetMapping(path = "/delete/{medicoId}/{id}")
+	// public String deleteMedico(
+    //     @PathVariable("medicoId") int medicoId, @PathVariable int id, RedirectAttributes attributes){
+    //     Medico medico = this.medicoService.getMedicoById(medicoId);
+    //     Medico medicoEscolhido = this.medicoService.getMedicoById(id);
+	// 	this.medicoService.delete(medicoEscolhido);
     //     attributes.addFlashAttribute("mensagem", "Removido com sucesso!");      
-    //     return "redirect:/medico";
+    //     return "redirect:/medico/" + medico.getId();
 	// }
 
 }

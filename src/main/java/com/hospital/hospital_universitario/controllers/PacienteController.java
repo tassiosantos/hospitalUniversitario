@@ -54,17 +54,18 @@ public class PacienteController{
     public ModelAndView getPacientes(@PathVariable int medicoId) {
         ModelAndView mv = new ModelAndView("./paciente/Listar_Paciente");
         Medico medico = this.medicoService.getMedicoById(medicoId);
-        System.out.println(medico.getCpf());
         Iterable<Paciente> pacientes = this.pacienteService.getPacientes();
         mv.addObject("pacientes", pacientes);
         mv.addObject("medico", medico);
         return mv;
     }
 
-    @GetMapping(path = "/cadastrar")
-    public ModelAndView viewCadastar() {
+    @GetMapping(path = "/cadastrar/{medicoId}")
+    public ModelAndView viewCadastar(@PathVariable int medicoId) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("./paciente/Cadastrar_Paciente");
+        Medico medico = this.medicoService.getMedicoById(medicoId);
+        mv.addObject("medico", medico);
         return mv;        
     }
 
@@ -96,11 +97,13 @@ public class PacienteController{
 
 	
 
-    @PostMapping("")
-    public ModelAndView savePaciente(Paciente newPaciente){
+    @PostMapping("/{medicoId}")
+    public ModelAndView savePaciente(Paciente newPaciente, @PathVariable int medicoId){
         ModelAndView mv = new ModelAndView("./paciente/Detalhar_Paciente");
         Paciente paciente = this.pacienteService.newPaciente(newPaciente);
+        Medico medico = this.medicoService.getMedicoById(medicoId);
         mv.addObject("paciente", paciente);          
+        mv.addObject("medico", medico);
         return mv;
     }
 
@@ -118,13 +121,14 @@ public class PacienteController{
 
     }
  
-    @GetMapping(path = "/delete/{pacienteId}")
+    @GetMapping(path = "/delete/{medicoId}/{pacienteId}")
 	public String deletePaciente(
-        @PathVariable("pacienteId") int pacienteId, RedirectAttributes attributes){
+        @PathVariable("pacienteId") int pacienteId, @PathVariable int medicoId, RedirectAttributes attributes){
         Paciente paciente = this.pacienteService.getPacienteById(pacienteId);
+        Medico medico = this.medicoService.getMedicoById(medicoId);
 		this.pacienteService.delete(paciente);
         attributes.addFlashAttribute("mensagem", "Removido com sucesso!");      
-        return "redirect:/paciente";
+        return "redirect:/paciente/" + medico.getId();
 	}
 
 }

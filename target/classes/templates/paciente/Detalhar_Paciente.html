@@ -61,7 +61,7 @@
                                     <div class="easion-card-title"> Dados </div>
                                 </div>
                                 <div class="card-body ">
-                                     <form name="paciente" th:action="@{/paciente/(medicoId = ${medico.id})/(id = ${paciente.id})}" method="post">
+                                     <form name="paciente" th:action="@{/paciente/{medicoId}/(medicoId = ${medico.id})}" method="post">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="">CPF</label>
@@ -90,7 +90,7 @@
                                         </div> 
                                             <div class="" style="margin-left: 5px;">
                                                 <button type="submit" class="btn btn-primary">Atualizar</button> 
-                                                <a class="dropdown-item" href="/paciente" style="display: contents;"><button type="button" class="btn btn-danger">Voltar</button></a>
+                                                <a class="dropdown-item" th:href="@{/paciente/{medicoId}/(medicoId = ${medico.id})}" style="display: contents;"><button type="button" class="btn btn-danger">Voltar</button></a>
                                             </div>
                                       
                                         <br>
