@@ -23,11 +23,11 @@
             <nav class="dash-nav-list">
                 <a th:href="@{/paciente/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-user"></i> Pacientes </a>
-                <a href="/medico" class="dash-nav-item">
+                <a href="@{/medico/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-check-square"></i> Medico </a>
-                <a href="/exame" class="dash-nav-item">
+                <a th:href="@{/exame/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-laptop"></i> Exame </a>
-                <a href="/laudo" class="dash-nav-item">
+                <a href="" class="dash-nav-item">
                     <i class="fa fa-file"></i> Laudo </a>       
             </nav>
         </div>

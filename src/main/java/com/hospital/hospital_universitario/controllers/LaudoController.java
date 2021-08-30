@@ -2,7 +2,9 @@ package com.hospital.hospital_universitario.controllers;
 
 import java.util.List;
 import com.hospital.hospital_universitario.services.LaudoService;
+import com.hospital.hospital_universitario.services.MedicoService;
 import com.hospital.hospital_universitario.models.Laudo;
+import com.hospital.hospital_universitario.models.Medico;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,17 +26,29 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class LaudoController{
 
     private final LaudoService laudoService;
+    private final MedicoService medicoService;
 
     @Autowired
-    public LaudoController(LaudoService laudoService){
+    public LaudoController(LaudoService laudoService, MedicoService medicoService){
         this.laudoService = laudoService;
+        this.medicoService = medicoService;
     }
    
-    @GetMapping("")
-    public ModelAndView getLaudo() {
+    // @GetMapping("")
+    // public ModelAndView getLaudo() {
+    //     ModelAndView mv = new ModelAndView("./laudo/Listar_Laudo");
+    //     Iterable<Laudo> laudos = this.laudoService.getLaudos();
+    //     mv.addObject("laudos", laudos);
+    //     return mv;
+    // }
+
+    @GetMapping(path = "/{medicoId}")
+    public ModelAndView getLaudos(@PathVariable int medicoId) {
         ModelAndView mv = new ModelAndView("./laudo/Listar_Laudo");
+        Medico medico = this.medicoService.getMedicoById(medicoId);
         Iterable<Laudo> laudos = this.laudoService.getLaudos();
         mv.addObject("laudos", laudos);
+        mv.addObject("medico", medico);
         return mv;
     }
 
@@ -51,7 +65,7 @@ public class LaudoController{
         return laudos;
     }
 
-    @GetMapping(path = "/{laudoId}")
+    @GetMapping(path = "/detalhar/{laudoId}")
 	public ModelAndView getLaudoById(@PathVariable("laudoId") int laudoId){        
         ModelAndView mv = new ModelAndView();
         Laudo laudo = laudoService.getLaudoById(laudoId);

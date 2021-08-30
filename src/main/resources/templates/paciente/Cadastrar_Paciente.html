@@ -21,17 +21,13 @@
                 <a href="/" class="easion-logo"><i class="fas fa-cog"></i><span>Hospital Univ.</span></a>
             </header>
             <nav class="dash-nav-list">
-<<<<<<< HEAD
-                <a th:href="@{/paciente/{medicoId}/(medicoId = ${medico.id})}" class="dash-nav-item">
-=======
                 <a th:href="@{/paciente/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
->>>>>>> 65de15a4512dc1b09ab507fa4518ef5a8b179eab
                     <i class="fa fa-user"></i> Pacientes </a>
-                <a href="/medico" class="dash-nav-item">
+                <a th:href="@{/medico/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-check-square"></i> Medico </a>
-                <a href="/exame" class="dash-nav-item">
+                <a th:href="@{/exame/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-laptop"></i> Exame </a>
-                <a href="/laudo" class="dash-nav-item">
+                <a th:href="@{/laudo/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-file"></i> Laudo </a>       
             </nav>
         </div>
@@ -47,7 +43,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
                             <a class="dropdown-item" href="pagina/exibir/Exibir_Usuario.php">Perfil</a>
-                            <td><a class = "dropdown-item" th:href="@{/}">Sair</a></td>
+                            <td><a class = "dropdown-item" th:href="@{/index}">Sair</a></td>
                         </div>
                     </div>
                 </div>

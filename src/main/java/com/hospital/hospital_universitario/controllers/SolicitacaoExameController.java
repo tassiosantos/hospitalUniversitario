@@ -38,22 +38,41 @@ public class SolicitacaoExameController{
         this.medicoService = medicoService;
     }
 
-    @GetMapping("")
-    public ModelAndView getMedico() {
+    // @GetMapping("")
+    // public ModelAndView getMedico() {
+    //     ModelAndView mv = new ModelAndView("./exame/Listar_Exame");
+    //     Iterable<SolicitacaoExame> exame = this.solicitacaoExameService.getSolicitacaoExames();
+    //     mv.addObject("exames", exame);
+    //     return mv;
+    // }
+    
+    @GetMapping(path = "/{medicoId}")
+    public ModelAndView getExames(@PathVariable("medicoId") int medicoId) {
         ModelAndView mv = new ModelAndView("./exame/Listar_Exame");
-        Iterable<SolicitacaoExame> exame = this.solicitacaoExameService.getSolicitacaoExames();
-        mv.addObject("exames", exame);
+        Medico medico = this.medicoService.getMedicoById(medicoId);
+        Iterable<SolicitacaoExame> exames = this.solicitacaoExameService.getSolicitacaoExames();
+        mv.addObject("exames", exames);
+        mv.addObject("medico", medico);
         return mv;
     }
-    
+
     @GetMapping(path = "/cadastrar/{medicoId}/{pacienteId}")
-    public ModelAndView viewCadastar(@PathVariable("pacienteId") int pacienteId, @PathVariable("medicoId") int medicoId) {
-        Paciente paciente = pacienteService.getPacienteById(pacienteId);
+    public ModelAndView viewCadastar(@PathVariable("medicoId") int medicoId, @PathVariable("pacienteId") int pacienteId) {
+        Medico medico = this.medicoService.getMedicoById(medicoId);
+        Paciente paciente = this.pacienteService.getPacienteById(pacienteId);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("./exame/Cadastrar_Exame");
+        mv.addObject("medico", medico);
+        mv.addObject("paciente", paciente);
+        return mv;
+    }
+
+    @GetMapping(path = "/cadastrar/{medicoId}")
+    public ModelAndView viewCadastar(@PathVariable("medicoId") int medicoId) {
         Medico medico = this.medicoService.getMedicoById(medicoId);
         ModelAndView mv = new ModelAndView();
-        mv.addObject("paciente", paciente);
-        mv.addObject("medico", medico);
         mv.setViewName("./exame/Cadastrar_Exame");
+        mv.addObject("medico", medico);
         return mv;
     }
 
@@ -87,7 +106,7 @@ public class SolicitacaoExameController{
         Iterable<ExameDTO> examesDto = solicitacaoExameService.getSolicitacaoExameByPacienteId(solicitacao.getPacienteId());
         
         
-        mv.setViewName("./paciente/Detalhar_Paciente");
+        mv.setViewName("./exame/Detalhar_Exame");
         mv.addObject("paciente", paciente);
         mv.addObject("medico", medico);
         mv.addObject("exames", examesDto);
@@ -96,14 +115,27 @@ public class SolicitacaoExameController{
         return mv;
     }
 
-    @GetMapping(path = "/delete/{solicitacaoId}")
-	public ModelAndView deleteSolicitacao(@PathVariable("solicitacaoId") int solicitacaoId, RedirectAttributes attributes){
+    // @GetMapping(path = "/delete/{solicitacaoId}")
+	// public ModelAndView deleteSolicitacao(@PathVariable("solicitacaoId") int solicitacaoId, RedirectAttributes attributes){
+    //     SolicitacaoExame solicitacao = this.solicitacaoExameService.getSolicitacaoExameByNumber(solicitacaoId);
+	// 	this.solicitacaoExameService.delete(solicitacao);           
+    //     attributes.addFlashAttribute("mensagem", "Removido com sucesso!");     
+    //     ModelAndView mv = new ModelAndView("./exame/Listar_Exame");
+    //     Iterable<SolicitacaoExame> exame = this.solicitacaoExameService.getSolicitacaoExames();
+    //     mv.addObject("exames", exame);
+    //     return mv;
+	// }
+    
+    @GetMapping(path = "/delete/{medicoId}/{solicitacaoId}")
+	public ModelAndView deleteSolicitacao(@PathVariable("medicoId") int medicoId, @PathVariable("solicitacaoId") int solicitacaoId, RedirectAttributes attributes){
         SolicitacaoExame solicitacao = this.solicitacaoExameService.getSolicitacaoExameByNumber(solicitacaoId);
+        Medico medico = this.medicoService.getMedicoById(medicoId);
 		this.solicitacaoExameService.delete(solicitacao);           
         attributes.addFlashAttribute("mensagem", "Removido com sucesso!");     
         ModelAndView mv = new ModelAndView("./exame/Listar_Exame");
         Iterable<SolicitacaoExame> exame = this.solicitacaoExameService.getSolicitacaoExames();
         mv.addObject("exames", exame);
+        mv.addObject("medico", medico);
         return mv;
 	}
 

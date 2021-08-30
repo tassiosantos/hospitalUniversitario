@@ -21,17 +21,13 @@
                 <a href="/" class="easion-logo"><i class="fas fa-cog"></i><span>Hospital Univ.</span></a>
             </header>
             <nav class="dash-nav-list">
-<<<<<<< HEAD
                 <a href="" class="dash-nav-item">
-=======
-                <a th:href="@{/paciente/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
->>>>>>> 65de15a4512dc1b09ab507fa4518ef5a8b179eab
                     <i class="fa fa-user"></i> Pacientes </a>
                 <a th:href="@{/medico/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-check-square"></i> Medico </a>
-                <a href="/exame" class="dash-nav-item">
+                <a th:href="@{/exame/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-laptop"></i> Exame </a>
-                <a href="/laudo" class="dash-nav-item">
+                <a th:href="@{/laudo/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-file"></i> Laudo </a>       
             </nav>
         </div>
@@ -86,29 +82,28 @@
                                             <td><span th:text="${paciente.dataNascimento}"></span>&nbsp;</td>                                            
                                             <!-- <td><a class = "btn btn-info" th:href="${(#mvc.url('PC#getPacienteById').arg(0, paciente.id).build())}">Visualizar Perfil</a></td> -->
                                             <td><a class = "btn btn-info" th:href="@{/paciente/{medicoId}/{pacienteId}(medicoId = ${medico.id}, pacienteId = ${paciente.id})}">Visualizar Perfil</a></td>                                        
-
-        <td>
-            <button type="button" class="btn btn-danger" data-toggle="modal" th:attr="data-target='#remover_'+${paciente.id}" >Remover</button>
-              <div class="modal fade" th:id="remover_+${paciente.id}"  tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                                        <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">Confirmação</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                        </div>
-                                        <div class="modal-body">
-                                        <p>Tem certeza que quer remover o paciente (<span th:text=${paciente.nome}></span>)?</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
-                                            <a type="button" class="btn btn-primary" th:href="@{/paciente/delete/{medicoId}/{id}(medicoId = ${medico.id}, id=${paciente.id})}">Sim</a>
-                                        </div>
-                        </div>
-                    </div>
-              </div>       
-        </td>                               
+                                            <td>
+                                                <button type="button" class="btn btn-danger" data-toggle="modal" th:attr="data-target='#remover_'+${paciente.id}" >Remover</button>
+                                                <div class="modal fade" th:id="remover_+${paciente.id}"  tabindex="-1" role="dialog" aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLongTitle">Confirmação</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                <p>Tem certeza que quer remover o paciente (<span th:text=${paciente.nome}></span>)?</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                                                                    <a type="button" class="btn btn-primary" th:href="@{/paciente/delete/{medicoId}/{id}(medicoId = ${medico.id}, id=${paciente.id})}">Sim</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </div>       
+                                            </td>                               
                                             </tr>
                                         </tbody>
                                     </table>

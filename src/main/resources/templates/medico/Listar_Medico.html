@@ -23,11 +23,11 @@
             <nav class="dash-nav-list">
                 <a th:href="@{/paciente/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-user"></i> Pacientes </a>
-                <a href="/medico" class="dash-nav-item">
+                <a href="" class="dash-nav-item">
                     <i class="fa fa-check-square"></i> Medico </a>
-                <a href="/exame" class="dash-nav-item">
+                <a th:href="@{/exame/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-laptop"></i> Exame </a>
-                <a href="/laudo" class="dash-nav-item">
+                <a th:href="@{/laudo/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-file"></i> Laudo </a>       
             </nav>
         </div>
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="card-body ">
                                     <div class="opçoes">
-                                        <a th:href="@{/medico/cadastrar/{medicoId}/(medicoId = ${medicoReg.id})}" class="btn btn-primary" style="margin-bottom: 5px;">Cadastrar Médico</a>                                   
+                                        <a th:href="@{/medico/cadastrar/{medicoId}/(medicoId = ${medico.id})}" class="btn btn-primary" style="margin-bottom: 5px;">Cadastrar Médico</a>                                   
                                     </div>
                                     <table class = "table table-bordered table-striped">
                                         <thead>
@@ -78,16 +78,16 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr th:each="medico : ${medicos}">
-                                            <td><span th:text="${medico.id}"></span>&nbsp;</td>
-                                            <td><span th:text="${medico.nome}"></span>&nbsp;</td>
-                                            <td><span th:text="${medico.cpf}"></span>&nbsp;</td>
-                                            <!-- <td><span th:text="${medico.crm}"></span>&nbsp;</td> -->
-                                            <td><span th:text="${medico.titulacao}"></span>&nbsp;</td>
-                                            <!-- <td><span th:text="${medico.tipo}"></span>&nbsp;</td> -->
-                                            <td><a class = "btn btn-info" th:href="@{/medico/{medicoId}/{id}(medicoId = ${medicoReg.id}, id = ${medico.id})}">Visualizar Perfil</a></td>                                        
-                                            <td><button type="button" class="btn btn-danger" data-toggle="modal" th:attr="data-target='#remover_'+${medico.id}" >Remover</button>
-                                                <div class="modal fade" th:id="remover_+${medico.id}"  tabindex="-1" role="dialog" aria-hidden="true">
+                                            <tr th:each="medicos : ${medicos}">
+                                            <td><span th:text="${medicos.id}"></span>&nbsp;</td>
+                                            <td><span th:text="${medicos.nome}"></span>&nbsp;</td>
+                                            <td><span th:text="${medicos.cpf}"></span>&nbsp;</td>
+                                            <!-- <td><span th:text="${medicos.crm}"></span>&nbsp;</td> -->
+                                            <td><span th:text="${medicos.titulacao}"></span>&nbsp;</td>
+                                            <!-- <td><span th:text="${medicos.tipo}"></span>&nbsp;</td> -->
+                                            <td><a class = "btn btn-info" th:href="@{/medicos/detalhar/{medicoId}(medicoId = ${medicos.id})}">Visualizar Perfil</a></td>                                        
+                                            <td><button type="button" class="btn btn-danger" data-toggle="modal" th:attr="data-target='#remover_'+${medicos.id}" >Remover</button>
+                                                <div class="modal fade" th:id="remover_+${medicos.id}"  tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                                             <div class="modal-content">
                                                                             <div class="modal-header">
