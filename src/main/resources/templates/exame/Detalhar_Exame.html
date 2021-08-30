@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600|Open+Sans:400,600,700" rel="stylesheet">
     <script src="../js/chart-js-config.js"></script>
-    <title>Laudo</title>
+    <title>Exame</title>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
                 <a href="/" class="easion-logo"><i class="fas fa-cog"></i><span>Hospital Univ.</span></a>
             </header>
             <nav class="dash-nav-list">
-                <a href="/paciente" class="dash-nav-item">
+                <a th:href="@{/paciente/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-user"></i> Pacientes </a>
                 <a href="/medico" class="dash-nav-item">
                     <i class="fa fa-check-square"></i> Medico </a>
@@ -95,7 +95,7 @@
                                         
                                             <div class="" style="margin-left: 5px;">
                                                 <button type="submit" class="btn btn-primary">Atualizar</button> 
-                                                <a class="dropdown-item" href="/exame" style="display: contents;"><button type="button" class="btn btn-danger">Voltar</button></a>
+                                                <a class="dropdown-item" th:href="@{/paciente/{medicoId}/{pacienteId}(medicoId = ${medico.id}, pacienteId = ${paciente.id})}" style="display: contents;"><button type="button" class="btn btn-danger">Voltar</button></a>
                                             </div>
                                       
                                         <br>

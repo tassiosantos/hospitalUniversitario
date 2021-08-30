@@ -57,11 +57,15 @@ public class SolicitacaoExameController{
         return mv;
     }
 
-    @GetMapping(path = "/{solicitacaoId}")
-	public ModelAndView getExameById(@PathVariable("solicitacaoId") int solicitacaoId){        
+    @GetMapping(path = "/{medicoId}/{pacienteId}/{solicitacaoId}")
+	public ModelAndView getExameById(@PathVariable("solicitacaoId") int solicitacaoId, @PathVariable("medicoId") int medicoId, @PathVariable("pacienteId") int pacienteId){        
         ModelAndView mv = new ModelAndView();
+        Paciente paciente = pacienteService.getPacienteById(pacienteId);
+        Medico medico = this.medicoService.getMedicoById(medicoId);
         SolicitacaoExame solicitacao = solicitacaoExameService.getSolicitacaoExameByNumber(solicitacaoId);
         mv.setViewName("./exame/Detalhar_Exame");
+        mv.addObject("paciente", paciente);
+        mv.addObject("medico", medico);
         mv.addObject("exame", solicitacao);
         return mv;
 	}
