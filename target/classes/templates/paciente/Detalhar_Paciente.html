@@ -21,7 +21,7 @@
                 <a href="/" class="easion-logo"><i class="fas fa-cog"></i><span>Hospital Univ.</span></a>
             </header>
             <nav class="dash-nav-list">
-                <a href="/paciente" class="dash-nav-item">
+                <a th:href="@{/paciente/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-user"></i> Pacientes </a>
                 <a href="/medico" class="dash-nav-item">
                     <i class="fa fa-check-square"></i> Medico </a>
@@ -127,7 +127,7 @@
                                             <td><span th:text="${exame.dataPedido}"></span>&nbsp;</td>
                                             <td><span th:text="${exame.medico.nome}"></span>&nbsp;</td>
                                             <td><span th:text="${exame.statusExame}"></span>&nbsp;</td>
-                                            <td><a class = "btn btn-info" th:href="${(#mvc.url('SEC#getExameById').arg(0, exame.id).build())}">Visualizar Exame</a></td>                                        
+                                            <td><a class = "btn btn-info" th:href="@{/exame/{medicoId}/{pacienteId}/{exameId}(medicoId = ${medico.id}, pacienteId = ${paciente.id}, exameId = ${exame.id} )}">Visualizar Exame</a></td>                                        
                                             </tr>
                                         </tbody>
                                     </table>

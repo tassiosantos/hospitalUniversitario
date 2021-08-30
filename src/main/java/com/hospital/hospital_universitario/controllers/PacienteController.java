@@ -54,7 +54,6 @@ public class PacienteController{
     public ModelAndView getPacientes(@PathVariable int medicoId) {
         ModelAndView mv = new ModelAndView("./paciente/Listar_Paciente");
         Medico medico = this.medicoService.getMedicoById(medicoId);
-        System.out.println(medico.getCpf());
         Iterable<Paciente> pacientes = this.pacienteService.getPacientes();
         mv.addObject("pacientes", pacientes);
         mv.addObject("medico", medico);
