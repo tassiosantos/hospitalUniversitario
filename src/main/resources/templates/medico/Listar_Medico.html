@@ -85,7 +85,7 @@
                                             <!-- <td><span th:text="${medicos.crm}"></span>&nbsp;</td> -->
                                             <td><span th:text="${medicos.titulacao}"></span>&nbsp;</td>
                                             <!-- <td><span th:text="${medicos.tipo}"></span>&nbsp;</td> -->
-                                            <td><a class = "btn btn-info" th:href="@{/medicos/detalhar/{medicoId}(medicoId = ${medicos.id})}">Visualizar Perfil</a></td>                                        
+                                            <td><a class = "btn btn-info" th:href="@{/medicos/detalhar/{id}/{medicoId}(id = ${medico.id}, medicoId = ${medicos.id})}">Visualizar Perfil</a></td>                                        
                                             <td><button type="button" class="btn btn-danger" data-toggle="modal" th:attr="data-target='#remover_'+${medicos.id}" >Remover</button>
                                                 <div class="modal fade" th:id="remover_+${medicos.id}"  tabindex="-1" role="dialog" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered" role="document">

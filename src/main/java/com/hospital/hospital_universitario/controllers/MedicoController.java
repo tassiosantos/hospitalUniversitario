@@ -67,17 +67,17 @@ public class MedicoController{
         return mv;
 	}
 	
-    // @GetMapping(path = "/detalhar/{usuario}/{medicoId}")
-	// public ModelAndView getMedicoById2(@PathVariable("usuario") int usuario, @PathVariable("medicoId") int medicoId){        
-    //     ModelAndView mv = new ModelAndView();
-    //     // Medico medico = medicoService.getMedicoById(medicoId);
-    //     Medico medicoEscolhido = this.medicoService.getMedicoById(medicoId);
-    //     Medico medicoUsuario = this.medicoService.getMedicoById(usuario);
-    //     mv.setViewName("./medico/Detalhar_Medico");
-    //     mv.addObject("medico", medicoEscolhido);
-    //     mv.addObject("usuario", medicoUsuario);
-    //     return mv;
-	// }
+    @GetMapping(path = "/detalhar/{usuario}/{medicoId}")
+	public ModelAndView getMedicoById2(@PathVariable("usuario") int usuario, @PathVariable("medicoId") int medicoId){        
+        ModelAndView mv = new ModelAndView();
+        // Medico medico = medicoService.getMedicoById(medicoId);
+        Medico medicoEscolhido = this.medicoService.getMedicoById(medicoId);
+        Medico medicoUsuario = this.medicoService.getMedicoById(usuario);
+        mv.setViewName("./medico/Detalhar_Medico");
+        mv.addObject("medicos", medicoEscolhido);
+        mv.addObject("medico", medicoUsuario);
+        return mv;
+	}
 
     @PostMapping(path = "/logar")
     public ModelAndView loginMedico(@RequestBody String login)
