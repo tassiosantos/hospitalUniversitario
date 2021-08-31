@@ -108,15 +108,17 @@ public class PacienteController{
     }
 
     @PostMapping(path = "/{medicoId}/{pacienteId}")
-    public ModelAndView updatePaciente(@PathVariable("pacienteId") int pacienteId, @PathVariable("medicoId") int medicoId, @RequestBody Paciente newPaciente){
+    public ModelAndView updatePaciente(@PathVariable("pacienteId") int pacienteId, @PathVariable("medicoId") int medicoId, Paciente newPaciente){
         ModelAndView mv = new ModelAndView();
         Paciente paciente = new Paciente();
+        Medico medico = this.medicoService.getMedicoById(medicoId);
         Iterable<ExameDTO> examesDto = exameService.getSolicitacaoExameByPacienteId(pacienteId);
         newPaciente.setId(pacienteId);
         paciente = this.pacienteService.update(newPaciente);
         mv.setViewName("./paciente/Detalhar_Paciente");
         mv.addObject("paciente", paciente);
         mv.addObject("exames", examesDto);
+        mv.addObject("medico", medico);
         return mv;
 
     }

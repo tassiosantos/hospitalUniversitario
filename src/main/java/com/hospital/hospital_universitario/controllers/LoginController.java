@@ -38,7 +38,7 @@ public class LoginController {
     public ModelAndView cadastrar(Medico newMedico){
         this.medicoService.newMedico(newMedico);
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("login");
+        mv.setViewName("./login");
         
         return mv;
     }

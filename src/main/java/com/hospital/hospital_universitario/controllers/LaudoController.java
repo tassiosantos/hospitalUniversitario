@@ -52,10 +52,12 @@ public class LaudoController{
         return mv;
     }
 
-    @GetMapping(path = "/cadastrar")
-    public ModelAndView viewCadastar() {
+    @GetMapping(path = "/cadastrar/{medicoId}")
+    public ModelAndView viewCadastar(@PathVariable("medicoId") int medicoId) {
         ModelAndView mv = new ModelAndView();
+        Medico usuario = this.medicoService.getMedicoById(medicoId);
         mv.setViewName("./laudo/Cadastrar_Laudo");
+        mv.addObject("medico", usuario);
         return mv;
     }
 
@@ -65,12 +67,14 @@ public class LaudoController{
         return laudos;
     }
 
-    @GetMapping(path = "/detalhar/{laudoId}")
-	public ModelAndView getLaudoById(@PathVariable("laudoId") int laudoId){        
+    @GetMapping(path = "/detalhar/{medicoId}/{laudoId}")
+	public ModelAndView getLaudoById(@PathVariable("medicoId") int medicoId, @PathVariable("laudoId") int laudoId){        
         ModelAndView mv = new ModelAndView();
         Laudo laudo = laudoService.getLaudoById(laudoId);
+        Medico usuario = this.medicoService.getMedicoById(medicoId);
         mv.setViewName("./laudo/Detalhar_Laudo");
         mv.addObject("laudo", laudo);
+        mv.addObject("medico", usuario);
         return mv;
 	}
 
@@ -81,11 +85,13 @@ public class LaudoController{
 		return laudo;
 	}
 
-	@PostMapping("")
-    public ModelAndView saveLaudo(Laudo newLaudo){
-        ModelAndView mv = new ModelAndView("./laudo/Cadastrar_Laudo");
+	@PostMapping("/cadastrar/{medicoId}")
+    public ModelAndView saveLaudo(Laudo newLaudo, @PathVariable("medicoId") int medicoId){
+        ModelAndView mv = new ModelAndView("./laudo/Detalhar_Laudo");
+        Medico usuario = this.medicoService.getMedicoById(medicoId);
         Laudo laudo = this.laudoService.newLaudo(newLaudo);
         mv.addObject("medicos", laudo);
+        mv.addObject("medico", usuario);
         return mv;
     }
 

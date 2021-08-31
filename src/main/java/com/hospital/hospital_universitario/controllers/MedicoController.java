@@ -61,21 +61,20 @@ public class MedicoController{
         ModelAndView mv = new ModelAndView();
         // Medico medico = medicoService.getMedicoById(medicoId);
         Medico medicoEscolhido = this.medicoService.getMedicoById(medicoId);
-        mv.setViewName("./medico/Detalhar_Medico");
+        mv.setViewName("./medico/Detalhar_Perfil");
         // mv.addObject("medicoReg", medico);
         mv.addObject("medico", medicoEscolhido);
         return mv;
 	}
 	
-    @GetMapping(path = "/detalhar/{usuario}/{medicoId}")
-	public ModelAndView getMedicoById2(@PathVariable("usuario") int usuario, @PathVariable("medicoId") int medicoId){        
+    @GetMapping(path = "/detalhar/{id}/{medicoId}")
+	public ModelAndView getMedicoById(@PathVariable("id") int id, @PathVariable("medicoId") int medicoId){        
         ModelAndView mv = new ModelAndView();
-        // Medico medico = medicoService.getMedicoById(medicoId);
         Medico medicoEscolhido = this.medicoService.getMedicoById(medicoId);
-        Medico medicoUsuario = this.medicoService.getMedicoById(usuario);
+        Medico usuario = this.medicoService.getMedicoById(id);
         mv.setViewName("./medico/Detalhar_Medico");
         mv.addObject("medicos", medicoEscolhido);
-        mv.addObject("medico", medicoUsuario);
+        mv.addObject("medico", usuario);
         return mv;
 	}
 
@@ -104,15 +103,15 @@ public class MedicoController{
         return mv;
     }
 	
-    @PostMapping(path = "/{usuario}/{medicoId}")
-    public ModelAndView updateMedico(@PathVariable("usuario") int usuario, @PathVariable("medicoId") int medicoId, @RequestBody Medico newMedico){
+    @PostMapping(path = "/{id}/{medicoId}")
+    public ModelAndView updateMedico(@PathVariable("id") int id, @PathVariable("medicoId") int medicoId, Medico newMedico){
         ModelAndView mv = new ModelAndView("./medico/Detalhar_Medico");
         Medico medico = new Medico();
-        Medico medicoUsuario = this.medicoService.getMedicoById(usuario);
+        Medico usuario = this.medicoService.getMedicoById(id);
         newMedico.setId(medicoId);
         medico = this.medicoService.update(newMedico);
         mv.addObject("medicos", medico);
-        mv.addObject("usuario", medicoUsuario);
+        mv.addObject("medico", usuario);
         return mv;
     }
 
@@ -137,5 +136,19 @@ public class MedicoController{
     //     attributes.addFlashAttribute("mensagem", "Removido com sucesso!");      
     //     return "redirect:/medico/" + medico.getId();
 	// }
+    
+    @GetMapping(path = "/delete/{medicoId}/{id}")
+	public ModelAndView deleteMedico(
+        @PathVariable("medicoId") int medicoId, @PathVariable("id") int id, RedirectAttributes attributes){
+            Medico usuario = this.medicoService.getMedicoById(medicoId);
+            Medico medico = this.medicoService.getMedicoById(id);
+            this.medicoService.delete(medico);
+            // attributes.addFlashAttribute("mensagem", "Removido com sucesso!");     
+            ModelAndView mv = new ModelAndView("./medico/Listar_Medico");
+            Iterable<Medico> medicos = this.medicoService.getMedicos();
+            mv.addObject("medicos", medicos);
+            mv.addObject("medico", usuario);
+            return mv;
+	}
 
 }

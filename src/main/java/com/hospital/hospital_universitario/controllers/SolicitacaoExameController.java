@@ -88,14 +88,40 @@ public class SolicitacaoExameController{
         mv.addObject("exame", solicitacao);
         return mv;
 	}
+
+    @GetMapping(path = "/{medicoId}/{solicitacaoId}")
+	public ModelAndView getExameById(@PathVariable("solicitacaoId") int solicitacaoId, @PathVariable("medicoId") int medicoId){        
+        ModelAndView mv = new ModelAndView();
+        Medico medico = this.medicoService.getMedicoById(medicoId);
+        SolicitacaoExame solicitacao = solicitacaoExameService.getSolicitacaoExameByNumber(solicitacaoId);
+        mv.setViewName("./exame/Detalhar_Exame");
+        mv.addObject("medico", medico);
+        mv.addObject("exame", solicitacao);
+        return mv;
+	}
 		
 
-    @PutMapping(path = "/{solicitacaoNumber}")
-	public SolicitacaoExame updateSolicitacaoExame(
-        @RequestBody SolicitacaoExame changedSolicitacaoExame){
-		SolicitacaoExame solicitacao = this.solicitacaoExameService.update(changedSolicitacaoExame);
-		return solicitacao;
-	}
+    @PostMapping(path = "/{id}/{solicitacaoId}")
+    public ModelAndView updateSolicitacaoExame(@PathVariable("id") int id, @PathVariable("solicitacaoId") int solicitacaoId, SolicitacaoExame newSolicitacaoExame){
+        ModelAndView mv = new ModelAndView("./exame/Detalhar_Exame");
+        SolicitacaoExame solicitacao = new SolicitacaoExame();
+        Medico usuario = this.medicoService.getMedicoById(id);
+        newSolicitacaoExame.setId(solicitacaoId);
+        solicitacao = this.solicitacaoExameService.update(newSolicitacaoExame);
+        mv.addObject("exame", solicitacao);
+        mv.addObject("medico", usuario);
+        return mv;
+    }
+
+    @PostMapping("/{usuario}")
+    public ModelAndView saveMedico(SolicitacaoExame newSolicitacaoExame, @PathVariable("usuario") int usuario){
+        ModelAndView mv = new ModelAndView("./exame/Detalhar_Exame");
+        SolicitacaoExame solicitacao = this.solicitacaoExameService.newSolicitacaoExame(newSolicitacaoExame);
+        Medico medicoUsuario = this.medicoService.getMedicoById(usuario);
+        mv.addObject("exame", solicitacao);
+        mv.addObject("medico", medicoUsuario);
+        return mv;
+    }
 
     @PostMapping("")
     public ModelAndView saveExame(SolicitacaoExame newSolicitacaoExame){
@@ -115,29 +141,30 @@ public class SolicitacaoExameController{
         return mv;
     }
 
-    // @GetMapping(path = "/delete/{solicitacaoId}")
-	// public ModelAndView deleteSolicitacao(@PathVariable("solicitacaoId") int solicitacaoId, RedirectAttributes attributes){
+    @GetMapping(path = "/delete/{medicoId}/{id}")
+	public ModelAndView deleteSolicitacao(@PathVariable("medicoId") int medicoId, @PathVariable("id") int id){
+        SolicitacaoExame solicitacao = this.solicitacaoExameService.getSolicitacaoExameByNumber(id);
+        Medico usuario = this.medicoService.getMedicoById(medicoId);
+		this.solicitacaoExameService.delete(solicitacao);           
+        ModelAndView mv = new ModelAndView("./exame/Listar_Exame");
+        Iterable<SolicitacaoExame> exame = this.solicitacaoExameService.getSolicitacaoExames();
+        mv.addObject("exames", exame);
+        mv.addObject("medico", usuario);
+        return mv;
+	}
+    
+    // @GetMapping(path = "/delete/{medicoId}/{solicitacaoId}")
+	// public ModelAndView deleteSolicitacao(@PathVariable("medicoId") int medicoId, @PathVariable("solicitacaoId") int solicitacaoId, RedirectAttributes attributes){
     //     SolicitacaoExame solicitacao = this.solicitacaoExameService.getSolicitacaoExameByNumber(solicitacaoId);
+    //     Medico medico = this.medicoService.getMedicoById(medicoId);
 	// 	this.solicitacaoExameService.delete(solicitacao);           
     //     attributes.addFlashAttribute("mensagem", "Removido com sucesso!");     
     //     ModelAndView mv = new ModelAndView("./exame/Listar_Exame");
     //     Iterable<SolicitacaoExame> exame = this.solicitacaoExameService.getSolicitacaoExames();
     //     mv.addObject("exames", exame);
+    //     mv.addObject("medico", medico);
     //     return mv;
 	// }
-    
-    @GetMapping(path = "/delete/{medicoId}/{solicitacaoId}")
-	public ModelAndView deleteSolicitacao(@PathVariable("medicoId") int medicoId, @PathVariable("solicitacaoId") int solicitacaoId, RedirectAttributes attributes){
-        SolicitacaoExame solicitacao = this.solicitacaoExameService.getSolicitacaoExameByNumber(solicitacaoId);
-        Medico medico = this.medicoService.getMedicoById(medicoId);
-		this.solicitacaoExameService.delete(solicitacao);           
-        attributes.addFlashAttribute("mensagem", "Removido com sucesso!");     
-        ModelAndView mv = new ModelAndView("./exame/Listar_Exame");
-        Iterable<SolicitacaoExame> exame = this.solicitacaoExameService.getSolicitacaoExames();
-        mv.addObject("exames", exame);
-        mv.addObject("medico", medico);
-        return mv;
-	}
 
 	// @PostMapping(path = "/laudo")
 	// public void addAccount(@RequestBody Account newAccount){
