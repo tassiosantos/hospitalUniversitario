@@ -41,7 +41,6 @@ public class PacienteController{
         this.medicoService = medicoService;
     }
 
-
     // @GetMapping("")
     // public ModelAndView getPacientes() {
     //     ModelAndView mv = new ModelAndView("./paciente/Listar_Paciente");

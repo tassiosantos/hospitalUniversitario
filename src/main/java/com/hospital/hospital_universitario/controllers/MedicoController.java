@@ -78,7 +78,8 @@ public class MedicoController{
         return mv;
 	}
 
-    @PostMapping(path = "/logar")
+    //Foi renomeado para após o login, redirecionar para a home page
+    @PostMapping(path = "/logarMedico")
     public ModelAndView loginMedico(@RequestBody String login)
     {   
         
