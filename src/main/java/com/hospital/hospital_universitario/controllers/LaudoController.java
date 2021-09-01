@@ -101,7 +101,7 @@ public class LaudoController{
         Laudo laudo = this.laudoService.getLaudoById(laudoId);
 		this.laudoService.delete(laudo);
         attributes.addFlashAttribute("mensagem", "Removido com sucesso!");     
-        ModelAndView mv = new ModelAndView("./laudo/Listar_Laudo");
+        ModelAndView mv = new ModelAndView("laudo/Listar_Laudo");
         Iterable<Laudo> laudos = this.laudoService.getLaudos();
         mv.addObject("laudos", laudos);
         return mv;

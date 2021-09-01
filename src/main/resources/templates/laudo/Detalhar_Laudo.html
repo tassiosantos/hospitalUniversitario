@@ -1,5 +1,5 @@
+<!doctype html>
 <html lang="pt-br">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,11 +23,11 @@
             <nav class="dash-nav-list">
                 <a th:href="@{/paciente/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-user"></i> Pacientes </a>
-                <a href="/medico" class="dash-nav-item">
+                <a th:href="@{/medico/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-check-square"></i> Medico </a>
-                <a href="/exame" class="dash-nav-item">
+                <a th:href="@{/exame/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-laptop"></i> Exame </a>
-                <a href="/laudo" class="dash-nav-item">
+                <a th:href="@{/laudo/{medicoId}(medicoId = ${medico.id})}" class="dash-nav-item">
                     <i class="fa fa-file"></i> Laudo </a>       
             </nav>
         </div>
@@ -61,7 +61,7 @@
                                     <div class="easion-card-title"> Dados </div>
                                 </div>
                                 <div class="card-body ">
-                                     <form name="laudo" th:action="@{/laudo/(id = ${laudo.id})}" method="post">
+                                    <form name="laudo" th:action="@{detalhar/{medicoId}/{pacienteId}(medicoId = ${medico.id},id = ${laudo.id})}" method="post">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="">Descrição</label>
@@ -91,9 +91,9 @@
                                         
                                             <div class="" style="margin-left: 5px;">
                                                 <button type="submit" class="btn btn-primary">Atualizar</button> 
-                                                <a class="dropdown-item" href="/laudo" style="display: contents;"><button type="button" class="btn btn-danger">Voltar</button></a>
+                                                <a class="dropdown-item" th:href="@{/laudo/{medicoId}/(medicoId = ${medico.id})}" style="display: contents;"><button type="button" class="btn btn-danger">Voltar</button></a>
                                             </div>
-                                      
+
                                         <br>
                                     </form>
                                 </div>
@@ -121,11 +121,10 @@
                                         </thead>
                                         <tbody>
                                             <tr th:each="exame : ${exames}">
-                                            <td><span th:text="${exame.id}"></span>&nbsp;</td>
-                                            <td><span th:text="${exame.dataPedido}"></span>&nbsp;</td>
-                                            <td><span th:text="${exame.medico.nome}"></span>&nbsp;</td>
-                                            <td><span th:text="${exame.statusExame}"></span>&nbsp;</td>
-
+                                                <td><span th:text="${exame.id}"></span>&nbsp;</td>
+                                                <td><span th:text="${exame.dataPedido}"></span>&nbsp;</td>
+                                                <td><span th:text="${exame.medico.nome}"></span>&nbsp;</td>
+                                                <td><span th:text="${exame.statusExame}"></span>&nbsp;</td>
                                             </tr>
                                         </tbody>
                                     </table>
